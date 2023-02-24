@@ -7,6 +7,9 @@ import java.time.LocalDateTime;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Setter
+@Getter
+@ToString
 @Entity
 @Table(name="Patient_Table")
 
@@ -14,13 +17,10 @@ public class Patient {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer patient_id;
+    private Integer patientId;
 
     private String firstname;
     private String lastname;
-    @ManyToOne
-    @JoinColumn(name = "doctor")
-    private Doctor doctor;
     private String username;
     private String password;
     private LocalDateTime birth_date;
