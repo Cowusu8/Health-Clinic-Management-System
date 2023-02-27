@@ -25,6 +25,6 @@ public class PatientController {
    @GetMapping("/")
         public String showIndex (){
             log.warn("test");
-            return "index";
+        return "index";
    }
 }

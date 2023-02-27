@@ -1,30 +1,25 @@
 package com.clinicmgmt.springclinicmgmt.models;
+
 import jakarta.persistence.*;
-import lombok.*;
-import lombok.experimental.FieldDefaults;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
 
 @AllArgsConstructor
-@NoArgsConstructor
-@Setter
-@Getter
-@ToString
 @Data
+@NoArgsConstructor
 @Entity
-@Table(name="Visit_Info_Table")
+@Table(name="VisitInfo_Table")
 
-public class Visit_Info {
-
-    @Id @NonNull
+public class VisitInfo {
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer patientId;
 
-
-    @ManyToOne
-    @JoinColumn(name ="Patient")
-    private Patient patient;
+   // private Patient patient;
 
     private LocalDateTime visit_date;
     private String billed;

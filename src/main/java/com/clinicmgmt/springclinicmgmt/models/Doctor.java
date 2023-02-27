@@ -8,7 +8,7 @@ import lombok.Data;
 @Data
 @NoArgsConstructor
 @Entity
-@Table(name="Doctor_Table")
+@Table(name="Doctors_Table")
 
 public class Doctor {
     @Id
@@ -18,8 +18,7 @@ public class Doctor {
     private String name;
     private String username;
     private String password;
-    @ManyToOne
-    @JoinColumn(name = "patient_id")
-    private Patient patient;
+
+//    private Patient patient;
 
 }

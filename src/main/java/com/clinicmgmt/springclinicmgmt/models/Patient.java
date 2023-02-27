@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @Getter
 @ToString
 @Entity
-@Table(name="Patient_Table")
+@Table(name="Patients_Table")
 
 public class Patient {
 
