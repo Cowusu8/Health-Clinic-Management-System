@@ -16,7 +16,7 @@ public class PatientController {
     private PatientRepository pRepo;
 
     @GetMapping({"/showPatients", "/list"})
-    public ModelAndView showPatients() {
+    public ModelAndView showPatient() {
         ModelAndView mav = new ModelAndView("listpatients");
         List<Patient> list= pRepo.findAll();
         mav.addObject("patient", list);
@@ -27,4 +27,20 @@ public class PatientController {
             log.warn("test");
         return "index";
    }
+
+    @GetMapping("app")
+    public String showAppointment (){
+        log.warn("test");
+        return "appointment";
+    }
+    @GetMapping("Admin")
+    public String showAdminportal(){
+        log.warn("test");
+        return "Adminportal";
+    }
+    @GetMapping("Doctor")
+    public String showDoctorportal(){
+        log.warn("test");
+        return "Doctorportal";
+    }
 }

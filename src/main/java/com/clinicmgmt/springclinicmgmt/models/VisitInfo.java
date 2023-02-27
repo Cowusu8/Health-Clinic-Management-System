@@ -17,13 +17,16 @@ import java.time.LocalDateTime;
 public class VisitInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer patientId;
+    @Column(name = "patientId")
+    private Long patientId;
 
-   // private Patient patient;
-
-    private LocalDateTime visit_date;
+    // private Patient patient;
+    @Column(name = "visitDate_Date")
+    private LocalDateTime visitDate;
+    @Column(name = "quote_string")
     private String billed;
+    @Column(name = "diagnosis_string")
     private String diagnosis;
-    private String med_prescribed;
-    private String patientDiagnosis;
+    @Column(name = "prescription_string")
+    private String prescription;
 }

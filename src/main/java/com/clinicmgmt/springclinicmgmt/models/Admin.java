@@ -18,9 +18,11 @@ import java.time.LocalDateTime;
 public class Admin {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer adminId;
-
+    @Column(name = "adminId", unique = true)
+    private Long adminId;
+    @Column(name = "username")
     private String username;
+    @Column(name = "password", length = 70)
     private String password;
 
 
