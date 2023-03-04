@@ -18,22 +18,20 @@ public class Patients {
 
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "Id", unique = true)
-    private Long patientId;
-    @Column(name = "firstname", nullable = false, length = 100)
-    private String firstname;
-    @Column(name = "lastname", nullable = false, length = 100)
-    private String lastname;
+    @Column(name = "Id", unique = true, nullable = false)
+    private Long Id;
+    @Column(name = "fullName", nullable = false, length = 100)
+    private String fullName;
     @Column(name = "email", nullable = false, length = 100, unique = true)
     private String email;
     @Column(name = "password", nullable = false, length = 100)
     private String password;
-    @Column(name = "date", nullable = false)
-    private String birth_date;
+    @Column(name = "birthdate", nullable = false)
+    private String birthDate;
     @Column(name = "appointment", nullable = false)
     private String appointment;
     @Column(name = "phone", unique = true, nullable = false)
-    private Long phone_no;
+    private Long phoneNo;
 
     @ManyToOne
     @JoinColumn(name = "doctors_doctor_id")
