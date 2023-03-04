@@ -1,8 +1,8 @@
 package com.clinicmgmt.springclinicmgmt.controllers;
 
 import java.util.*;
-import com.clinicmgmt.springclinicmgmt.models.Patient;
-import com.clinicmgmt.springclinicmgmt.repositories.PatientRepository;
+import com.clinicmgmt.springclinicmgmt.models.Patients;
+import com.clinicmgmt.springclinicmgmt.repositories.PatientsRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,34 +13,38 @@ import org.springframework.web.servlet.ModelAndView;
 public class PatientController {
 
     @Autowired
-    private PatientRepository pRepo;
+    private PatientsRepository pRepo;
 
     @GetMapping({"/showPatients", "/list"})
-    public ModelAndView showPatient() {
+    public ModelAndView showPatients() {
         ModelAndView mav = new ModelAndView("listpatients");
-        List<Patient> list= pRepo.findAll();
-        mav.addObject("patient", list);
+        List<Patients> list = pRepo.findAll();
+        mav.addObject("doctors", list);
         return mav;
     }
-   @GetMapping("/")
-        public String showIndex (){
-            log.warn("test");
+
+    @GetMapping("/")
+    public String showIndex() {
+        log.warn("test");
         return "index";
-   }
+    }
 
     @GetMapping("app")
-    public String showAppointment (){
+    public String showAppointment() {
         log.warn("test");
         return "appointment";
     }
-    @GetMapping("Admin")
-    public String showAdminportal(){
-        log.warn("test");
-        return "Adminportal";
-    }
+
     @GetMapping("Doctor")
-    public String showDoctorportal(){
+    public String showDoctors() {
         log.warn("test");
-        return "Doctorportal";
+        return "Doctors portal";
+    }
+    @GetMapping("patient")
+    public String showPatientportal() {
+        log.warn("test");
+        return "patientportal";
     }
 }
+
+

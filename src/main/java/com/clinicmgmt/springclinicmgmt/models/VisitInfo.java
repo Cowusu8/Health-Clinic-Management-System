@@ -15,18 +15,26 @@ import java.time.LocalDateTime;
 @Table(name="VisitInfo_Table")
 
 public class VisitInfo {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "patientId")
-    private Long patientId;
-
-    // private Patient patient;
-    @Column(name = "visitDate_Date")
-    private LocalDateTime visitDate;
-    @Column(name = "quote_string")
-    private String billed;
-    @Column(name = "diagnosis_string")
+    @Column(name="visitID")
+    private Long Id;
+    @Column(name = "visitDate")
+    private String visitDate;
+    @Column(name = "billing")
+    private Boolean billed;
+    @Column(name = "diagnosis")
     private String diagnosis;
-    @Column(name = "prescription_string")
+    @Column(name = "prescription")
     private String prescription;
+
+    @OneToOne
+    @JoinColumn(name = "patients_id")
+    private Patients patients;
+
+    @OneToOne
+    @JoinColumn(name = "doctors_id")
+    private Doctors doctors;
+
 }

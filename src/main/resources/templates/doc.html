@@ -33,14 +33,10 @@
 
 </head>
 
-<body style="background-color: rgba(3, 63, 19, 0.392);">
-
-
-<!-- ======= Header ======= -->
 <header class="fixed-top" id="header">
     <div class="container d-flex align-items-center">
 
-        <a class="logo me-auto" href="index.html"><img alt="" src="styles/img/spring.png"></a>
+        <a class="logo me-auto" href="/"><img alt="" src="styles/img/spring.png"></a>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <h1 class="logo me-auto"><a href="index.html">Medicio</a></h1> -->
 
@@ -59,7 +55,7 @@
         </nav><!-- .navbar -->
     </div>
 </header><!-- End Header -->
-
+<!-- ======= Doctors Section ======= -->
 <section>
     <div class="d-flex align-items-center fixed-top" id="topbar" style="background-color: rgb(2, 46, 16);">
         <div class="container d-flex align-items-center justify-content-center justify-content-md-between">
@@ -73,43 +69,99 @@
 </section>
 
 
-<div class="hello">
-    <div class="row gx-5 justify-content-center">
 
-        <div class="container">
-            <div class="row card-header" style="padding: 2%;">
-                <h1 style="color: rgb(255, 255, 255); font-style: normal; text-align: center;">
-                    Patient Portal</h1>
-                <div class="col-12">
 
-                </div>
+<section>
+<div class="container" data-aos="fade-up">
 
-            </div>
-        </div>
-
-        <div class="col-4">
-            <form action="/action_page.php">
-                <div class="mb-3 mt-3">
-                    <label class="form-label" for="email">Email:</label>
-                    <input class="form-control" id="email" name="email" placeholder="Enter email" type="email">
-                </div>
-                <div class="mb-3">
-                    <label class="form-label" for="pwd">Password:</label>
-                    <input class="form-control" id="pwd" name="pswd" placeholder="Enter password" type="password">
-                </div>
-                <div class="form-check mb-3">
-                    <label class="form-check-label">
-                        <input class="form-check-input" name="remember" type="checkbox"> Remember me
-                    </label>
-                </div>
-                <button class="btn btn-primary" type="submit">Submit</button>
-            </form>
-
-        </div>
-
+    <div class="section-title">
+        <h2>Doctors</h2>
+        <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
+            consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat
+            sit in iste officiis commodi quidem hic quas.</p>
     </div>
 </div>
 
+    <div class="row">
+
+        <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+            <div class="member" data-aos="fade-up" data-aos-delay="100">
+                <div class="member-img">
+                    <img alt="" class="img-fluid" src="/img/doctors/doctors-4.jpg">
+                    <div class="social">
+                        <a href=""><i class="bi bi-twitter"></i></a>
+                        <a href=""><i class="bi bi-facebook"></i></a>
+                        <a href=""><i class="bi bi-instagram"></i></a>
+                        <a href=""><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="member-info">
+                    <h4>Walter White</h4>
+                    <span>Chief Medical Officer</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+            <div class="member" data-aos="fade-up" data-aos-delay="200">
+                <div class="member-img">
+                    <img alt="" class="img-fluid" src="/img/doctors/doctors-1.jpg">
+                    <div class="social">
+                        <a href=""><i class="bi bi-twitter"></i></a>
+                        <a href=""><i class="bi bi-facebook"></i></a>
+                        <a href=""><i class="bi bi-instagram"></i></a>
+                        <a href=""><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="member-info">
+                    <h4>Sarah Jhonson</h4>
+                    <span>Anesthesiologist</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+            <div class="member" data-aos="fade-up" data-aos-delay="300">
+                <div class="member-img">
+                    <img alt="" class="img-fluid" src="/img/doctors/doctors-2.jpg">
+                    <div class="social">
+                        <a href=""><i class="bi bi-twitter"></i></a>
+                        <a href=""><i class="bi bi-facebook"></i></a>
+                        <a href=""><i class="bi bi-instagram"></i></a>
+                        <a href=""><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="member-info">
+                    <h4>William Anderson</h4>
+                    <span>Cardiology</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+            <div class="member" data-aos="fade-up" data-aos-delay="400">
+                <div class="member-img">
+                    <img alt="" class="img-fluid" src="/img/doctors/doctors-3.jpg">
+                    <div class="social">
+                        <a href=""><i class="bi bi-twitter"></i></a>
+                        <a href=""><i class="bi bi-facebook"></i></a>
+                        <a href=""><i class="bi bi-instagram"></i></a>
+                        <a href=""><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="member-info">
+                    <h4>Amanda Jepson</h4>
+                    <span>Neurosurgeon</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+
+ <!-JS Files -->
 
 <script th:src="@{/vendor/purecounter/purecounter_vanilla.js}"></script>
 <script th:src="@{/vendor/aos/aos.js}"></script>
@@ -135,6 +187,5 @@
         th:src="@{https://cdnjs.cloudflare.com/ajax/libs/axios/1.3.3/axios.min.js}"
 ></script>
 
-</body>
 
 </html>

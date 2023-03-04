@@ -21,10 +21,10 @@
                     </tr>
                 </thead>
                 <tbody>
-                <tr th:each="patient: ${patient}">
-                    <td th:text="${patient.Fist Name}"></td>
-                    <td th:text="${patient.Last Name}"></td>
-                    <td th:text="${patient.Appointment}"></td>
+                <tr th:each="patients: ${patients}">
+                    <td th:text="${patients.Fist Name}"></td>
+                    <td th:text="${patients.Last Name}"></td>
+                    <td th:text="${patients.Appointment}"></td>
                 </tr>
                 </tbody>
 
