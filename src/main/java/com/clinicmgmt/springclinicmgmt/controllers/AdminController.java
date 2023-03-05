@@ -18,6 +18,11 @@ public class AdminController {
         log.warn("test");
         return "Admin";
     }
+    @GetMapping("Adminp")
+    public String showAdminp(){
+        log.warn("test");
+        return "Adminp";
+    }
 
 
 }

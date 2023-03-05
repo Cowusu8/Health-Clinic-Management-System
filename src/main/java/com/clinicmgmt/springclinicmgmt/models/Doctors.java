@@ -20,15 +20,16 @@ import lombok.extern.slf4j.Slf4j;
 public class Doctors {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "doctorId", unique = true)
+    @Column(name = "doctorId", unique = true,nullable = false)
     private Long Id;
-    @Column(name = "name_string")
-    private String name;
-    @Column(name = "username_string")
+    @Column(name = "name_string", nullable = false, length = 100)
+    private String fullName;
+    @Column(name = "username_string", nullable = false, length = 100)
     private String username;
-    @Column(name = "password_string")
+    @Column(name = "password_string", nullable = false, length = 100)
     private String password;
-
+    @Column(name="gender", nullable = false, length = 7)
+    private String gender;
 
 
 

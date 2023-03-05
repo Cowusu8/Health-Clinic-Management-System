@@ -17,12 +17,16 @@ public class DoctorController {
         log.warn("test");
         return "doc";
     }
-
-
     @GetMapping("docportal")
     public String showdoctorsportal(){
         log.warn("test");
         return "doctorsportal";
+    }
+
+    @GetMapping("docdash")
+    public String showdocdash(){
+        log.warn("test");
+        return "docdash";
     }
 
 }

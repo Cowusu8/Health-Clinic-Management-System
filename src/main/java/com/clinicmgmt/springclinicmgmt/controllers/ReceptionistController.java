@@ -17,4 +17,10 @@ public class ReceptionistController {
         log.warn("test");
         return "receptionist";
     }
+
+    @GetMapping("recepdash")
+    public String showrecpt() {
+        log.warn("test");
+        return "recpt";
+    }
 }

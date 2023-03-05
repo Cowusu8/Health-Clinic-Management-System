@@ -71,6 +71,8 @@ public class PatientController {
         log.warn("test");
         return "patientportal";
     }
+
+
 }
 
 

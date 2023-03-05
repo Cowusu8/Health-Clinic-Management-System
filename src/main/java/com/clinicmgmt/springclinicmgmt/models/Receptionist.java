@@ -23,6 +23,8 @@ public class Receptionist {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ReceptionistId", unique = true)
     private Long Id;
+    @Column(name = "fullName", nullable = false, length = 100)
+    private String fullName;
     @Column(name = "username")@NonNull
     private String username;
     @Column(name = "password", length = 70)
