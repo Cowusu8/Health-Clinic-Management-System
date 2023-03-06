@@ -18,7 +18,7 @@ public class PatientController {
     @Autowired
     private PatientsRepository pRepo;
 
-    @GetMapping({"/showPatients", "/list"})
+    @GetMapping({"/showPatients", "/patients"})
     public ModelAndView showPatients() {
         ModelAndView mav = new ModelAndView("listpatients");
         List<Patients> list = pRepo.findAll();
@@ -37,7 +37,7 @@ public class PatientController {
     @PostMapping("/savePatients")
     public String savePatient(@ModelAttribute Patients patients) {
         pRepo.save(patients);
-        return "redirect:/list";
+        return "redirect:/patients";
     }
 
     @GetMapping("/showUpdateForm")

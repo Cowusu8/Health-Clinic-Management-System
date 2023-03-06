@@ -31,7 +31,7 @@ public class Patients {
     @Column(name="address",  nullable = false, length = 100)
     private String address;
     @Column(name = "phone", unique = true, nullable = false,length = 12)
-    private Long phone;
+    private String phone;
 
     @ManyToOne
     @JoinColumn(name = "doctors_doctor_id")
