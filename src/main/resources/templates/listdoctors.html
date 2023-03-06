@@ -1,7 +1,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <title>List Patients</title>
+    <title>List Doctors</title>
 
     <link href="https://cdn.datatables.net/v/bs4/dt-1.10.25/datatables.min.css"
           rel="stylesheet"
@@ -18,16 +18,16 @@
 <div class="container">
     <br>
     <div>
-        <h3 style="text-align: center; color: SteelBlue;font-size: 46px;"> Patients List</h3>
+        <h3 style="text-align: center; color: SteelBlue;font-size: 46px;"> Doctors List</h3>
     </div>
 
     <hr/>
     <div class="d-grid gap-2  justify-content-md-end">
-        <a class="btn btn-primary" th:href="@{/addPatientsForm}">Add Patient</a>
-        <a class="btn btn-primary" th:href="@{/recepdash}">Back to Dashboard</a>
+        <a class="btn btn-primary" th:href="@{/addPatientsForm}">Add Doctors</a>
+        <a class="btn btn-primary" th:href="@{/Adminp}">Back to Dashboard</a>
     </div>
     <br/>
-    <table class="table table-bordered table-striped" id="patientsTable">
+    <table class="table table-bordered table-striped" id="doctorsTable">
 
         <thead>
         <tr>
@@ -37,6 +37,7 @@
             <th>Birth Date</th>
             <th>Email</th>
             <th>Phone</th>
+            <th>Password</th>
             <th>Address</th>
             <th>Actions</th>
 
@@ -44,18 +45,19 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="patients: ${patients}">
-            <td th:text="${patients.Id}"></td>
-            <td th:text="${patients.fullName}"></td>
-            <td th:text="${patients.gender}"></td>
-            <td th:text="${patients.birthDate}"></td>
-            <td th:text="${patients.email}"></td>
-            <td th:text="${patients.phone}"></td>
-            <td th:text="${patients.address}"></td>
+        <tr th:each="patients: ${doctors}">
+            <td th:text="${doctors.Id}"></td>
+            <td th:text="${doctors.fullName}"></td>
+            <td th:text="${doctors.gender}"></td>
+            <td th:text="${doctors.birthDate}"></td>
+            <td th:text="${doctors.email}"></td>
+            <td th:text="${doctors.phone}"></td>
+            <td th:text="${doctors.address}"></td>
+            <td th:text="${doctors.password}"></td>
             <td>
-                <a class="btn btn-info" th:href="@{/showUpdateForm(patientId=${patients.Id})}">Update</a>
+                <a class="btn btn-info" th:href="@{/showUpdateForm(doctorId=${doctors.Id})}">Update</a>
 
-                <a class="btn btn-danger ml-2" th:href="@{/deletePatient(patientId=${patients.id})}">Delete</a>
+                <a class="btn btn-danger ml-2" th:href="@{/deleteDoctors(doctorId=${doctors.id})}">Delete</a>
             </td>
         </tr>
         </tbody>

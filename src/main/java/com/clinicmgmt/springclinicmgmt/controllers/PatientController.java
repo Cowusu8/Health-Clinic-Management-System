@@ -1,8 +1,9 @@
 package com.clinicmgmt.springclinicmgmt.controllers;
 
 import java.util.*;
+
+import com.clinicmgmt.springclinicmgmt.dao.PatientsRepo;
 import com.clinicmgmt.springclinicmgmt.models.Patients;
-import com.clinicmgmt.springclinicmgmt.repositories.PatientsRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,7 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class PatientController {
 
     @Autowired
-    private PatientsRepository pRepo;
+    private PatientsRepo pRepo;
 
     @GetMapping({"/showPatients", "/patients"})
     public ModelAndView showPatients() {

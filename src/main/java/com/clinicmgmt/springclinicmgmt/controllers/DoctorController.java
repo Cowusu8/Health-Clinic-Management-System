@@ -1,7 +1,7 @@
 package com.clinicmgmt.springclinicmgmt.controllers;
 
+import com.clinicmgmt.springclinicmgmt.dao.DoctorsRepo;
 import com.clinicmgmt.springclinicmgmt.models.Doctors;
-import com.clinicmgmt.springclinicmgmt.repositories.DoctorsRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,7 +17,7 @@ import java.util.List;
 public class DoctorController {
 
     @Autowired
-    private DoctorsRepository dRepo;
+    private DoctorsRepo dRepo;
 
     @GetMapping("docs")
     public String showdoc(){

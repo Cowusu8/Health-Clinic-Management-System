@@ -1,6 +1,6 @@
 package com.clinicmgmt.springclinicmgmt.controllers;
 
-import com.clinicmgmt.springclinicmgmt.repositories.ReceptionistRepository;
+import com.clinicmgmt.springclinicmgmt.dao.ReceptionistRepo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class ReceptionistController {
 
     @Autowired
-    private ReceptionistRepository rRepo;
+    private ReceptionistRepo rRepo;
 
     @GetMapping("receptionist")
     public String showReceptionist() {
