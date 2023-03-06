@@ -15,7 +15,7 @@
     <h1>Add New Doctor</h1>
     <hr/>
 
-    <form method="POST" th:action="@{/savePatients}" th:object="${patients}">
+    <form method="POST" th:action="@{/saveDoctors}" th:object="${doctors}">
 
         <input class="form-control col-3 mb-4" placeholder="Enter Full Name" th:field="*{fullName}" type="text"/>
 
@@ -26,11 +26,13 @@
             <input th:field="*{gender}" type="checkbox" value="Female"/>Female
         </label>
 
-        <input class="form-control col-3 mb-4" placeholder="Enter Email" th:field="*{email}" type="text"/>
+        <input class="form-control col-3 mb-4" placeholder="Enter Email" th:field="*{username}" type="text"/>
 
         <input class="form-control col-3 mb-4" placeholder="Enter Address" th:field="*{address}" type="text"/>
 
         <input class="form-control col-3 mb-4" placeholder="Enter Phone Number" th:field="*{phone}" type="text"/>
+
+        <input class="form-control col-3 mb-4" placeholder="Enter Password" th:field="*{password}" type="text"/>
 
 
         <button class="btn btn-primary col-2" type="submit">Save</button>
@@ -38,7 +40,7 @@
 
     </form>
     <hr/>
-    <a th:href="@{/list}">List of Patients</a>
+    <a th:href="@{/list}">List of Doctors</a>
 </div>
 
 </body>
