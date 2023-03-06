@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.Set;
+
 
 @AllArgsConstructor
 @Getter
@@ -31,6 +33,10 @@ public class Doctors {
     @Column(name="gender", nullable = false, length = 7)
     private String gender;
 
+    @OneToMany
+    @JoinColumn(name = "visit_info_visit_id")
+//    private VisitInfo visitInfo;
+    private Set<VisitInfo> visits;
 
 
 }

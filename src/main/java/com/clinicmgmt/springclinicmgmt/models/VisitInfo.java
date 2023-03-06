@@ -29,7 +29,7 @@ public class VisitInfo {
     @Column(name = "prescription")
     private String prescription;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "patients_id")
     private Patients patients;
 

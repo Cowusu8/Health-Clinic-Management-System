@@ -2,6 +2,7 @@ package com.clinicmgmt.springclinicmgmt.models;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.Set;
 
 
 @Data
@@ -33,9 +34,13 @@ public class Patients {
     @Column(name = "phone", unique = true, nullable = false,length = 12)
     private String phone;
 
-    @ManyToOne
-    @JoinColumn(name = "doctors_doctor_id")
-    private Doctors doctors;
+    @OneToMany
+    @JoinColumn(name = "visitinfo_visit_id")
+    private Set<VisitInfo> visits;
+
+//    @OneToMany(mappedBy = "patients")
+//    Set<VisitInfo> visitInfo;
+
 
 
 }
