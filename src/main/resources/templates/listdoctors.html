@@ -35,7 +35,7 @@
             <th>Full Name</th>
             <th>Gender</th>
             <th>Birth Date</th>
-            <th>Email</th>
+            <th>Username</th>
             <th>Phone</th>
             <th>Password</th>
             <th>Address</th>
@@ -45,12 +45,12 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="patients: ${doctors}">
+        <tr th:each="doctors: ${doctors}">
             <td th:text="${doctors.Id}"></td>
             <td th:text="${doctors.fullName}"></td>
             <td th:text="${doctors.gender}"></td>
             <td th:text="${doctors.birthDate}"></td>
-            <td th:text="${doctors.email}"></td>
+            <td th:text="${doctors.username}"></td>
             <td th:text="${doctors.phone}"></td>
             <td th:text="${doctors.address}"></td>
             <td th:text="${doctors.password}"></td>

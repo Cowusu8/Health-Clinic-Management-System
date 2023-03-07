@@ -22,16 +22,16 @@ public class PatientController {
     @GetMapping({"/showPatients", "/patients"})
     public ModelAndView showPatients() {
         ModelAndView mav = new ModelAndView("listpatients");
-        List<Patients> list = pRepo.findAll();
-        mav.addObject("patients", list);
+        List<Patients> patients = pRepo.findAll();
+        mav.addObject("patients", patients);
         return mav;
     }
 
     @GetMapping("/addPatientsForm")
-    public ModelAndView addPatientsForm() {
+    public ModelAndView addPatientForm() {
         ModelAndView mav = new ModelAndView("add-patient-form");
-        Patients newPatient = new Patients();
-        mav.addObject("patients", newPatient);
+        Patients patients = new Patients();
+        mav.addObject("patients", patients);
         return mav;
     }
 
@@ -50,9 +50,9 @@ public class PatientController {
     }
 
     @GetMapping("/deletePatient")
-    public String deletePatient(@RequestParam Long patientId) {
+    public String deletePatients(@RequestParam Long patientId) {
         pRepo.deleteById(patientId);
-        return "redirect:/list";
+        return "redirect:/patients";
     }
 
     @GetMapping("/")

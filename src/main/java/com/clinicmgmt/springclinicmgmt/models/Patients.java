@@ -23,7 +23,7 @@ public class Patients {
     private Long Id;
     @Column(name = "fullName", nullable = false, length = 100)
     private String fullName;
-    @Column(name="gender", nullable = false, length = 7)
+    @Column(name="gender", length = 7, nullable = false)
     private String gender;
     @Column(name = "email", nullable = false, length = 100, unique = true)
     private String email;

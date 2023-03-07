@@ -39,8 +39,8 @@ public class DoctorController {
     @GetMapping({"/showDoctors", "/doctors"})
     public ModelAndView showDoctors() {
         ModelAndView mav = new ModelAndView("listdoctors");
-        List<Doctors> list = dRepo.findAll();
-        mav.addObject("doctors", list);
+        List<Doctors> doctors = dRepo.findAll();
+        mav.addObject("doctors", doctors);
         return mav;
     }
 
@@ -69,7 +69,7 @@ public class DoctorController {
     @GetMapping("/deleteDoctor")
     public String deleteDoctor(@RequestParam Long doctorId) {
         dRepo.deleteById(doctorId);
-        return "redirect:/list";
+        return "redirect:/doctors";
     }
 
 }

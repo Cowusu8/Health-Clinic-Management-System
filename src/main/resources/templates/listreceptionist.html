@@ -1,7 +1,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <title>List Patients</title>
+    <title>List of Medical Assistants</title>
 
     <link href="https://cdn.datatables.net/v/bs4/dt-1.10.25/datatables.min.css"
           rel="stylesheet"
@@ -18,16 +18,16 @@
 <div class="container">
     <br>
     <div>
-        <h3 style="text-align: center; color: SteelBlue;font-size: 46px;"> Patients List</h3>
+        <h3 style="text-align: center; color: SteelBlue;font-size: 46px;"> Medical Assistants List</h3>
     </div>
 
     <hr/>
     <div class="d-grid gap-2  justify-content-md-end">
-        <a class="btn btn-primary" th:href="@{/addPatientsForm}">Add Patient</a>
+        <a class="btn btn-primary" th:href="@{/addPatientsForm}">Add Medical Assistant</a>
         <a class="btn btn-primary" th:href="@{/recepdash}">Back to Dashboard</a>
     </div>
     <br/>
-    <table class="table table-bordered table-striped" id="patientsTable">
+    <table class="table table-bordered table-striped" id="receptionistTable">
 
         <thead>
         <tr>
@@ -44,18 +44,18 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="patients: ${patients}">
-            <td th:text="${patients.Id}"></td>
-            <td th:text="${patients.fullName}"></td>
-            <td th:text="${patients.gender}"></td>
-            <td th:text="${patients.birthDate}"></td>
-            <td th:text="${patients.email}"></td>
-            <td th:text="${patients.phone}"></td>
-            <td th:text="${patients.address}"></td>
+        <tr th:each="receptionist: ${receptionist}">
+            <td th:text="${receptionist.Id}"></td>
+            <td th:text="${receptionist.fullName}"></td>
+            <td th:text="${receptionist.gender}"></td>
+            <td th:text="${receptionist.birthDate}"></td>
+            <td th:text="${receptionist.email}"></td>
+            <td th:text="${receptionist.phone}"></td>
+            <td th:text="${receptionist.address}"></td>
             <td>
-                <a class="btn btn-info" th:href="@{/showUpdateForm(patientId=${patients.Id})}">Update</a>
+                <a class="btn btn-info" th:href="@{/showUpdateForm(receptionistId=${receptionist.Id})}">Update</a>
 
-                <a class="btn btn-danger ml-2" th:href="@{/deletePatient(patientId=${patients.id})}">Delete</a>
+                <a class="btn btn-danger ml-2" th:href="@{/deletereceptionist(receptionistId=${receptionist.id})}">Delete</a>
             </td>
         </tr>
         </tbody>
