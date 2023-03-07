@@ -55,9 +55,9 @@
             <td th:text="${doctors.address}"></td>
             <td th:text="${doctors.password}"></td>
             <td>
-                <a class="btn btn-info" th:href="@{/showUpdateForm(doctorId=${doctors.Id})}">Update</a>
+                <a class="btn btn-info" th:href="@{/showUpdateDocForm(doctorId=${doctors.Id})}">Update</a>
 
-                <a class="btn btn-danger ml-2" th:href="@{/deleteDoctors(doctorId=${doctors.id})}">Delete</a>
+                <a class="btn btn-danger ml-2" th:href="@{/deleteDoctor(doctorId=${doctors.id})}">Delete</a>
             </td>
         </tr>
         </tbody>
