@@ -13,12 +13,12 @@ public class AdminController {
     @Autowired
     private AdminRepo aRepo;
 
-    @GetMapping("Admin")
+    @GetMapping("Admin") //http://localhost:8080/Admin
     public String showAdmin(){
         log.warn("test");
         return "Admin";
     }
-    @GetMapping("admindash")
+    @GetMapping("admindash") //http://localhost:8080/admindash
     public String showadmindash(){
         log.warn("test");
         return "admindash";

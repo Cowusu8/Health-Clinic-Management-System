@@ -19,24 +19,24 @@ public class DoctorController {
     @Autowired
     private DoctorsRepo dRepo;
 
-    @GetMapping("docs")
+    @GetMapping("docs") //http://localhost:8080/docs
     public String showdoc(){
         log.warn("test");
         return "doc";
     }
-    @GetMapping("docportal")
+    @GetMapping("docportal") //http://localhost:8080/docportal
     public String showdoctorsportal(){
         log.warn("test");
         return "doctorsportal";
     }
 
-    @GetMapping("docdash")
+    @GetMapping("docdash") //http://localhost:8080/docdash
     public String showdocdash(){
         log.warn("test");
         return "docdash";
     }
 
-    @GetMapping({"/showDoctors", "/doctors"})
+    @GetMapping({"/showDoctors", "/doctors"}) //http://localhost:8080/doctors
     public ModelAndView showDoctors() {
         ModelAndView mav = new ModelAndView("listdoctors");
         List<Doctors> doctors = dRepo.findAll();

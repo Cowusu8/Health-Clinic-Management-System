@@ -2,16 +2,29 @@ package com.clinicmgmt.springclinicmgmt.services;
 
 import com.clinicmgmt.springclinicmgmt.dao.PatientsRepo;
 import com.clinicmgmt.springclinicmgmt.models.Patients;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-@Service
-public class PatientService {
-    @Autowired
-    private PatientsRepo repository;
+import java.util.Optional;
 
-    public Patients saveProduct(Patients patients) {
-        return repository.save(patients);
+@Service
+@Transactional(rollbackOn = Exception.class)
+public class PatientService {
+
+    @Autowired
+    PatientsRepo patientsRepo;
+
+    public PatientService(PatientsRepo patientsRepo) {
+        this.patientsRepo = patientsRepo;
     }
 
+    public void deletepatients(Long id) throws Exception {
+        Optional<Patients> wantToDelete = patientsRepo.findById(id);
+        if (wantToDelete.isPresent())
+            patientsRepo.delete(wantToDelete.get());
+        else
+            throw new Exception("Can't find the patient" + wantToDelete);
+    }
 }
+
