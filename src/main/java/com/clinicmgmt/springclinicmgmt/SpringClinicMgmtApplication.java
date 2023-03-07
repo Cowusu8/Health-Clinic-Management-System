@@ -8,6 +8,7 @@ public class SpringClinicMgmtApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(SpringClinicMgmtApplication.class, args);
+
     }
 
 }
