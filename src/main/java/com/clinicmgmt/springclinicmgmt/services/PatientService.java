@@ -13,4 +13,5 @@ public class PatientService {
     public Patients saveProduct(Patients patients) {
         return repository.save(patients);
     }
+
 }
