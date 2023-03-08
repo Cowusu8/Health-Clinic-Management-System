@@ -31,7 +31,6 @@ public class Doctor {
     private String userName;
     @Column(name = "email", nullable = false, length = 100)
     private String email;
-    @Column(name = "password", nullable = false, length = 100)
     private String password;
     @Column(name = "birthDate", nullable = false, length = 10)
     private String birthDate;
@@ -41,6 +40,7 @@ public class Doctor {
     private String address;
     @Column(name = "phone", unique = true, nullable = false,length = 12)
     private String phone;
+
 
     public String setPassword(String password)  {
         return   this.password = new BCryptPasswordEncoder(4).encode(password);

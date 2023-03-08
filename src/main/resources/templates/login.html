@@ -86,20 +86,20 @@
         </div>
 
         <div class="col-4">
-            <form action="/action_page.php">
+            <form th:action="@{/login/processing}">
                 <div class="mb-3 mt-3">
-                    <label class="form-label" for="username">Username:</label>
-                    <input class="form-control" id="username" name="username" placeholder="Enter username" type="username">
+                    <label class="form-label" for="username">Email:</label>
+                    <input class="form-control" id="username" name="username" placeholder="Enter username" type="text">
                 </div>
                 <div class="mb-3">
-                    <label class="form-label" for="pwd">Password:</label>
-                    <input class="form-control" id="pwd" name="pswd" placeholder="Enter password" type="password">
+                    <label class="form-label" for="password">Password:</label>
+                    <input class="form-control" id="password" name="password" placeholder="Enter password" type="password">
                 </div>
-                <div class="form-check mb-3">
+                <!--<div class="form-check mb-3">
                     <label class="form-check-label">
                         <input class="form-check-input" name="remember" type="checkbox"> Remember me
                     </label>
-                </div>
+                </div>-->
                 <button class="btn btn-primary" type="submit">Submit</button>
             </form>
 

@@ -2,6 +2,7 @@ import com.clinicmgmt.springclinicmgmt.dao.AuthGroupRepoI;
 import com.clinicmgmt.springclinicmgmt.dao.DoctorsRepo;
 import com.clinicmgmt.springclinicmgmt.dao.PatientsRepo;
 import com.clinicmgmt.springclinicmgmt.models.AuthGroup;
+import com.clinicmgmt.springclinicmgmt.models.Doctor;
 import com.clinicmgmt.springclinicmgmt.services.DoctorService;
 import com.clinicmgmt.springclinicmgmt.services.PatientService;
 import lombok.extern.slf4j.Slf4j;
@@ -32,14 +33,23 @@ public class MyCommandLineRunner implements CommandLineRunner {
     public void run(String... args) throws Exception {
 
 
-        AuthGroup authGroup1 = new AuthGroup ("nancysmith@gmail.com","ADMIN");
-        AuthGroup authGroup2 = new AuthGroup ("smithdoe@gmail.com","DOCTOR");
+        AuthGroup authGroup1 = new AuthGroup ("username","ROLE_ADMIN");
+        AuthGroup authGroup2 = new AuthGroup ("username","ROLE_DOCTOR");
 
-        AuthGroup authGroup3= new AuthGroup ("janesmith@gmail.com","RECEPTIONIST");
+        AuthGroup authGroup3= new AuthGroup ("username","ROLE_RECEPTIONIST");
 
         authGroupRepoI.save(authGroup1);
         authGroupRepoI.save(authGroup2);
         authGroupRepoI.save(authGroup3);
+
+
+
+
+        //Doctor doctor1 = new Doctor(doctor1.setUserName(Username););
+
+       /* DoctorsRepo.save(doctor1);
+        DoctorsRepo.save(doctor2);
+        DoctorsRepo.save(doctor2);*/
 
 
     }

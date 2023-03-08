@@ -20,7 +20,7 @@ public class AuthGroup {
     int id;
 
     @NonNull
-    String email;
+    String userName;
 
     @NonNull
     String role;

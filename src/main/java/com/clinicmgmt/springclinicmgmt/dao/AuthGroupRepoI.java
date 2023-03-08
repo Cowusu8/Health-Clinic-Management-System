@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface AuthGroupRepoI extends JpaRepository<AuthGroup,Integer> {
 
-    List<AuthGroup> findByEmail(String email);
+    List<AuthGroup> findByUserName(String UserName);
 
 }

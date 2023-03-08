@@ -34,7 +34,7 @@ public class ClinicUserPrincipal implements UserDetails {
 
     @Override
     public String getUsername() {
-        return doctor.getEmail();
+        return doctor.getUserName();
     }
 
     @Override
