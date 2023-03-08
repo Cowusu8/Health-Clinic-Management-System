@@ -55,11 +55,11 @@ public class PatientController {
         return "redirect:/patients";
     }
 
-    @GetMapping("/")
+    /*@GetMapping("/")
     public String showIndex() {
         log.warn("test");
         return "index";
-    }
+    }*/
 
     @GetMapping("app")
     public String showAppointment() {

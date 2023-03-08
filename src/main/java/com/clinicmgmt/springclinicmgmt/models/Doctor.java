@@ -84,6 +84,4 @@ public class Doctor {
         return patient;
     }
 
-
-
 }

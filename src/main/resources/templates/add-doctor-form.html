@@ -15,7 +15,7 @@
     <h1>Register Employee</h1>
     <hr/>
 
-    <form method="POST" th:action="@{/saveDoctors}" th:object="${doctor}">
+    <form method="POST" th:action="@{/save-doctors}" th:object="${doctor}">
 
         <input class="form-control col-3 mb-4" placeholder="Enter Full Name" th:field="*{fullName}" type="text"/>
 
@@ -40,7 +40,7 @@
 
     </form>
     <hr/>
-    <a th:href="@{/doctor}">List of Employees</a>
+    <a th:href="@{/show-doctors}">List of Employees</a>
 </div>
 
 </body>

@@ -19,24 +19,24 @@ public class DoctorController {
     @Autowired
     private DoctorsRepo dRepo;
 
-    @GetMapping("docs") //http://localhost:8080/docs
+    @GetMapping("/doctors") //http://localhost:8080/docs
     public String showdoc(){
         log.warn("test");
         return "doc";
     }
-    @GetMapping("docportal") //http://localhost:8080/docportal
+    @GetMapping("/doctor-portal") //http://localhost:8080/docportal
     public String showdoctorsportal(){
         log.warn("test");
         return "doctorsportal";
     }
 
-    @GetMapping("docdash") //http://localhost:8080/docdash
+    @GetMapping("/doc-dashboard") //http://localhost:8080/docdash
     public String showdocdash(){
         log.warn("test");
         return "docdash";
     }
 
-    @GetMapping({"/showDoctors", "/doctors"}) //http://localhost:8080/doctors
+    @GetMapping({"/show-doctors", "/em-doctor"}) //http://localhost:8080//em-doctor"
     public ModelAndView showDoctors() {
         ModelAndView mav = new ModelAndView("listdoctors");
         List<Doctor> doctors = dRepo.findAll();
@@ -44,7 +44,7 @@ public class DoctorController {
         return mav;
     }
 
-    @GetMapping("/addDoctorsForm")
+    @GetMapping("/add-doctor-form")
     public ModelAndView addDoctorsForm() {
         ModelAndView mav = new ModelAndView("add-doctor-form");
         Doctor newDoctor = new Doctor();
@@ -52,13 +52,13 @@ public class DoctorController {
         return mav;
     }
 
-    @PostMapping("/saveDoctors")
+    @PostMapping("/save-doctors")
     public String saveDoctor(@ModelAttribute Doctor doctor) {
         dRepo.save(doctor);
         return "redirect:/doctor";
     }
 
-    @GetMapping("/showUpdateDocForm")
+    @GetMapping("/show-update-doc-form")
     public ModelAndView showUpdateForm(@RequestParam Long doctorId) {
         ModelAndView mav = new ModelAndView("add-doctor-form");
         Doctor doctor = dRepo.findById(doctorId).get();
@@ -66,7 +66,7 @@ public class DoctorController {
         return mav;
     }
 
-    @GetMapping("/deleteDoctor")
+    @GetMapping("/delete-doctor")
     public String deleteDoctor(@RequestParam Long doctorId) {
         dRepo.deleteById(doctorId);
         return "redirect:/doctors";

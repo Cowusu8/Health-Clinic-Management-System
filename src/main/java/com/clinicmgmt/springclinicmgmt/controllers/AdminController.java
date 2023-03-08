@@ -13,7 +13,7 @@ public class AdminController {
     private AdminRepo aRepo;
 
 
-    @GetMapping("admin") //http://localhost:8080/admin
+    @GetMapping("/admin") //http://localhost:8080/admin
     public String showAdmin(){
 //        ModelAndView mav = new ModelAndView("admin");
         //Admin admin = aRepo.findById(AdminId);
@@ -35,7 +35,7 @@ public class AdminController {
 //        mav.addObject("patients", patients);
 //        return mav;
 //    }
-    @GetMapping("admindash") //http://localhost:8080/admindash
+    @GetMapping("/admin-dashboard") //http://localhost:8080/admindash
     public String showadmindash(){
         log.warn("test");
         return "admindash";
