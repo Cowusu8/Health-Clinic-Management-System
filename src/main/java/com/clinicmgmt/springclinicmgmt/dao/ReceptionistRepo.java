@@ -11,4 +11,7 @@ import java.util.Optional;
 public interface ReceptionistRepo extends JpaRepository<Receptionist, Long> {
     List<Receptionist> findByEmail(String email);
 
+    Receptionist findByUsername(String username);
+
+    List<Receptionist> findByEmailAllIgnoreCase(String username);
 }

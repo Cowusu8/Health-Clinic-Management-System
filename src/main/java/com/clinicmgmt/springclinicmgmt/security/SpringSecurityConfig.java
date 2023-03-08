@@ -1,6 +1,5 @@
 package com.clinicmgmt.springclinicmgmt.security;
 
-import com.clinicmgmt.springclinicmgmt.services.MyUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,16 +17,10 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity
-public class MySecurityConfig {
+public class SpringSecurityConfig {
 
     @Autowired
-    MyUserDetailsService myUserDetailsService;
-
-
-    @Bean
-    public AuthenticationManager authenticationManager(AuthenticationConfiguration authConfig) throws Exception {
-        return authConfig.getAuthenticationManager();
-    }
+    ClinicUserDetailsService clinicUserDetailsService;
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -35,10 +28,15 @@ public class MySecurityConfig {
     }
 
     @Bean
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration authConfig) throws Exception {
+        return authConfig.getAuthenticationManager();
+    }
+
+    @Bean
     public DaoAuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
         provider.setPasswordEncoder(passwordEncoder());
-        provider.setUserDetailsService(myUserDetailsService);
+        provider.setUserDetailsService(clinicUserDetailsService);
         return provider;
     }
 
@@ -47,14 +45,15 @@ public class MySecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeHttpRequests((requests) -> requests
-                        .requestMatchers("/", "/index", "/css/**", "/js/**", "/assets/**", "/login/**").permitAll()
-                        .requestMatchers("/admin/**", "/image/**").hasRole("ADMIN")
-                        .requestMatchers("/user/**").hasAnyRole("USER", "ADMIN")
+                        .requestMatchers("/","/index","/css/**", "/js/**", "/assets/**", "/login/**","docs","app").permitAll()
+                        .requestMatchers("/admin/**", "/image/**","admin","admindash").hasRole("ADMIN")
+                        .requestMatchers("/docportal/**").hasAnyRole("DOCTOR","ADMIN")
+                        .requestMatchers("/receptionist/**").hasAnyRole("RECEPTIONIST","ADMIN")
                         .anyRequest().authenticated()
                 )
                 .formLogin((form) -> form
                         .loginPage("/login")
-                        .usernameParameter("email")
+                        .usernameParameter("username")
                         .passwordParameter("password")
                         .loginProcessingUrl("/login/processing")
                         .defaultSuccessUrl("/")
@@ -68,6 +67,8 @@ public class MySecurityConfig {
                         .permitAll()).exceptionHandling().accessDeniedPage("/403");
 
 
+
         return http.build();
     }
+
 }

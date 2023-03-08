@@ -1,29 +1,31 @@
 package com.clinicmgmt.springclinicmgmt.security;
 
+
+import com.clinicmgmt.springclinicmgmt.models.AuthGroup;
 import com.clinicmgmt.springclinicmgmt.models.Doctors;
-import com.clinicmgmt.springclinicmgmt.models.Receptionist;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class MyUserPrincipal implements UserDetails {
+public class ClinicUserPrincipal implements UserDetails {
+    private Doctors doctors;
+    private List<AuthGroup> authGroup;
 
-    Doctors doctors;
-    List<Receptionist> receptionists;
+    public ClinicUserPrincipal( Doctors doctors,List<AuthGroup> authGroup) {
 
-
-    public MyUserPrincipal(Doctors doctors, List<Receptionist> receptionists) {
         this.doctors = doctors;
-        this.receptionists = receptionists;
+        this.authGroup=authGroup;
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return receptionists.stream().map( auth -> new SimpleGrantedAuthority(auth.getUsername())).collect(Collectors.toList());
+        return authGroup.stream().map(auth -> new SimpleGrantedAuthority(auth.getRole())).collect(Collectors.toList());
+
     }
 
     @Override
@@ -33,7 +35,7 @@ public class MyUserPrincipal implements UserDetails {
 
     @Override
     public String getUsername() {
-        return doctors.getUsername();
+        return doctors.getEmail();
     }
 
     @Override

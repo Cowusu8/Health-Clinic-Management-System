@@ -1,33 +1,31 @@
 package com.clinicmgmt.springclinicmgmt.security;
 
+import com.clinicmgmt.springclinicmgmt.dao.AuthGroupRepoI;
 import com.clinicmgmt.springclinicmgmt.dao.DoctorsRepo;
-import com.clinicmgmt.springclinicmgmt.dao.ReceptionistRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-
-
 @Service
-
-public class MyUserDetailsService implements UserDetailsService {
-
-
+public class ClinicUserDetailsService implements UserDetailsService {
     DoctorsRepo doctorsRepo;
-    ReceptionistRepo receptionistRepo;
+    AuthGroupRepoI authGroupRepoI;
 
     @Autowired
-    public MyUserDetailsService(DoctorsRepo doctorsRepo, ReceptionistRepo receptionistRepo) {
+    public ClinicUserDetailsService(DoctorsRepo doctorRepo, AuthGroupRepoI authGroupRepoI) {
         this.doctorsRepo = doctorsRepo;
-        this.receptionistRepo = receptionistRepo;
+        this.authGroupRepoI = authGroupRepoI;
     }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return new MyUserPrincipal
-                (doctorsRepo.findByEmailAllIgnoreCase(username).orElseThrow(() -> new UsernameNotFoundException("Did not find the email" + username))
-                        , receptionistRepo.findByEmail(username));
+
+        return new ClinicUserPrincipal(
+                doctorsRepo.findByEmail(username).orElseThrow(() -> new UsernameNotFoundException("Email Not Found"))
+                , authGroupRepoI.findByEmail(username));
     }
 }
+
+

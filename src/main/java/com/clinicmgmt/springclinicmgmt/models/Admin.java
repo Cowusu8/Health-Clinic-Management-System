@@ -21,7 +21,7 @@ public class Admin {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
     @NonNull
-    private String email;
+    private String username;
     @NonNull
     private String role;
 
