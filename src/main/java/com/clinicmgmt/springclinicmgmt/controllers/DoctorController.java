@@ -1,7 +1,7 @@
 package com.clinicmgmt.springclinicmgmt.controllers;
 
 import com.clinicmgmt.springclinicmgmt.dao.DoctorsRepo;
-import com.clinicmgmt.springclinicmgmt.models.Doctors;
+import com.clinicmgmt.springclinicmgmt.models.Doctor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -39,7 +39,7 @@ public class DoctorController {
     @GetMapping({"/showDoctors", "/doctors"}) //http://localhost:8080/doctors
     public ModelAndView showDoctors() {
         ModelAndView mav = new ModelAndView("listdoctors");
-        List<Doctors> doctors = dRepo.findAll();
+        List<Doctor> doctors = dRepo.findAll();
         mav.addObject("doctors", doctors);
         return mav;
     }
@@ -47,22 +47,22 @@ public class DoctorController {
     @GetMapping("/addDoctorsForm")
     public ModelAndView addDoctorsForm() {
         ModelAndView mav = new ModelAndView("add-doctor-form");
-        Doctors newDoctor = new Doctors();
+        Doctor newDoctor = new Doctor();
         mav.addObject("doctors", newDoctor);
         return mav;
     }
 
     @PostMapping("/saveDoctors")
-    public String saveDoctor(@ModelAttribute Doctors doctors) {
-        dRepo.save(doctors);
-        return "redirect:/doctors";
+    public String saveDoctor(@ModelAttribute Doctor doctor) {
+        dRepo.save(doctor);
+        return "redirect:/doctor";
     }
 
     @GetMapping("/showUpdateDocForm")
     public ModelAndView showUpdateForm(@RequestParam Long doctorId) {
         ModelAndView mav = new ModelAndView("add-doctor-form");
-        Doctors doctors = dRepo.findById(doctorId).get();
-        mav.addObject("doctors", doctors);
+        Doctor doctor = dRepo.findById(doctorId).get();
+        mav.addObject("doctor", doctor);
         return mav;
     }
 

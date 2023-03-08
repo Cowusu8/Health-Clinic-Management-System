@@ -45,19 +45,19 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="doctors: ${doctors}">
-            <td th:text="${doctors.Id}"></td>
-            <td th:text="${doctors.fullName}"></td>
-            <td th:text="${doctors.gender}"></td>
-            <td th:text="${doctors.birthDate}"></td>
-            <td th:text="${doctors.username}"></td>
-            <td th:text="${doctors.phone}"></td>
-            <td th:text="${doctors.address}"></td>
-            <td th:text="${doctors.password}"></td>
+        <tr th:each="doctor: ${doctor}">
+            <td th:text="${doctor.Id}"></td>
+            <td th:text="${doctor.fullName}"></td>
+            <td th:text="${doctor.gender}"></td>
+            <td th:text="${doctor.birthDate}"></td>
+            <td th:text="${doctor.username}"></td>
+            <td th:text="${doctor.phone}"></td>
+            <td th:text="${doctor.address}"></td>
+            <td th:text="${doctor.password}"></td>
             <td>
-                <a class="btn btn-info" th:href="@{/showUpdateDocForm(doctorId=${doctors.Id})}">Update</a>
+                <a class="btn btn-info" th:href="@{/showUpdateDocForm(doctorId=${doctor.Id})}">Update</a>
 
-                <a class="btn btn-danger ml-2" th:href="@{/deleteDoctor(doctorId=${doctors.id})}">Delete</a>
+                <a class="btn btn-danger ml-2" th:href="@{/deleteDoctor(doctorId=${doctor.id})}">Delete</a>
             </td>
         </tr>
         </tbody>

@@ -15,7 +15,7 @@
     <h1>Add New Patient</h1>
     <hr/>
 
-    <form method="POST" th:action="@{/savePatients}" th:object="${patients}">
+    <form method="POST" th:action="@{/savePatients}" th:object="${patient}">
 
         <input class="form-control col-3 mb-4" placeholder="Enter Full Name" th:field="*{fullName}" type="text"/>
 
@@ -38,7 +38,7 @@
 
     </form>
     <hr/>
-    <a th:href="@{/patients}">List of Patients</a>
+    <a th:href="@{/patient}">List of Patients</a>
 </div>
 
 </body>

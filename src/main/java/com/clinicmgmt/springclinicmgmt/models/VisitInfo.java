@@ -5,8 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
-
 
 @AllArgsConstructor
 @Data
@@ -31,10 +29,10 @@ public class VisitInfo {
 
     @ManyToOne
     @JoinColumn(name = "patients_id")
-    private Patients patients;
+    private Patient patient;
 
     @OneToOne
     @JoinColumn(name = "doctors_id")
-    private Doctors doctors;
+    private Doctor doctor;
 
 }

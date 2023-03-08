@@ -1,7 +1,7 @@
 package com.clinicmgmt.springclinicmgmt.services;
 
 import com.clinicmgmt.springclinicmgmt.dao.PatientsRepo;
-import com.clinicmgmt.springclinicmgmt.models.Patients;
+import com.clinicmgmt.springclinicmgmt.models.Patient;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,7 +20,7 @@ public class PatientService {
     }
 
     public void deletepatients(Long id) throws Exception {
-        Optional<Patients> wantToDelete = patientsRepo.findById(id);
+        Optional<Patient> wantToDelete = patientsRepo.findById(id);
         if (wantToDelete.isPresent())
             patientsRepo.delete(wantToDelete.get());
         else

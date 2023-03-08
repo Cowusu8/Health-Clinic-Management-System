@@ -44,18 +44,18 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="patients: ${patients}">
-            <td th:text="${patients.Id}"></td>
-            <td th:text="${patients.fullName}"></td>
-            <td th:text="${patients.gender}"></td>
-            <td th:text="${patients.birthDate}"></td>
-            <td th:text="${patients.email}"></td>
-            <td th:text="${patients.phone}"></td>
-            <td th:text="${patients.address}"></td>
+        <tr th:each="patient: ${patient}">
+            <td th:text="${patient.Id}"></td>
+            <td th:text="${patient.fullName}"></td>
+            <td th:text="${patient.gender}"></td>
+            <td th:text="${patient.birthDate}"></td>
+            <td th:text="${patient.email}"></td>
+            <td th:text="${patient.phone}"></td>
+            <td th:text="${patient.address}"></td>
             <td>
-                <a class="btn btn-info" th:href="@{/showUpdatePatient(patientId=${patients.Id})}">Update</a>
+                <a class="btn btn-info" th:href="@{/showUpdatePatient(patientId=${patient.Id})}">Update</a>
 
-                <a class="btn btn-danger ml-2" th:href="@{/deletePatient(patientId=${patients.id})}">Delete</a>
+                <a class="btn btn-danger ml-2" th:href="@{/deletePatient(patientId=${patient.id})}">Delete</a>
             </td>
         </tr>
         </tbody>

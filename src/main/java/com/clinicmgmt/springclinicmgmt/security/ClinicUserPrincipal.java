@@ -2,23 +2,22 @@ package com.clinicmgmt.springclinicmgmt.security;
 
 
 import com.clinicmgmt.springclinicmgmt.models.AuthGroup;
-import com.clinicmgmt.springclinicmgmt.models.Doctors;
+import com.clinicmgmt.springclinicmgmt.models.Doctor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class ClinicUserPrincipal implements UserDetails {
-    private Doctors doctors;
+    private Doctor doctor;
     private List<AuthGroup> authGroup;
 
-    public ClinicUserPrincipal( Doctors doctors,List<AuthGroup> authGroup) {
+    public ClinicUserPrincipal(Doctor doctor, List<AuthGroup> authGroup) {
 
-        this.doctors = doctors;
+        this.doctor = doctor;
         this.authGroup=authGroup;
     }
 
@@ -30,12 +29,12 @@ public class ClinicUserPrincipal implements UserDetails {
 
     @Override
     public String getPassword() {
-        return doctors.getPassword();
+        return doctor.getPassword();
     }
 
     @Override
     public String getUsername() {
-        return doctors.getEmail();
+        return doctor.getEmail();
     }
 
     @Override

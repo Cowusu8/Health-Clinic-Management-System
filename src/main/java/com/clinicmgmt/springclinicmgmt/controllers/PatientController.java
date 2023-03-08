@@ -3,7 +3,7 @@ package com.clinicmgmt.springclinicmgmt.controllers;
 import java.util.*;
 
 import com.clinicmgmt.springclinicmgmt.dao.PatientsRepo;
-import com.clinicmgmt.springclinicmgmt.models.Patients;
+import com.clinicmgmt.springclinicmgmt.models.Patient;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,7 +22,7 @@ public class PatientController {
     @GetMapping({"/showPatients", "/patients"})
     public ModelAndView showPatients() {
         ModelAndView mav = new ModelAndView("listpatients");
-        List<Patients> patients = pRepo.findAll();
+        List<Patient> patients = pRepo.findAll();
         mav.addObject("patients", patients);
         return mav;
     }
@@ -30,22 +30,22 @@ public class PatientController {
     @GetMapping("/addPatientsForm")
     public ModelAndView addPatientForm() {
         ModelAndView mav = new ModelAndView("add-patient-form");
-        Patients patients = new Patients();
-        mav.addObject("patients", patients);
+        Patient patient = new Patient();
+        mav.addObject("patient", patient);
         return mav;
     }
 
     @PostMapping("/savePatients")
-    public String savePatient(@ModelAttribute Patients patients) {
-        pRepo.save(patients);
-        return "redirect:/patients";
+    public String savePatient(@ModelAttribute Patient patient) {
+        pRepo.save(patient);
+        return "redirect:/patient";
     }
 
     @GetMapping("/showUpdatePatient")
     public ModelAndView showUpdateForm(@RequestParam Long patientId) {
         ModelAndView mav = new ModelAndView("add-patient-form");
-        Patients patients = pRepo.findById(patientId).get();
-        mav.addObject("patients", patients);
+        Patient patient = pRepo.findById(patientId).get();
+        mav.addObject("patient", patient);
         return mav;
     }
 

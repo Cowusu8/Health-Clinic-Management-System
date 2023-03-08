@@ -6,7 +6,7 @@ CAPSTONE PROJECT
 
 Clinic Management System
 
-Clinic Management System is a web-based application built with Java and designed to manage the daily operations of a clinic. This project aims to simplify the process of scheduling appointments, recording patients information, managing staff and resources, and generating reports.
+Clinic Management System is a web-based application built with Java and designed to manage the daily operations of a clinic. This project aims to simplify the process of scheduling appointments, recording patient information, managing staff and resources, and generating reports.
 Key Features
 
     Patient record management

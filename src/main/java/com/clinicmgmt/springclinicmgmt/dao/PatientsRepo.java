@@ -1,10 +1,10 @@
 package com.clinicmgmt.springclinicmgmt.dao;
 
-import com.clinicmgmt.springclinicmgmt.models.Patients;
+import com.clinicmgmt.springclinicmgmt.models.Patient;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface PatientsRepo extends JpaRepository<Patients, Long> {
+public interface PatientsRepo extends JpaRepository<Patient, Long> {
 
 }

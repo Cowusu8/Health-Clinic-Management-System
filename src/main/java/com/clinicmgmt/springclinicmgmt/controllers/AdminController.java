@@ -1,15 +1,10 @@
 package com.clinicmgmt.springclinicmgmt.controllers;
 
 import com.clinicmgmt.springclinicmgmt.dao.AdminRepo;
-import com.clinicmgmt.springclinicmgmt.models.Admin;
-import com.clinicmgmt.springclinicmgmt.models.Patients;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
 
 
 @Controller @Slf4j
@@ -29,14 +24,14 @@ public class AdminController {
    /* @GetMapping("/addPatientsForm")
     public ModelAndView addPatientForm() {
         ModelAndView mav = new ModelAndView("add-patient-form");
-        Patients patients = new Patients();
+        Patient patients = new Patient();
         mav.addObject("patients", patients);
         return mav;*/
 
 //    @GetMapping("/showUpdatePatient")
 //    public ModelAndView showUpdateForm(@RequestParam Long patientId) {
 //        ModelAndView mav = new ModelAndView("add-patient-form");
-//        Patients patients = pRepo.findById(patientId).get();
+//        Patient patients = pRepo.findById(patientId).get();
 //        mav.addObject("patients", patients);
 //        return mav;
 //    }

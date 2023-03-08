@@ -4,8 +4,6 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
 
-import java.time.LocalDateTime;
-
 
 @AllArgsConstructor
 @Getter
@@ -41,7 +39,7 @@ public class Receptionist {
 
     @OneToOne
     @JoinColumn(name = "patients_patient_id")
-    private Patients patients;
+    private Patient patient;
 
 
 }
