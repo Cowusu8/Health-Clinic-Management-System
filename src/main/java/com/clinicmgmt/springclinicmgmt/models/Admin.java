@@ -3,8 +3,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
-
-import java.time.LocalDateTime;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 
 @AllArgsConstructor
@@ -13,7 +12,6 @@ import java.time.LocalDateTime;
 @ToString
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Slf4j
-@Data
 @NoArgsConstructor
 @Entity
 @Table(name="Admin_table")
@@ -21,18 +19,10 @@ import java.time.LocalDateTime;
 public class Admin {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "Id", unique = true)
     private Long Id;
-    @Column(name = "username")@NonNull
-    private String username;
-    @Column(name = "password", length = 70)
-    private String password;
-
-    @OneToOne
-    @JoinColumn(name = "doctors_doctor_id")
-    private Doctors doctors;
-    @OneToOne
-    @JoinColumn(name = "receptionist_receptionist_id")
-    private Receptionist receptionist;
+    @NonNull
+    private String email;
+    @NonNull
+    private String role;
 
 }
