@@ -24,7 +24,7 @@ public class ClinicUserDetailsService implements UserDetailsService {
 
         return new ClinicUserPrincipal(
                 doctorsRepo.findByEmail(username).orElseThrow(() -> new UsernameNotFoundException("Email Not Found"))
-                , authGroupRepoI.findByUserName(username));
+                , authGroupRepoI.findByUsername(username));
     }
 }
 

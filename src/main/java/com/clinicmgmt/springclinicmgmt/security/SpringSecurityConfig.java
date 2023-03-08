@@ -9,8 +9,11 @@ import org.springframework.security.config.annotation.authentication.configurati
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
@@ -41,14 +44,15 @@ public class SpringSecurityConfig {
     }
 
 
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeHttpRequests((requests) -> requests
-                        .requestMatchers("/","/index","/css/**", "/js/**","/img/**","/doc/**", "/assets/**","/vendor/**","/img").permitAll()
+                        .requestMatchers("/","/index","/css/**", "/js/**","/img/**","/vendor/**","/img").permitAll()
                         .requestMatchers("/admin/**","/admin-dashboard").hasRole("ADMIN")
-                        .requestMatchers("/doc-dashboard","/doctor-portal").hasAnyRole("DOCTOR","ADMIN")
-                        .requestMatchers("/receptionist/**","/recepdash").hasAnyRole("RECEPTIONIST","ADMIN")
+                        .requestMatchers("/doc-dashboard","/doctor-portal").hasAnyRole("","ADMIN")
+                        .requestMatchers("/receptionist/**","/recepdash").hasAnyRole("USER","ADMIN")
                         .anyRequest().authenticated()
                 )
                 .formLogin((form) -> form
@@ -56,7 +60,7 @@ public class SpringSecurityConfig {
                         .usernameParameter("username")
                         .passwordParameter("password")
                         .loginProcessingUrl("/login/processing")
-                        .defaultSuccessUrl("/")
+                        .defaultSuccessUrl("/admin-dashboard")
                         .failureUrl("/login?error=true")
                         .permitAll()
                 )

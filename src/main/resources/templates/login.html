@@ -86,13 +86,13 @@
         </div>
 
         <div class="col-4">
-            <form th:action="@{/login/processing}">
+            <form th:action="@{/login}" method="get">
                 <div class="mb-3 mt-3">
-                    <label class="form-label" for="username">Email:</label>
+                    <label  for="username">Username:</label>
                     <input class="form-control" id="username" name="username" placeholder="Enter username" type="text">
                 </div>
                 <div class="mb-3">
-                    <label class="form-label" for="password">Password:</label>
+                    <label for="password">Password:</label>
                     <input class="form-control" id="password" name="password" placeholder="Enter password" type="password">
                 </div>
                 <!--<div class="form-check mb-3">
@@ -109,12 +109,12 @@
 </div>
 
 
-<script th:src="@{/vendor/purecounter/purecounter_vanilla.js}"></script>
+<!--<script th:src="@{/vendor/purecounter/purecounter_vanilla.js}"></script>
 <script th:src="@{/vendor/aos/aos.js}"></script>
 <script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
 <script th:src="@{/vendor/glightbox/js/glightbox.min.js}"></script>
 <script th:src="@{/vendor/swiper/swiper-bundle.min.js}"></script>
-<script th:src="@{/vendor/php-email-form/validate.js}"></script>
+<script th:src="@{/vendor/php-email-form/validate.js}"></script>-->
 
 
 <!-- Template Main JS File -->

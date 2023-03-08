@@ -5,6 +5,7 @@ import com.clinicmgmt.springclinicmgmt.models.AuthGroup;
 import com.clinicmgmt.springclinicmgmt.models.Doctor;
 import com.clinicmgmt.springclinicmgmt.services.DoctorService;
 import com.clinicmgmt.springclinicmgmt.services.PatientService;
+import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -34,23 +35,12 @@ public class MyCommandLineRunner implements CommandLineRunner {
 
 
         AuthGroup authGroup1 = new AuthGroup ("username","ROLE_ADMIN");
-        AuthGroup authGroup2 = new AuthGroup ("username","ROLE_DOCTOR");
-
-        AuthGroup authGroup3= new AuthGroup ("username","ROLE_RECEPTIONIST");
-
         authGroupRepoI.save(authGroup1);
-        authGroupRepoI.save(authGroup2);
-        authGroupRepoI.save(authGroup3);
 
 
 
-
-        //Doctor doctor1 = new Doctor(doctor1.setUserName(Username););
-
-       /* DoctorsRepo.save(doctor1);
-        DoctorsRepo.save(doctor2);
-        DoctorsRepo.save(doctor2);*/
-
+        Doctor Owens = new Doctor("Cindy Owens", "username", "cindyowens@gmail.com","password", "08-23-1997", "Female", "123 street", "468-876-3456");
+        doctorsRepo.save(Owens);
 
     }
 }

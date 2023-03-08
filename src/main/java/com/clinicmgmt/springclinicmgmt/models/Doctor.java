@@ -28,7 +28,7 @@ public class Doctor {
     @Column(name = "name", nullable = false, length = 100)
     private String fullName;
     @Column(name = "username", nullable = false, length = 100)
-    private String userName;
+    private String username;
     @Column(name = "email", nullable = false, length = 100)
     private String email;
     private String password;
@@ -46,10 +46,10 @@ public class Doctor {
         return   this.password = new BCryptPasswordEncoder(4).encode(password);
     }
 
-    public Doctor(@NonNull String fullName, @NonNull String userName, @NonNull String email, @NonNull String password, @NonNull String birthDate, @NonNull String gender, @NonNull String address, @NonNull String phone) {
+    public Doctor(@NonNull String fullName, @NonNull String username, @NonNull String email, @NonNull String password, @NonNull String birthDate, @NonNull String gender, @NonNull String address, @NonNull String phone) {
 
         this.fullName = fullName;
-        this.userName = userName;
+        this.username = username;
         this.gender = gender;
         this.phone = phone;
         this.address = address;
@@ -66,12 +66,12 @@ public class Doctor {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Doctor doctor)) return false;
-        return Id.equals(doctor.Id) && fullName.equals(doctor.fullName) && userName.equals(doctor.userName) && email.equals(doctor.email) && password.equals(doctor.password) && birthDate.equals(doctor.birthDate) && gender.equals(doctor.gender) && address.equals(doctor.address) && phone.equals(doctor.phone) && patients.equals(doctor.patients);
+        return Id.equals(doctor.Id) && fullName.equals(doctor.fullName) && username.equals(doctor.username) && email.equals(doctor.email) && password.equals(doctor.password) && birthDate.equals(doctor.birthDate) && gender.equals(doctor.gender) && address.equals(doctor.address) && phone.equals(doctor.phone) && patients.equals(doctor.patients);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(Id, fullName, userName, email, password, birthDate, gender, address, phone, patients);
+        return Objects.hash(Id, fullName, username, email, password, birthDate, gender, address, phone, patients);
     }
 
     public List<String> getPatients() {

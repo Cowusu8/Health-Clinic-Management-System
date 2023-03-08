@@ -13,13 +13,13 @@ public class AdminController {
     private AdminRepo aRepo;
 
 
-    @GetMapping("/admin") //http://localhost:8080/admin
+    /*@GetMapping("/admin") //http://localhost:8080/admin
     public String showAdmin(){
 //        ModelAndView mav = new ModelAndView("admin");
         //Admin admin = aRepo.findById(AdminId);
 //        mav.addObject("admin");
         return "admin";
-    }
+    }*/
 
    /* @GetMapping("/addPatientsForm")
     public ModelAndView addPatientForm() {
