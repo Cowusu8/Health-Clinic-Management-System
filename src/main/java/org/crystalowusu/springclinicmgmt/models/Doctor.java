@@ -4,7 +4,7 @@ import lombok.*;
 import lombok.Data;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.util.*;
 
@@ -43,9 +43,9 @@ public class Doctor {
     private String phone;
 
 
-    public String setPassword(String password)  {
+/*    public String setPassword(String password)  {
         return   this.password = new BCryptPasswordEncoder(4).encode(password);
-    }
+    }*/
 
     public Doctor(@NonNull String fullName, @NonNull String username, @NonNull String password,@NonNull String email, @NonNull String birthDate, @NonNull String gender, @NonNull String address, @NonNull String phone) {
 
@@ -56,7 +56,7 @@ public class Doctor {
         this.address = address;
         this.birthDate = birthDate;
         this.email = email;
-        this.password = setPassword(password);
+        this.password = password;
     }
 
     @ToString.Exclude

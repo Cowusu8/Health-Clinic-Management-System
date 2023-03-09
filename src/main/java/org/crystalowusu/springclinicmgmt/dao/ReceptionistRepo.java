@@ -1,0 +1,17 @@
+package org.crystalowusu.springclinicmgmt.dao;
+
+import org.crystalowusu.springclinicmgmt.models.Receptionist;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+import java.util.Optional;
+
+@Repository
+public interface ReceptionistRepo extends JpaRepository<Receptionist, Long> {
+    List<Receptionist> findByEmail(String email);
+
+    Receptionist findByUsername(String username);
+
+    List<Receptionist> findByEmailAllIgnoreCase(String username);
+}

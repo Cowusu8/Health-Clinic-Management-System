@@ -1,443 +1,366 @@
-<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
-    <title>Spring Health</title>
-    <meta content="" name="description">
-    <meta content="" name="keywords">
-
-    <!-- icons -->
-    <link rel="icon" th:href="@{/img/spring.png}">
-    <link rel="apple-touch-icon" th:href="@{/img/spring.png}">
-
-    <link href="Appointment.html" rel="appointment">
-
-    <!-- Google Fonts -->
-    <link rel="stylesheet"
-          th:href="@{https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i}">
-
-    <!-- Other CSS Files -->
-    <link rel="stylesheet" th:href="@{/vendor/fontawesome-free/css/all.min.css}">
-    <link rel="stylesheet" th:href="@{/vendor/animate.css/animate.min.css}">
-    <link rel="stylesheet}" th:href="@{/vendor/aos/aos.css}">
-    <link rel="stylesheet" th:href="@{/vendor/bootstrap/css/bootstrap.min.css}">
-    <link rel="stylesheet" th:href="@{/vendor/bootstrap-icons/bootstrap-icons.css}">
-    <link rel="stylesheet" th:href="@{/vendor/boxicons/css/boxicons.min.css}">
-    <link rel="stylesheet" th:href="@{/vendor/glightbox/css/glightbox.min.css}">
-    <link rel="stylesheet" th:href="@{/vendor/swiper/swiper-bundle.min.css}">
-
-    <!-- Main CSS File -->
-    <link rel="stylesheet" th:href="@{/css/style.css}">
-
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Spring Health</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+  <!-- icons -->
+  <link rel="icon" th:href="@{/img/spring.png}">
+  <link rel="apple-touch-icon" th:href="@{/img/spring.png}">
+  <link href="Appointment.html" rel="appointment">
+  <!-- Google Fonts -->
+  <link rel="stylesheet"
+        th:href="@{https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i}">
+  <!-- Other CSS Files -->
+  <link rel="stylesheet" th:href="@{/vendor/fontawesome-free/css/all.min.css}">
+  <link rel="stylesheet" th:href="@{/vendor/animate.css/animate.min.css}">
+  <link rel="stylesheet}" th:href="@{/vendor/aos/aos.css}">
+  <link rel="stylesheet" th:href="@{/vendor/bootstrap/css/bootstrap.min.css}">
+  <link rel="stylesheet" th:href="@{/vendor/bootstrap-icons/bootstrap-icons.css}">
+  <link rel="stylesheet" th:href="@{/vendor/boxicons/css/boxicons.min.css}">
+  <link rel="stylesheet" th:href="@{/vendor/glightbox/css/glightbox.min.css}">
+  <link rel="stylesheet" th:href="@{/vendor/swiper/swiper-bundle.min.css}">
+  <!-- Main CSS File -->
+  <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
-
 <body>
-
 <!-- ======= Top Bar ======= -->
 <div class="d-flex align-items-center fixed-top" id="topbar">
-    <div class="container d-flex align-items-center justify-content-center justify-content-md-between">
-        <div class="align-items-center d-none d-md-flex">
-            <i class="bi bi-clock"></i> Monday - Saturday, 8AM to 10PM
-        </div>
-        <div class="d-flex align-items-center">
-            <i class="bi bi-phone"></i> Call us now +1 700 123 6789
-        </div>
+  <div class="container d-flex align-items-center justify-content-center justify-content-md-between">
+    <div class="align-items-center d-none d-md-flex">
+      <i class="bi bi-clock"></i> Monday - Saturday, 8AM to 10PM
     </div>
+    <div class="d-flex align-items-center">
+      <i class="bi bi-phone"></i> Call us now +1 700 123 6789
+    </div>
+  </div>
 </div>
-
 <!-- ======= Header ======= -->
 <header class="fixed-top" id="header">
-    <div class="container d-flex align-items-center">
-
-        <a class="logo me-auto" href="/"><img alt="" src="@{/img/spring.png}"></a>
-        <!-- Uncomment below if you prefer to use an image logo -->
-
-
-        <nav class="navbar order-last order-lg-0" id="navbar">
-            <ul>
-                <li><a class="nav-link scrollto" href="/">Home</a></li>
-                <li><a class="nav-link scrollto" th:href="@{#about}">About</a></li>
-                <li><a class="nav-link scrollto" th:href="@{#services}">Services</a></li>
-                <li><a class="nav-link scrollto" href="docs">Doctors</a></li>
-                <li class="dropdown"><a th:href="@{#}"><span>Log In</span> <i class="bi bi-chevron-down"></i></a>
-                    <ul>
-                        <!--li><a href="patient">Patient Portal</a></li>-->
-                        <li><a href="admin">Admin</a></li>
-                        <li><a href="docportal">Doctor</a></li>
-                        <li><a href="receptionist">Assistant</a></li>
-
-                    </ul>
-                </li>
-                <li><a class="nav-link scrollto" th:href="@{#contact}">Contact</a></li>
-            </ul>
-            <i class="bi bi-list mobile-nav-toggle"></i>
-        </nav><!-- .navbar -->
-
-        <a class="appointment-btn" href="app"><span class="d-none d-md-inline">Make an</span>
-            Appointment</a>
-
-    </div>
+  <div class="container d-flex align-items-center">
+    <a class="logo me-auto" href="/"><img alt="" src="@{/img/spring.png}"></a>
+    <!-- Uncomment below if you prefer to use an image logo -->
+    <nav class="navbar order-last order-lg-0" id="navbar">
+      <ul>
+        <li><a class="nav-link scrollto" href="/">Home</a></li>
+        <li><a class="nav-link scrollto" th:href="@{#about}">About</a></li>
+        <li><a class="nav-link scrollto" th:href="@{#services}">Services</a></li>
+        <li><a class="nav-link scrollto" href="docs">Doctors</a></li>
+        <li class="dropdown"><a th:href="@{#}"><span>Log In</span> <i class="bi bi-chevron-down"></i></a>
+          <ul>
+            <!--li><a href="patient">Patient Portal</a></li>-->
+            <li><a href="admin">Admin</a></li>
+            <li><a href="docportal">Doctor</a></li>
+            <li><a href="receptionist">Assistant</a></li>
+          </ul>
+        </li>
+        <li><a class="nav-link scrollto" th:href="@{#contact}">Contact</a></li>
+      </ul>
+      <i class="bi bi-list mobile-nav-toggle"></i>
+    </nav><!-- .navbar -->
+    <a class="appointment-btn" href="app"><span class="d-none d-md-inline">Make an</span>
+      Appointment</a>
+  </div>
 </header><!-- End Header -->
-
 <!-- ======= Hero Section ======= -->
 <section id="hero">
-    <div class="carousel slide carousel-fade" data-bs-interval="5000" data-bs-ride="carousel" id="heroCarousel">
-
-        <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
-
-        <div class="carousel-inner" role="listbox">
-
-            <!-- Slide 1 -->
-            <div class="carousel-item active" style="background-image: url(/img/ori.jpg)">
-                <div class="container">
-                    <h2>Welcome to <span>Spring Clinic</span></h2>
-                    <p>The Best Medical Clinic on Earth.</p>
-                    <a class="btn-get-started scrollto" href="#about">Read More</a>
-                </div>
-            </div>
-
-            <!-- Slide 2 -->
-            <div class="carousel-item" style="background-image: url(/img/stock.jpg)">
-                <div class="container">
-                    <h2>Spring Health Clinic</h2>
-                    <p> Take charge of your health at our Medical Center</p>
-                    <a class="btn-get-started scrollto" href="#about">Read More</a>
-                </div>
-            </div>
-
+  <div class="carousel slide carousel-fade" data-bs-interval="5000" data-bs-ride="carousel" id="heroCarousel">
+    <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
+    <div class="carousel-inner" role="listbox">
+      <!-- Slide 1 -->
+      <div class="carousel-item active" style="background-image: url(/img/ori.jpg)">
+        <div class="container">
+          <h2>Welcome to <span>Spring Clinic</span></h2>
+          <p>The Best Medical Clinic on Earth.</p>
+          <a class="btn-get-started scrollto" href="#about">Read More</a>
         </div>
-
-        <a class="carousel-control-prev" data-bs-slide="prev" href="#heroCarousel" role="button">
-            <span aria-hidden="true" class="carousel-control-prev-icon bi bi-chevron-left"></span>
-        </a>
-
-        <a class="carousel-control-next" data-bs-slide="next" href="#heroCarousel" role="button">
-            <span aria-hidden="true" class="carousel-control-next-icon bi bi-chevron-right"></span>
-        </a>
-
+      </div>
+      <!-- Slide 2 -->
+      <div class="carousel-item" style="background-image: url(/img/stock.jpg)">
+        <div class="container">
+          <h2>Spring Health Clinic</h2>
+          <p> Take charge of your health at our Medical Center</p>
+          <a class="btn-get-started scrollto" href="#about">Read More</a>
+        </div>
+      </div>
     </div>
+    <a class="carousel-control-prev" data-bs-slide="prev" href="#heroCarousel" role="button">
+      <span aria-hidden="true" class="carousel-control-prev-icon bi bi-chevron-left"></span>
+    </a>
+    <a class="carousel-control-next" data-bs-slide="next" href="#heroCarousel" role="button">
+      <span aria-hidden="true" class="carousel-control-next-icon bi bi-chevron-right"></span>
+    </a>
+  </div>
 </section><!-- End Hero -->
-
 <main id="main">
-
-    <!-- ======= Cta Section ======= -->
-    <section class="cta" id="cta">
-        <div class="container" data-aos="zoom-in">
-
-            <div class="text-center">
-                <h3>In an emergency? Need help now?</h3>
-                <p> Schedule an Appointment now</p>
-                <a class="cta-btn " href="app" rel="appointment">Make an Make an Appointment</a>
-            </div>
-
+  <!-- ======= Cta Section ======= -->
+  <section class="cta" id="cta">
+    <div class="container" data-aos="zoom-in">
+      <div class="text-center">
+        <h3>In an emergency? Need help now?</h3>
+        <p> Schedule an Appointment now</p>
+        <a class="cta-btn " href="app" rel="appointment">Make an Make an Appointment</a>
+      </div>
+    </div>
+  </section><!-- End Cta Section -->
+  <!-- ======= About Us Section ======= -->
+  <section class="about" id="about">
+    <div class="container" data-aos="fade-up">
+      <div class="section-title">
+        <h2>About Us</h2>
+        <p>Here is some information about this medical center</p>
+      </div>
+      <div class="row">
+        <div class="col-lg-6" data-aos="fade-right">
+          <img alt="" class="img-fluid" src="/img/about.jpg">
         </div>
-    </section><!-- End Cta Section -->
-
-    <!-- ======= About Us Section ======= -->
-    <section class="about" id="about">
-        <div class="container" data-aos="fade-up">
-
-            <div class="section-title">
-                <h2>About Us</h2>
-                <p>Here is some information about this medical center</p>
+        <div class="col-lg-6 pt-4 pt-lg-0 content" data-aos="fade-left">
+          <h3>Our cores and values</h3>
+          <p class="fst-italic">
+            Our medical center truly cares about the patient and belive strongly in providing the best care
+            for our patient
+          </p>
+          <ul>
+            <li><i class="bi bi-check-circle"></i> We have amazing and devoted doctor</li>
+            <li><i class="bi bi-check-circle"></i> Our facility has the best in equipments</li>
+            <li><i class="bi bi-check-circle"></i> Our focus is on giving our patient all the necessary
+              information for the them to be at their best health
+            </li>
+          </ul>
+          <p>
+            Our Medical Center deeply understands that empathy is a critical component of delivering
+            exceptional patient care. We approach
+            each patient as an individual, not a number or a disease or a condition. We treat them, and
+            their families, like how they
+            would want their own loved ones to be treated.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section><!-- End About Us Section -->
+  <!-- ======= Counts Section ======= -->
+  <section class="counts" id="counts">
+    <div class="container" data-aos="fade-up">
+      <div class="row no-gutters">
+        <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
+          <div class="count-box">
+            <i class="fas fa-user-md"></i>
+            <span class="purecounter" data-purecounter-duration="1" data-purecounter-end="85"
+                  data-purecounter-start="0"></span>
+            <p><strong>Doctors</strong> consequuntur quae qui deca rode</p>
+            <a href="#">Find out more &raquo;</a>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
+          <div class="count-box">
+            <i class="far fa-hospital"></i>
+            <span class="purecounter" data-purecounter-duration="1" data-purecounter-end="26"
+                  data-purecounter-start="0"></span>
+            <p><strong>Departments</strong> adipisci atque cum quia aut numquam delectus</p>
+            <a href="#">Find out more &raquo;</a>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
+          <div class="count-box">
+            <i class="fas fa-flask"></i>
+            <span class="purecounter" data-purecounter-duration="1" data-purecounter-end="14"
+                  data-purecounter-start="0"></span>
+            <p><strong>Research Lab</strong> aut commodi quaerat. Aliquam ratione</p>
+            <a href="#">Find out more &raquo;</a>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
+          <div class="count-box">
+            <i class="fas fa-award"></i>
+            <span class="purecounter" data-purecounter-duration="1" data-purecounter-end="150"
+                  data-purecounter-start="0"></span>
+            <p><strong>Awards</strong> rerum asperiores dolor molestiae doloribu</p>
+            <a href="#">Find out more &raquo;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section><!-- End Counts Section -->
+  <!-- ======= Features Section ======= -->
+  <section class="features" id="features">
+    <div class="container" data-aos="fade-up">
+      <div class="row">
+        <div class="col-lg-6 order-2 order-lg-1" data-aos="fade-right">
+          <div class="icon-box mt-5 mt-lg-0">
+            <i class="bx bx-receipt"></i>
+            <h4>Est labore ad</h4>
+            <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p>
+          </div>
+          <div class="icon-box mt-5">
+            <i class="bx bx-cube-alt"></i>
+            <h4>Harum esse qui</h4>
+            <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt</p>
+          </div>
+          <div class="icon-box mt-5">
+            <i class="bx bx-images"></i>
+            <h4>Aut occaecati</h4>
+            <p>Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere</p>
+          </div>
+          <div class="icon-box mt-5">
+            <i class="bx bx-shield"></i>
+            <h4>Beatae veritatis</h4>
+            <p>Expedita veritatis consequuntur nihil tempore laudantium vitae denat pacta</p>
+          </div>
+        </div>
+        <div class="image col-lg-6 order-1 order-lg-2" data-aos="zoom-in"
+             style='background-image: url("/img/features.jpg");'></div>
+      </div>
+    </div>
+  </section><!-- End Features Section -->
+  <!-- ======= Services Section ======= -->
+  <section class="services services" id="services">
+    <div class="container" data-aos="fade-up">
+      <div class="section-title">
+        <h2>Services</h2>
+        <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
+          consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia
+          fugiat sit in iste officiis commodi quidem hic quas.</p>
+      </div>
+      <div class="row">
+        <div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="100">
+          <div class="icon"><i class="fas fa-heartbeat"></i></div>
+          <h4 class="title"><a href="">Lorem Ipsum</a></h4>
+          <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi
+            sint occaecati cupiditate non provident</p>
+        </div>
+        <div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="200">
+          <div class="icon"><i class="fas fa-pills"></i></div>
+          <h4 class="title"><a href="">Dolor Sitema</a></h4>
+          <p class="description">Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+            commodo consequat tarad limino ata</p>
+        </div>
+        <div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="300">
+          <div class="icon"><i class="fas fa-hospital-user"></i></div>
+          <h4 class="title"><a href="">Sed ut perspiciatis</a></h4>
+          <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
+            eu fugiat nulla pariatur</p>
+        </div>
+        <div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="100">
+          <div class="icon"><i class="fas fa-dna"></i></div>
+          <h4 class="title"><a href="">Magni Dolores</a></h4>
+          <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+            deserunt mollit anim id est laborum</p>
+        </div>
+        <div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="200">
+          <div class="icon"><i class="fas fa-wheelchair"></i></div>
+          <h4 class="title"><a href="">Nemo Enim</a></h4>
+          <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
+            praesentium voluptatum deleniti atque</p>
+        </div>
+        <div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="300">
+          <div class="icon"><i class="fas fa-notes-medical"></i></div>
+          <h4 class="title"><a href="">Eiusmod Tempor</a></h4>
+          <p class="description">Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore,
+            cum soluta nobis est eligendi</p>
+        </div>
+      </div>
+    </div>
+  </section><!-- End Services Section -->
+  <!-- ======= Contact Section ======= -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="section-title">
+        <h2>Contact</h2>
+        <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
+          consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia
+          fugiat sit in iste officiis commodi quidem hic quas.</p>
+      </div>
+    </div>
+    <div>
+      <iframe allowfullscreen
+              frameborder="0"
+              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" style="border:0; width: 100%; height: 350px;"></iframe>
+    </div>
+    <div class="container">
+      <div class="row mt-5">
+        <div class="col-lg-6">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="info-box">
+                <i class="bx bx-map"></i>
+                <h3>Our Address</h3>
+                <p>A108 Adam Street, New York, NY 535022</p>
+              </div>
             </div>
-
+            <div class="col-md-6">
+              <div class="info-box mt-4">
+                <i class="bx bx-envelope"></i>
+                <h3>Email Us</h3>
+                <p>info@example.com<br>contact@example.com</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="info-box mt-4">
+                <i class="bx bx-phone-call"></i>
+                <h3>Call Us</h3>
+                <p>+1 5589 55488 55<br>+1 6678 254445 41</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <form action="forms/contact.php" class="php-email-form" method="post" role="form">
             <div class="row">
-                <div class="col-lg-6" data-aos="fade-right">
-                    <img alt="" class="img-fluid" src="/img/about.jpg">
-                </div>
-                <div class="col-lg-6 pt-4 pt-lg-0 content" data-aos="fade-left">
-                    <h3>Our cores and values</h3>
-                    <p class="fst-italic">
-                        Our medical center truly cares about the patient and belive strongly in providing the best care
-                        for our patient
-                    </p>
-                    <ul>
-                        <li><i class="bi bi-check-circle"></i> We have amazing and devoted doctor</li>
-                        <li><i class="bi bi-check-circle"></i> Our facility has the best in equipments</li>
-                        <li><i class="bi bi-check-circle"></i> Our focus is on giving our patient all the necessary
-                            information for the them to be at their best health
-                        </li>
-                    </ul>
-                    <p>
-                        Our Medical Center deeply understands that empathy is a critical component of delivering
-                        exceptional patient care. We approach
-                        each patient as an individual, not a number or a disease or a condition. We treat them, and
-                        their families, like how they
-                        would want their own loved ones to be treated.
-                    </p>
-                </div>
+              <div class="col-md-6 form-group">
+                <input class="form-control" id="name" name="name" placeholder="Your Name" required=""
+                       type="text">
+              </div>
+              <div class="col-md-6 form-group mt-3 mt-md-0">
+                <input class="form-control" id="email" name="email" placeholder="Your Email"
+                       required="" type="email">
+              </div>
             </div>
-
-        </div>
-    </section><!-- End About Us Section -->
-
-    <!-- ======= Counts Section ======= -->
-    <section class="counts" id="counts">
-        <div class="container" data-aos="fade-up">
-
-            <div class="row no-gutters">
-
-                <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
-                    <div class="count-box">
-                        <i class="fas fa-user-md"></i>
-                        <span class="purecounter" data-purecounter-duration="1" data-purecounter-end="85"
-                              data-purecounter-start="0"></span>
-
-                        <p><strong>Doctors</strong> consequuntur quae qui deca rode</p>
-                        <a href="#">Find out more &raquo;</a>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
-                    <div class="count-box">
-                        <i class="far fa-hospital"></i>
-                        <span class="purecounter" data-purecounter-duration="1" data-purecounter-end="26"
-                              data-purecounter-start="0"></span>
-                        <p><strong>Departments</strong> adipisci atque cum quia aut numquam delectus</p>
-                        <a href="#">Find out more &raquo;</a>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
-                    <div class="count-box">
-                        <i class="fas fa-flask"></i>
-                        <span class="purecounter" data-purecounter-duration="1" data-purecounter-end="14"
-                              data-purecounter-start="0"></span>
-                        <p><strong>Research Lab</strong> aut commodi quaerat. Aliquam ratione</p>
-                        <a href="#">Find out more &raquo;</a>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
-                    <div class="count-box">
-                        <i class="fas fa-award"></i>
-                        <span class="purecounter" data-purecounter-duration="1" data-purecounter-end="150"
-                              data-purecounter-start="0"></span>
-                        <p><strong>Awards</strong> rerum asperiores dolor molestiae doloribu</p>
-                        <a href="#">Find out more &raquo;</a>
-                    </div>
-                </div>
-
+            <div class="form-group mt-3">
+              <input class="form-control" id="subject" name="subject" placeholder="Subject" required=""
+                     type="text">
             </div>
-
-        </div>
-    </section><!-- End Counts Section -->
-
-    <!-- ======= Features Section ======= -->
-    <section class="features" id="features">
-        <div class="container" data-aos="fade-up">
-
-            <div class="row">
-                <div class="col-lg-6 order-2 order-lg-1" data-aos="fade-right">
-                    <div class="icon-box mt-5 mt-lg-0">
-                        <i class="bx bx-receipt"></i>
-                        <h4>Est labore ad</h4>
-                        <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p>
-                    </div>
-                    <div class="icon-box mt-5">
-                        <i class="bx bx-cube-alt"></i>
-                        <h4>Harum esse qui</h4>
-                        <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt</p>
-                    </div>
-                    <div class="icon-box mt-5">
-                        <i class="bx bx-images"></i>
-                        <h4>Aut occaecati</h4>
-                        <p>Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere</p>
-                    </div>
-                    <div class="icon-box mt-5">
-                        <i class="bx bx-shield"></i>
-                        <h4>Beatae veritatis</h4>
-                        <p>Expedita veritatis consequuntur nihil tempore laudantium vitae denat pacta</p>
-                    </div>
-                </div>
-                <div class="image col-lg-6 order-1 order-lg-2" data-aos="zoom-in"
-                     style='background-image: url("/img/features.jpg");'></div>
-            </div>
-
-        </div>
-    </section><!-- End Features Section -->
-
-    <!-- ======= Services Section ======= -->
-    <section class="services services" id="services">
-        <div class="container" data-aos="fade-up">
-
-            <div class="section-title">
-                <h2>Services</h2>
-                <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
-                    consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia
-                    fugiat sit in iste officiis commodi quidem hic quas.</p>
-            </div>
-
-            <div class="row">
-                <div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="100">
-                    <div class="icon"><i class="fas fa-heartbeat"></i></div>
-                    <h4 class="title"><a href="">Lorem Ipsum</a></h4>
-                    <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi
-                        sint occaecati cupiditate non provident</p>
-                </div>
-                <div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="icon"><i class="fas fa-pills"></i></div>
-                    <h4 class="title"><a href="">Dolor Sitema</a></h4>
-                    <p class="description">Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                        commodo consequat tarad limino ata</p>
-                </div>
-                <div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="300">
-                    <div class="icon"><i class="fas fa-hospital-user"></i></div>
-                    <h4 class="title"><a href="">Sed ut perspiciatis</a></h4>
-                    <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
-                        eu fugiat nulla pariatur</p>
-                </div>
-                <div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="100">
-                    <div class="icon"><i class="fas fa-dna"></i></div>
-                    <h4 class="title"><a href="">Magni Dolores</a></h4>
-                    <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                        deserunt mollit anim id est laborum</p>
-                </div>
-                <div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="icon"><i class="fas fa-wheelchair"></i></div>
-                    <h4 class="title"><a href="">Nemo Enim</a></h4>
-                    <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
-                        praesentium voluptatum deleniti atque</p>
-                </div>
-                <div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="300">
-                    <div class="icon"><i class="fas fa-notes-medical"></i></div>
-                    <h4 class="title"><a href="">Eiusmod Tempor</a></h4>
-                    <p class="description">Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore,
-                        cum soluta nobis est eligendi</p>
-                </div>
-            </div>
-
-        </div>
-    </section><!-- End Services Section -->
-
-
-    <!-- ======= Contact Section ======= -->
-    <section class="contact" id="contact">
-        <div class="container">
-
-            <div class="section-title">
-                <h2>Contact</h2>
-                <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
-                    consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia
-                    fugiat sit in iste officiis commodi quidem hic quas.</p>
-            </div>
-
-        </div>
-
-        <div>
-            <iframe allowfullscreen
-                    frameborder="0"
-                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" style="border:0; width: 100%; height: 350px;"></iframe>
-        </div>
-
-        <div class="container">
-
-            <div class="row mt-5">
-
-                <div class="col-lg-6">
-
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="info-box">
-                                <i class="bx bx-map"></i>
-                                <h3>Our Address</h3>
-                                <p>A108 Adam Street, New York, NY 535022</p>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="info-box mt-4">
-                                <i class="bx bx-envelope"></i>
-                                <h3>Email Us</h3>
-                                <p>info@example.com<br>contact@example.com</p>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="info-box mt-4">
-                                <i class="bx bx-phone-call"></i>
-                                <h3>Call Us</h3>
-                                <p>+1 5589 55488 55<br>+1 6678 254445 41</p>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="col-lg-6">
-                    <form action="forms/contact.php" class="php-email-form" method="post" role="form">
-                        <div class="row">
-                            <div class="col-md-6 form-group">
-                                <input class="form-control" id="name" name="name" placeholder="Your Name" required=""
-                                       type="text">
-                            </div>
-                            <div class="col-md-6 form-group mt-3 mt-md-0">
-                                <input class="form-control" id="email" name="email" placeholder="Your Email"
-                                       required="" type="email">
-                            </div>
-                        </div>
-                        <div class="form-group mt-3">
-                            <input class="form-control" id="subject" name="subject" placeholder="Subject" required=""
-                                   type="text">
-                        </div>
-                        <div class="form-group mt-3">
+            <div class="form-group mt-3">
                             <textarea class="form-control" name="message" placeholder="Message" required=""
                                       rows="7"></textarea>
-                        </div>
-                        <div class="my-3">
-                            <div class="loading">Loading</div>
-                            <div class="error-message"></div>
-                            <div class="sent-message">Your message has been sent. Thank you!</div>
-                        </div>
-                        <div class="text-center">
-                            <button type="submit">Send Message</button>
-                        </div>
-                    </form>
-                </div>
-
             </div>
-
+            <div class="my-3">
+              <div class="loading">Loading</div>
+              <div class="error-message"></div>
+              <div class="sent-message">Your message has been sent. Thank you!</div>
+            </div>
+            <div class="text-center">
+              <button type="submit">Send Message</button>
+            </div>
+          </form>
         </div>
-    </section><!-- End Contact Section -->
-
+      </div>
+    </div>
+  </section><!-- End Contact Section -->
 </main><!-- End #main -->
-
-
-
 <div id="preloader"></div>
 <a class="back-to-top d-flex align-items-center justify-content-center" th:href="@{#}"><i
         class="bi bi-arrow-up-short"></i></a>
-
 <!-- JS Files -->
-
 <script th:src="@{/vendor/purecounter/purecounter_vanilla.js}"></script>
 <script th:src="@{/vendor/aos/aos.js}"></script>
 <script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
 <script th:src="@{/vendor/glightbox/js/glightbox.min.js}"></script>
 <script th:src="@{/vendor/swiper/swiper-bundle.min.js}"></script>
 <script th:src="@{/vendor/php-email-form/validate.js}"></script>
-
-
 <!-- Template Main JS File -->
 <script th:src="@{/js/main.js}"></script>
-
 <script
         crossorigin="anonymous"
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
         th:src="@{https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js}"
 ></script>
-
 <script
         crossorigin="anonymous"
         integrity="sha512-wS6VWtjvRcylhyoArkahZUkzZFeKB7ch/MHukprGSh1XIidNvHG1rxPhyFnL73M0FC1YXPIXLRDAoOyRJNni/g=="
         referrerpolicy="no-referrer"
         th:src="@{https://cdnjs.cloudflare.com/ajax/libs/axios/1.3.3/axios.min.js}"
 ></script>
-
-
 </body>
-
 </html>
-

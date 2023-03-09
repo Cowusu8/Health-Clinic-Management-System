@@ -6,7 +6,7 @@
 (function () {
   "use strict";
 
-  let forms = document.querySelectorAll('email-form');
+  let forms = document.querySelectorAll('.php-email-form');
 
   forms.forEach( function(e) {
     e.addEventListener('submit', function(event) {
@@ -34,7 +34,7 @@
               grecaptcha.execute(recaptcha, {action: 'php_email_form_submit'})
               .then(token => {
                 formData.set('recaptcha-response', token);
-                email_form_submit(thisForm, action, formData);
+                php_email_form_submit(thisForm, action, formData);
               })
             } catch(error) {
               displayError(thisForm, error)
@@ -44,12 +44,12 @@
           displayError(thisForm, 'The reCaptcha javascript API url is not loaded!')
         }
       } else {
-        email_form_submit(thisForm, action, formData);
+        php_email_form_submit(thisForm, action, formData);
       }
     });
   });
 
-  function email_form_submit(thisForm, action, formData) {
+  function php_email_form_submit(thisForm, action, formData) {
     fetch(action, {
       method: 'POST',
       body: formData,

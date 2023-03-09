@@ -19,7 +19,6 @@ import java.util.stream.Collectors;
 
 @Component
 @Slf4j
-
 public class MyCommandLineRunner implements CommandLineRunner {
 
     PatientsRepo patientsRepo;
