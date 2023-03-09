@@ -33,6 +33,8 @@ public class Patient {
     private String address;
     @Column(name = "phone", unique = true, nullable = false,length = 12)
     private String phone;
+    @Column(name = "appointmentDate", nullable = false, length = 10)
+    private String appointmentDate;
 
     @ToString.Exclude
     @ManyToMany(fetch = FetchType.EAGER,
@@ -53,6 +55,6 @@ public class Patient {
 
     @Override
     public int hashCode() {
-        return Objects.hash(Id, fullName, gender, email, birthDate, address, phone, doctors);
+        return Objects.hash(Id, fullName, gender, email, birthDate, address, phone, doctors,appointmentDate);
     }
 }

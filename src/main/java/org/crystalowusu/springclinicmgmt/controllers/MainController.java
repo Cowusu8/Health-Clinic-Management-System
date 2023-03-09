@@ -25,6 +25,11 @@ public class MainController {
         return "admin";
     }
 
+    @GetMapping("/admindash")
+    public String admindashPage(){
+        return "admindash";
+    }
+
     @GetMapping("/appointment")
     public String appointPage(){
         return "appointment";

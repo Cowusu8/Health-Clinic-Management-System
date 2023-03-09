@@ -1,0 +1,47 @@
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Add Patient</title>
+
+    <link crossorigin="anonymous"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+          integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+          rel="stylesheet"/>
+</head>
+<body>
+
+<div align="center">
+
+    <h1>Add New Patient</h1>
+    <hr/>
+
+    <form method="POST" th:action="@{/savePatients}" th:object="${patient}">
+
+        <input class="form-control col-3 mb-4" placeholder="Enter Full Name" th:field="*{fullName}" type="text"/>
+
+        <input class="form-control col-3 mb-4" placeholder="Enter Birth Date" th:field="*{birthDate}" type="text"/>
+
+        <label class="form-control col-3 mb-2">Gender?
+            <input th:field="*{gender}" type="checkbox" value="Male"/>Male
+            <input th:field="*{gender}" type="checkbox" value="Female"/>Female
+        </label>
+
+        <input class="form-control col-3 mb-4" placeholder="Enter Preferred Appointment Date" th:field="*{appointmentDate}" type="text"/>
+
+        <input class="form-control col-3 mb-4" placeholder="Enter Email" th:field="*{email}" type="text"/>
+
+        <input class="form-control col-3 mb-4" placeholder="Enter Address" th:field="*{address}" type="text"/>
+
+        <input class="form-control col-3 mb-4" placeholder="Enter Phone Number" th:field="*{phone}" type="text"/>
+
+
+        <button class="btn btn-primary col-2" type="submit">Save</button>
+        <input th:field="*{Id}" type="hidden"/>
+
+    </form>
+    <hr/>
+    <a th:href="@{/patient}">List of Patients</a>
+</div>
+
+</body>
+</html>

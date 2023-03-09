@@ -1,8 +1,10 @@
 package org.crystalowusu.springclinicmgmt.controllers;
 
 import org.crystalowusu.springclinicmgmt.dao.DoctorsRepo;
+import org.crystalowusu.springclinicmgmt.dao.PatientsRepo;
 import org.crystalowusu.springclinicmgmt.models.Doctor;
 import lombok.extern.slf4j.Slf4j;
+import org.crystalowusu.springclinicmgmt.models.Patient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +17,8 @@ import java.util.List;
 
 @Controller  @Slf4j
 public class DoctorController {
+    @Autowired
+    private PatientsRepo patientsRepo;
 
     @Autowired
     private DoctorsRepo dRepo;
@@ -36,13 +40,13 @@ public class DoctorController {
         return "docdash";
     }
 
-    @GetMapping("/adddoc") //http://localhost:8080/docs
+  /*  @GetMapping("/adddoc") //http://localhost:8080/docs
     public String showemdoc(){
         log.warn("test");
         return "add-doctor-form";
-    }
+    }*/
 
-    @GetMapping({"/show-doctors", "/em-doctor"}) //http://localhost:8080//em-doctor"
+    @GetMapping({"/add-doctors", "/add-doctor"})
     public ModelAndView showDoctors() {
         ModelAndView mav = new ModelAndView("listdoctors");
         List<Doctor> doctors = dRepo.findAll();
@@ -61,10 +65,10 @@ public class DoctorController {
     @PostMapping("/save-doctors")
     public String saveDoctor(@ModelAttribute Doctor doctor) {
         dRepo.save(doctor);
-        return "redirect:/doctor";
+        return "redirect:/add-doctor";
     }
 
-    @GetMapping("/show-update-doc-form")
+    @GetMapping("/update-doc-form")
     public ModelAndView showUpdateForm(@RequestParam Long doctorId) {
         ModelAndView mav = new ModelAndView("add-doctor-form");
         Doctor doctor = dRepo.findById(doctorId).get();
@@ -72,10 +76,50 @@ public class DoctorController {
         return mav;
     }
 
-    @GetMapping("/delete-doctor")
+    @GetMapping({"/add-patients", "/add-patient"})
+    public ModelAndView showPatients() {
+        ModelAndView mav = new ModelAndView("listpatients");
+        List<Patient> patients = patientsRepo.findAll();
+        mav.addObject("patients", patients);
+        return mav;
+    }
+
+    @GetMapping("/add-patient-form")
+    public ModelAndView addPatientForm() {
+        ModelAndView mav = new ModelAndView("add-patient-form");
+        Patient newPatient = new Patient();
+        mav.addObject("patients", newPatient);
+        return mav;
+    }
+
+    @PostMapping("/save-patient")
+    public String savePatient(@ModelAttribute Patient patient) {
+        patientsRepo.save(patient);
+        return "redirect:/add-patient";
+    }
+
+    @GetMapping("/update-patient-form")
+    public ModelAndView UpdatepatientForm(@RequestParam Long patientId) {
+        ModelAndView mav = new ModelAndView("add-patient-form");
+        Patient patient = patientsRepo.findById(patientId).get();
+        mav.addObject("patient", patient);
+        return mav;
+    }
+
+    @GetMapping("/delete-patient")
+    public String deletePatient(@RequestParam Long patientId) {
+        dRepo.deleteById(patientId);
+        return "redirect:/listpatients";
+    }
+
+
+
+
+
+  /*  @GetMapping("/delete-doctor")
     public String deleteDoctor(@RequestParam Long doctorId) {
         dRepo.deleteById(doctorId);
         return "redirect:/doctors";
-    }
+    }*/
 
 }
