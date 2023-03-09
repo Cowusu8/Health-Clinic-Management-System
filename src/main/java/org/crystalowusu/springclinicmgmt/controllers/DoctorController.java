@@ -30,10 +30,16 @@ public class DoctorController {
         return "doctorsportal";
     }
 
-    @GetMapping("/doc-dashboard") //http://localhost:8080/docdash
+    @GetMapping("/doc-dash") //http://localhost:8080/docdash
     public String showdocdash(){
         log.warn("test");
         return "docdash";
+    }
+
+    @GetMapping("/adddoc") //http://localhost:8080/docs
+    public String showemdoc(){
+        log.warn("test");
+        return "add-doctor-form";
     }
 
     @GetMapping({"/show-doctors", "/em-doctor"}) //http://localhost:8080//em-doctor"

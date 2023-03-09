@@ -14,14 +14,13 @@ public class ReceptionistController {
 
     @GetMapping("/receptionist") //http://localhost:8080/receptionist
     public String showReceptionist() {
-        log.warn("test");
         return "receptionist";
     }
 
     @GetMapping("/recepdash") //http://localhost:8080/recepdash
     public String showrecpt() {
         log.warn("test");
-        return "recpt";
+        return "recptdash";
     }
 
 
