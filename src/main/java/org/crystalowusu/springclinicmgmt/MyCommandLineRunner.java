@@ -26,30 +26,21 @@ public class MyCommandLineRunner implements CommandLineRunner {
     AuthGroupRepoI authGroupRepoI;
     DoctorsRepo doctorsRepo;
     DoctorService doctorService;
-    AdminRepo adminRepo;
     PatientService patientService;
 
 @Autowired
-    public MyCommandLineRunner(PatientsRepo patientsRepo, AuthGroupRepoI authGroupRepoI, DoctorsRepo doctorsRepo, DoctorService doctorService, AdminRepo adminRepo, PatientService patientService) {
+    public MyCommandLineRunner(PatientsRepo patientsRepo, AuthGroupRepoI authGroupRepoI, DoctorsRepo doctorsRepo, DoctorService doctorService,  PatientService patientService) {
         this.patientsRepo = patientsRepo;
         this.authGroupRepoI = authGroupRepoI;
         this.doctorsRepo = doctorsRepo;
         this.doctorService = doctorService;
-        this.adminRepo = adminRepo;
         this.patientService = patientService;
     }
 
     @Override
     public void run(String... args) throws Exception {
 
-        Admin admin1 = new Admin("crystal","password");
-        Admin admin2 = new Admin("crystal2","password");
-        Admin admin3 = new Admin("crystal3","password");
-        Admin admin4 = new Admin("crystal4","password");
-        adminRepo.save(admin1);
-        adminRepo.save(admin2);
-        adminRepo.save(admin3);
-        adminRepo.save(admin4);
+
 
         AuthGroup authGroup1 = new AuthGroup ("crystal1","ROLE_ADMIN");
         AuthGroup authGroup2 = new AuthGroup ("crystal2","ROLE_ADMIN");
@@ -81,7 +72,7 @@ public class MyCommandLineRunner implements CommandLineRunner {
         authGroupRepoI.save(authGroup7);
         authGroupRepoI.save(authGroup8);
 
-        List<CombineUsers> users = new ArrayList<>();
+        /*List<CombineUsers> users = new ArrayList<>();
         users = doctorsRepo.findAll().stream().map(doctor -> new CombineUsers(doctor.getUsername(), doctor.getPassword())).collect(Collectors.toList());
         users.addAll(adminRepo.findAll().stream().map(admin -> new CombineUsers(admin.getUsername(), admin.getPassword())).collect(Collectors.toList()));
         CombineUsers u = users.stream()
@@ -90,7 +81,7 @@ public class MyCommandLineRunner implements CommandLineRunner {
 
         log.warn(users.toString());
 
-        log.warn(u.toString());
+        log.warn(u.toString());*/
 
     }
 }
