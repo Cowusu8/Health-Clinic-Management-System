@@ -1,6 +1,7 @@
 package com.clinicmgmt.springclinicmgmt.security;
 
 
+import com.clinicmgmt.springclinicmgmt.dto.CombineUsers;
 import com.clinicmgmt.springclinicmgmt.models.AuthGroup;
 import com.clinicmgmt.springclinicmgmt.models.Doctor;
 import org.springframework.security.core.GrantedAuthority;
@@ -12,12 +13,12 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class ClinicUserPrincipal implements UserDetails {
-    private Doctor doctor;
+    private CombineUsers combineUsers;
     private List<AuthGroup> authGroup;
 
-    public ClinicUserPrincipal(Doctor doctor, List<AuthGroup> authGroup) {
+    public ClinicUserPrincipal(CombineUsers combineUsers, List<AuthGroup> authGroup) {
 
-        this.doctor = doctor;
+        this.combineUsers = combineUsers;
         this.authGroup=authGroup;
     }
 
@@ -29,12 +30,12 @@ public class ClinicUserPrincipal implements UserDetails {
 
     @Override
     public String getPassword() {
-        return doctor.getPassword();
+        return combineUsers.getPassword();
     }
 
     @Override
     public String getUsername() {
-        return doctor.getUsername();
+        return combineUsers.getUsername();
     }
 
     @Override

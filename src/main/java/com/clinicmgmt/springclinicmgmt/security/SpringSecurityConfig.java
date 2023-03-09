@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -44,14 +45,13 @@ public class SpringSecurityConfig {
     }
 
 
-
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeHttpRequests((requests) -> requests
-                        .requestMatchers("/","/index","/css/**", "/js/**","/img/**","/vendor/**","/img").permitAll()
+                        .requestMatchers("/","/index","/css/**", "/js/**","/img/**","/vendor/**").permitAll()
                         .requestMatchers("/admin/**","/admin-dashboard").hasRole("ADMIN")
-                        .requestMatchers("/doc-dashboard","/doctor-portal").hasAnyRole("","ADMIN")
+                        .requestMatchers("/doc-dashboard","/doctor-portal").hasAnyRole("ADMIN")
                         .requestMatchers("/receptionist/**","/recepdash").hasAnyRole("USER","ADMIN")
                         .anyRequest().authenticated()
                 )
@@ -60,7 +60,7 @@ public class SpringSecurityConfig {
                         .usernameParameter("username")
                         .passwordParameter("password")
                         .loginProcessingUrl("/login/processing")
-                        .defaultSuccessUrl("/admin-dashboard")
+                        .defaultSuccessUrl("/")
                         .failureUrl("/login?error=true")
                         .permitAll()
                 )

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Slf4j
 @NoArgsConstructor
+@RequiredArgsConstructor
 @Entity
 @Table(name="Admin_table")
 
@@ -23,6 +24,6 @@ public class Admin {
     @NonNull
     private String username;
     @NonNull
-    private String role;
+    private String password;
 
 }

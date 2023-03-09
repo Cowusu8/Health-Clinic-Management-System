@@ -29,9 +29,10 @@ public class Doctor {
     private String fullName;
     @Column(name = "username", nullable = false, length = 100)
     private String username;
+    @Setter(AccessLevel.NONE)
+    private String password;
     @Column(name = "email", nullable = false, length = 100)
     private String email;
-    private String password;
     @Column(name = "birthDate", nullable = false, length = 10)
     private String birthDate;
     @Column(name="gender", nullable = false, length = 7)
@@ -46,7 +47,7 @@ public class Doctor {
         return   this.password = new BCryptPasswordEncoder(4).encode(password);
     }
 
-    public Doctor(@NonNull String fullName, @NonNull String username, @NonNull String email, @NonNull String password, @NonNull String birthDate, @NonNull String gender, @NonNull String address, @NonNull String phone) {
+    public Doctor(@NonNull String fullName, @NonNull String username, @NonNull String password,@NonNull String email, @NonNull String birthDate, @NonNull String gender, @NonNull String address, @NonNull String phone) {
 
         this.fullName = fullName;
         this.username = username;
@@ -74,7 +75,7 @@ public class Doctor {
         return Objects.hash(Id, fullName, username, email, password, birthDate, gender, address, phone, patients);
     }
 
-    public List<String> getPatients() {
+    public List<String> controllerGetPatients() {
         List<String> patient= new ArrayList<>();
         for (Patient p:patients){
             patient.add(p.getFullName());

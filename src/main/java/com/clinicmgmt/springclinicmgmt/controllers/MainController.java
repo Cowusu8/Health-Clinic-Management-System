@@ -14,7 +14,7 @@ public class MainController {
 
 
     @GetMapping("/login")
-    public String viewLoginPage() {
+    public String postLoginPage() {
         // custom logic before showing login page...
 
         return "login";
@@ -23,7 +23,7 @@ public class MainController {
     @GetMapping("/")
     public String homePage(Model model){
         model.addAttribute("msg", "Hello World IndexPage");
-        return "/";
+        return "index";
     }
 
 
