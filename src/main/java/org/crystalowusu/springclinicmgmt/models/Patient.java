@@ -19,21 +19,21 @@ import java.util.Set;
 public class Patient {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "Id", unique = true, nullable = false)
-    private Long Id;
-    @Column(name = "fullName", nullable = false, length = 100)
-    private String fullName;
-    @Column(name="gender", length = 7, nullable = false)
-    private String gender;
-    @Column(name = "email", nullable = false, length = 100, unique = true)
-    private String email;
-    @Column(name = "birthdate", nullable = false, length = 10)
-    private String birthDate;
-    @Column(name="address",  nullable = false, length = 100)
-    private String address;
-    @Column(name = "phone", unique = true, nullable = false,length = 12)
-    private String phone;
-    @Column(name = "appointmentDate", nullable = false, length = 10)
+    @Column(name = "Id", unique = true)
+    private Long Id;@NonNull
+    @Column(name = "fullName", length = 100)
+    private String fullName;@NonNull
+    @Column(name="gender", length = 7)
+    private String gender;@NonNull
+    @Column(name = "email",length = 100, unique = true)
+    private String email;@NonNull
+    @Column(name = "birthdate", length = 10)
+    private String birthDate;@NonNull
+    @Column(name="address", length = 100)
+    private String address;@NonNull
+    @Column(name = "phone", unique = true, length = 12)
+    private String phone;@NonNull
+    @Column(name = "appointmentDate", length = 10)
     private String appointmentDate;
 
     @ToString.Exclude
@@ -44,6 +44,13 @@ public class Patient {
             joinColumns = @JoinColumn(name = "doctor_id"),
             inverseJoinColumns = @JoinColumn(name = "patient_id"))
     Set<Doctor> doctors = new LinkedHashSet<>();
+
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinTable(name = "patients_table_visit_info",
+            joinColumns = @JoinColumn(name = "patient_id"),
+            inverseJoinColumns = @JoinColumn(name = "visit_info_visitid"))
+    @NonNull
+    private VisitInfo visitInfo;
 
 
     @Override

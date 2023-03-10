@@ -98,6 +98,12 @@ public class DoctorController {
         return "redirect:/add-patient";
     }
 
+    @PostMapping("/save-newpatient")
+    public String savenewPatient(@ModelAttribute Patient patient) {
+        patientsRepo.save(patient);
+        return "redirect:/add-patient";
+    }
+
     @GetMapping("/update-patient-form")
     public ModelAndView UpdatepatientForm(@RequestParam Long patientId) {
         ModelAndView mav = new ModelAndView("add-patient-form");

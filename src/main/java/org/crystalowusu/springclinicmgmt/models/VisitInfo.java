@@ -4,35 +4,33 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 
 
 @AllArgsConstructor
 @Data
 @NoArgsConstructor
 @Entity
-@Table(name="VisitInfo_Table")
+@Table(name="VisitInfo")
 
 public class VisitInfo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="visitID")
-    private Long Id;
+    private Long Id;@NonNull
     @Column(name = "visitDate")
-    private String visitDate;
+    private String visitDate;@NonNull
     @Column(name = "billing")
-    private Boolean billed;
+    private Boolean billed;@NonNull
     @Column(name = "diagnosis")
-    private String diagnosis;
+    private String diagnosis;@NonNull
     @Column(name = "prescription")
-    private String prescription;
+    private String prescription;@NonNull
 
-    @ManyToOne
-    @JoinColumn(name = "patients_id")
-    private Patient patient;
+    @OneToOne(mappedBy = "visitInfo")
+    Patient patient;
 
-    @OneToOne
-    @JoinColumn(name = "doctors_id")
-    private Doctor doctor;
+
 
 }
