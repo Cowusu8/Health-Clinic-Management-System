@@ -1,0 +1,41 @@
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <title>Patient Data</title>
+
+  <link crossorigin="anonymous"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+        rel="stylesheet"/>
+</head>
+<body>
+
+<div align="center">
+
+  <h1>Add Patient Health Data</h1>
+  <hr/>
+
+  <form method="POST" th:action="@{/save-doctors}" th:object="${VisitInfo}">
+
+    <input class="form-control col-3 mb-4" placeholder="Enter Full Name" field="*{fullName}" type="text"/>
+
+    <input class="form-control col-3 mb-4" placeholder="Enter Birth Date" field="*{birthDate}" type="text"/>
+
+    <input class="form-control col-3 mb-4" placeholder="Enter Visit Date" field="*{visitDate}" type="text"/>
+
+    <input class="form-control col-3 mb-4" placeholder="Enter Diagnosis" field="*{diagnosis}" type="text"/>
+
+    <input class="form-control col-3 mb-4" placeholder="Enter Prescription" field="*{prescription}" type="text"/>
+
+
+
+    <button class="btn btn-primary col-2" type="submit">Save</button>
+    <input field="*{Id}" type="hidden"/>
+
+  </form>
+  <hr/>
+  <a th:href="@{/add-doctor}">List of Employees</a>
+</div>
+
+</body>
+</html>
