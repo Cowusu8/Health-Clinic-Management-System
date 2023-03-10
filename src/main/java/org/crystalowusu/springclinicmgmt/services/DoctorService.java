@@ -12,7 +12,7 @@ public class DoctorService {
     @Autowired
     private DoctorsRepo repository;
 
-    public Doctor saveProduct(Doctor doctor) {
+    public Doctor saveDoctor(Doctor doctor) {
         return repository.save(doctor);
     }
 

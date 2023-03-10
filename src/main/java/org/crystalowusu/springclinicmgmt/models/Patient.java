@@ -1,6 +1,8 @@
 package org.crystalowusu.springclinicmgmt.models;
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.experimental.FieldDefaults;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.LinkedHashSet;
 import java.util.Objects;
@@ -8,6 +10,7 @@ import java.util.Set;
 
 
 @Data
+@Slf4j
 @AllArgsConstructor
 @NoArgsConstructor
 @Setter
@@ -15,14 +18,15 @@ import java.util.Set;
 @ToString
 @Entity
 @Table(name="Patients_Table")
-
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class Patient {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Id", unique = true)
     private Long Id;@NonNull
     @Column(name = "fullName", length = 100)
-    private String fullName;@NonNull
+    private String fullName;
+    @NonNull
     @Column(name="gender", length = 7)
     private String gender;@NonNull
     @Column(name = "email",length = 100, unique = true)
@@ -34,7 +38,7 @@ public class Patient {
     @Column(name = "phone", unique = true, length = 12)
     private String phone;@NonNull
     @Column(name = "appointmentDate", length = 10)
-    private String appointmentDate;
+    private String appointmentDate;@NonNull
 
     @ToString.Exclude
     @ManyToMany(fetch = FetchType.EAGER,
@@ -52,16 +56,15 @@ public class Patient {
     @NonNull
     private VisitInfo visitInfo;
 
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Patient patient)) return false;
-        return Id.equals(patient.Id) && fullName.equals(patient.fullName) && gender.equals(patient.gender) && email.equals(patient.email) && birthDate.equals(patient.birthDate) && address.equals(patient.address) && phone.equals(patient.phone) && doctors.equals(patient.doctors);
+        return Objects.equals(Id, patient.Id) && fullName.equals(patient.fullName) && gender.equals(patient.gender) && email.equals(patient.email) && birthDate.equals(patient.birthDate) && address.equals(patient.address) && phone.equals(patient.phone) && appointmentDate.equals(patient.appointmentDate) && Objects.equals(doctors, patient.doctors) && visitInfo.equals(patient.visitInfo);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(Id, fullName, gender, email, birthDate, address, phone, doctors,appointmentDate);
+        return Objects.hash(Id, fullName, gender, email, birthDate, address, phone, appointmentDate, doctors, visitInfo);
     }
 }

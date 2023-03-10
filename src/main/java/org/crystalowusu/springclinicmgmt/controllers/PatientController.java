@@ -41,13 +41,6 @@ public class PatientController {
         return "redirect:/patient";
     }
 
-    @GetMapping("/showUpdatePatient")
-    public ModelAndView showUpdateForm(@RequestParam Long patientId) {
-        ModelAndView mav = new ModelAndView("add-patient-form");
-        Patient patient = pRepo.findById(patientId).get();
-        mav.addObject("patient", patient);
-        return mav;
-    }
 
     @GetMapping("/deletePatient")
     public String deletePatients(@RequestParam Long patientId) {

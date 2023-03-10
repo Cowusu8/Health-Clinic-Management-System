@@ -40,11 +40,12 @@ public class DoctorController {
         return "docdash";
     }
 
-  /*  @GetMapping("/adddoc") //http://localhost:8080/docs
+  @GetMapping("/adddoc") //http://localhost:8080/docs
     public String showemdoc(){
         log.warn("test");
         return "add-doctor-form";
-    }*/
+    }
+
 
     @GetMapping({"/add-doctors", "/add-doctor"})
     public ModelAndView showDoctors() {
@@ -68,13 +69,14 @@ public class DoctorController {
         return "redirect:/add-doctor";
     }
 
-    @GetMapping("/update-doc-form")
-    public ModelAndView showUpdateForm(@RequestParam Long doctorId) {
+@GetMapping("/update-doc-form")
+    public ModelAndView showUpdatedocForm(@RequestParam Long doctorId) {
         ModelAndView mav = new ModelAndView("add-doctor-form");
         Doctor doctor = dRepo.findById(doctorId).get();
         mav.addObject("doctor", doctor);
         return mav;
     }
+
 
     @GetMapping({"/add-patients", "/add-patient"})
     public ModelAndView showPatients() {
@@ -103,29 +105,32 @@ public class DoctorController {
         patientsRepo.save(patient);
         return "redirect:/add-patient";
     }
-
-    @GetMapping("/update-patient-form")
-    public ModelAndView UpdatepatientForm(@RequestParam Long patientId) {
-        ModelAndView mav = new ModelAndView("add-patient-form");
-        Patient patient = patientsRepo.findById(patientId).get();
-        mav.addObject("patient", patient);
-        return mav;
-    }
-
-    @GetMapping("/delete-patient")
-    public String deletePatient(@RequestParam Long patientId) {
-        dRepo.deleteById(patientId);
-        return "redirect:/listpatients";
-    }
+//"/update-patient-form"
+@GetMapping("/update-patient-form")
+public ModelAndView showUpdateForm(@RequestParam Long patientId) {
+    ModelAndView mav = new ModelAndView("add-patient-form");
+    Patient patient = patientsRepo.findById(patientId).get();
+    mav.addObject("patient", patient);
+    return mav;
+}
 
 
 
+//    @GetMapping("/delete-patient")
+//    public String deletePatient(@RequestParam Long patientId) {
+//        dRepo.deleteById(patientId);
+//        return "redirect:/listpatients";
+//    }
 
 
-  /*  @GetMapping("/delete-doctor")
+
+
+
+  @GetMapping("/delete-doctor")
     public String deleteDoctor(@RequestParam Long doctorId) {
         dRepo.deleteById(doctorId);
         return "redirect:/doctors";
-    }*/
+    }
+
 
 }
