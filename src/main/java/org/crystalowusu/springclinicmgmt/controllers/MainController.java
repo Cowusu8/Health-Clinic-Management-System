@@ -10,6 +10,11 @@ public class MainController {
         return "index";
     }
 
+    @GetMapping("/index/success")
+    public String successpage(){
+    return "index";
+    }
+
     @GetMapping("/login")
     public String loginPage(){
         return "/login";
@@ -22,7 +27,7 @@ public class MainController {
 
     @GetMapping("/admin")
     public String secondPage(){
-        return "admin";
+        return "login";
     }
 
     @GetMapping("/admindash")

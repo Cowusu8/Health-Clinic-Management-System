@@ -2,71 +2,55 @@ package org.crystalowusu.springclinicmgmt.controllers;
 
 import java.util.*;
 
+import jakarta.servlet.http.HttpSession;
 import org.crystalowusu.springclinicmgmt.dao.PatientsRepo;
 import org.crystalowusu.springclinicmgmt.models.Patient;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-@Controller@Slf4j
+
+@Controller @Slf4j
 public class PatientController {
 
     @Autowired
-    private PatientsRepo pRepo;
+    private PatientsRepo patientsRepo;
 
-    @GetMapping({"/showPatients", "/patients"})
-    public ModelAndView showPatients() {
+    @GetMapping({"/patlist"})
+    public ModelAndView getAllPatient() {
         ModelAndView mav = new ModelAndView("listpatients");
-        List<Patient> patients = pRepo.findAll();
-        mav.addObject("patients", patients);
+        mav.addObject("patient", patientsRepo.findAll());
         return mav;
     }
 
-    @GetMapping("/addPatientsForm")
+    @GetMapping("/addPatientForm")
     public ModelAndView addPatientForm() {
         ModelAndView mav = new ModelAndView("add-patient-form");
-        Patient patient = new Patient();
+        Patient newPatient = new Patient();
+        mav.addObject("patient", newPatient);
+        return mav;
+    }
+
+    @PostMapping("/savePatient")
+    public String savePatient(@ModelAttribute Patient patient) {
+        patientsRepo.save(patient);
+        return "redirect:/patlist";
+    }
+
+    @GetMapping("/showPatUpdateForm")
+    public ModelAndView showUpdateForm(@RequestParam Long Patient) {
+        ModelAndView mav = new ModelAndView("add-patient-form");
+        Patient patient = patientsRepo.findById(Patient).get();
         mav.addObject("patient", patient);
         return mav;
     }
 
-    @PostMapping("/savePatients")
-    public String savePatient(@ModelAttribute Patient patient) {
-        pRepo.save(patient);
-        return "redirect:/patient";
-    }
-
-
     @GetMapping("/deletePatient")
-    public String deletePatients(@RequestParam Long patientId) {
-        pRepo.deleteById(patientId);
-        return "redirect:/patients";
+    public String deletePatient(@RequestParam Long Patient) {
+        patientsRepo.deleteById(Patient);
+        return "redirect:/patlist";
     }
-
-    /*@GetMapping("/")
-    public String showIndex() {
-        log.warn("test");
-        return "index";
-    }*/
-
-    @GetMapping("app")
-    public String showAppointment() {
-        log.warn("test");
-        return "appointment";
-    }
-
-    @GetMapping("patient")
-    public String showPatientportal() {
-        log.warn("test");
-        return "patientportal";
-    }
-
-
 }
-
 

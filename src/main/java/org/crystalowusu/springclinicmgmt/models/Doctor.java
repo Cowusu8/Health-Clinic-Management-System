@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
 //import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.util.*;
 
@@ -17,33 +18,36 @@ import java.util.*;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@RequiredArgsConstructor
 @Entity
 @Table(name="Doctors_Table")
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Doctor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "Id", unique = true,nullable = false)
+    @Column(name = "Id")
     private Long Id;
-    @Column(name = "name", nullable = false, length = 100)
+    @NonNull @Column(name = "name",length = 100)
     private String fullName;
-    @Column(name = "birthDate", nullable = false, length = 10)
+    @NonNull @Column(name = "birthDate",length = 10)
     private String birthDate;
-    @Column(name="gender", nullable = false, length = 7)
+    @NonNull @Column(name="gender", length = 7)
     private String gender;
-    @Column(name = "phone", unique = true, nullable = false,length = 12)
+    @NonNull @Column(name = "phone", length = 12)
     private String phone;
-    @Column(name="address",  nullable = false, length = 100)
+    @NonNull @Column(name="address", length = 100)
     private String address;
-    @Column(name = "email", nullable = false, length = 100)
+    @NonNull @Column(name = "email", length = 100)
     private String email;
-    @Setter(AccessLevel.NONE)
+    @NonNull @Setter(AccessLevel.NONE)
     private String password;
 
 
-/*    public String setPassword(String password)  {
+/*
+    public String setPassword(String password)  {
         return   this.password = new BCryptPasswordEncoder(4).encode(password);
-    }*/
+    }
+*/
 
 
     @ToString.Exclude

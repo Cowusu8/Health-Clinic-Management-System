@@ -1,3 +1,4 @@
+
 <html lang="en" xmlns="http://www.w3.org/1999/html" xmlns:th="http://www.thymeleaf.org">
 
 <head>
@@ -48,7 +49,8 @@
                 <li><a class="nav-link scrollto" href="/">Home</a></li>
                 <li class="dropdown"><a href="#"><span>Log In</span> <i class="bi bi-chevron-down"></i></a>
                     <ul>
-                        <li><a href="/doctor-portal">Doctor</a></li>
+                        <li><a href="docportal">Doctor</a></li>
+                        <li><a href="receptionist">Assistant</a></li>
                     </ul>
                 </li>
             </ul>
@@ -68,42 +70,37 @@
         </div>
     </div>
 </section>
-<div class="container">
-    <div class="container">
-        <div class="row card-header" style="padding: 2%;">
-            <h1 style="color: rgb(21, 15, 203); font-style: normal; text-align: center;"> Welcome to the Admin
-                Portal</h1>
-            <div class="col-12">
-
-            </div>
-
-        </div>
-    </div>
-
-</div>
-
-</div>
-</div>
 
 
 <div class="hello">
     <div class="row gx-5 justify-content-center">
 
+        <div class="container">
+            <div class="row card-header" style="padding: 2%;">
+                <h1 style="color: rgb(255, 255, 255); font-style: normal; text-align: center;">
+                    Admin Portal</h1>
+                <div class="col-12">
+
+                </div>
+
+            </div>
+        </div>
+
         <div class="col-4">
-            <form action="/action_page.php">
+            <form th:action="@{/login/processing}">
                 <div class="mb-3 mt-3">
-                    <label class="form-label" for="email">Email:</label>
-                    <input class="form-control" id="email" name="email" placeholder="Enter email" type="email" required>
+                    <label class="form-label" for="username">Email:</label>
+                    <input class="form-control" id="username" name="username" placeholder="Enter username" type="text">
                 </div>
                 <div class="mb-3">
-                    <label class="form-label" for="pwd">Password:</label>
-                    <input class="form-control" id="pwd" name="pwd" placeholder="Enter password" type="password" required>
+                    <label class="form-label" for="password">Password:</label>
+                    <input class="form-control" id="password" name="password" placeholder="Enter password" type="password">
                 </div>
-                <div class="form-check mb-3">
+                <!--<div class="form-check mb-3">
                     <label class="form-check-label">
                         <input class="form-check-input" name="remember" type="checkbox"> Remember me
                     </label>
-                </div>
+                </div>-->
                 <button class="btn btn-primary" type="submit">Submit</button>
             </form>
 
@@ -111,65 +108,6 @@
 
     </div>
 </div>
-
-<script>
-    const form = document.getElementById('form');
-const email = document.getElementById('email');
-const password = document.getElementById('password');
-
-form.addEventListener('submit', e => {
-    e.preventDefault();
-
-    validateInputs();
-});
-
-const setError = (element, message) => {
-    const inputControl = element.parentElement;
-    const errorDisplay = inputControl.querySelector('.error');
-
-    errorDisplay.innerText = message;
-    inputControl.classList.add('error');
-    inputControl.classList.remove('success')
-}
-
-const setSuccess = element => {
-    const inputControl = element.parentElement;
-    const errorDisplay = inputControl.querySelector('.error');
-
-    errorDisplay.innerText = '';
-    inputControl.classList.add('success');
-    inputControl.classList.remove('error');
-};
-
-const isValidEmail = email => {
-    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(String(email).toLowerCase());
-}
-
-const validateInputs = () => {
-    const emailValue = email.value.trim();
-    const passwordValue = password.value.trim();
-
-
-    if(emailValue === '') {
-        setError(email, 'Email is required');
-    } else if (!isValidEmail(emailValue)) {
-        setError(email, 'Provide a valid email address');
-    } else {
-        setSuccess(email);
-    }
-
-    if(passwordValue === '') {
-        setError(password, 'Password is required');
-    } else if (passwordValue.length < 8 ) {
-        setError(password, 'Password must be at least 8 character.')
-    } else {
-        setSuccess(password);
-    }
-    }
-};
-
-</script>
 
 
 <script th:src="@{/vendor/purecounter/purecounter_vanilla.js}"></script>

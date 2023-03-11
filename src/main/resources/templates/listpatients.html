@@ -23,8 +23,8 @@
 
     <hr/>
     <div class="d-grid gap-2  justify-content-md-end">
-        <a class="btn btn-primary" th:href="@{/addPatientsForm}">Add Patient</a>
-        <a class="btn btn-primary" th:href="@{/recepdash}">Back to Dashboard</a>
+        <a class="btn btn-primary" th:href="@{/addPatientForm}">Add Patient</a>
+        <a class="btn btn-primary" th:href="@{/doc-dash}">Back to Dashboard</a>
     </div>
     <br/>
     <table class="table table-bordered table-striped" id="patientsTable">
@@ -36,6 +36,7 @@
             <th>Gender</th>
             <th>Birth Date</th>
             <th>Email</th>
+            <th>Appointment Date</th>
             <th>Phone</th>
             <th>Address</th>
             <th>Actions</th>
@@ -50,10 +51,12 @@
             <td th:text="${patient.gender}"></td>
             <td th:text="${patient.birthDate}"></td>
             <td th:text="${patient.email}"></td>
+            <td th:text="${patient.gender}"></td>
+            <td th:text="${patient.appointmentDate}"></td>
             <td th:text="${patient.phone}"></td>
             <td th:text="${patient.address}"></td>
             <td>
-                <a class="btn btn-info" th:href="@{/showUpdatePatient(patientId=${patient.Id})}">Update</a>
+                <a class="btn btn-info" th:href="@{/showPatUpdateForm(patientId=${patient.id})}">Update</a>
 
                 <a class="btn btn-danger ml-2" th:href="@{/deletePatient(patientId=${patient.id})}">Delete</a>
             </td>

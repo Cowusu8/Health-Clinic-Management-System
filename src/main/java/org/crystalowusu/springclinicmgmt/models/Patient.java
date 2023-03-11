@@ -22,11 +22,10 @@ import java.util.Set;
 public class Patient {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "Id", unique = true)
-    private Long Id;@NonNull
-    @Column(name = "fullName", length = 100)
-    private String fullName;
-    @NonNull
+    @NonNull @Column (name = "Id", unique = true)
+    private Long Id;
+    @Column  (name = "fullName", length = 100)
+    private String fullName;@NonNull
     @Column(name="gender", length = 7)
     private String gender;@NonNull
     @Column(name = "email",length = 100, unique = true)

@@ -2,29 +2,37 @@ package org.crystalowusu.springclinicmgmt.services;
 
 import org.crystalowusu.springclinicmgmt.dao.PatientsRepo;
 import org.crystalowusu.springclinicmgmt.models.Patient;
-import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
-@Transactional(rollbackOn = Exception.class)
 public class PatientService {
-
     @Autowired
-    PatientsRepo patientsRepo;
+    private PatientsRepo repo;
 
-    public PatientService(PatientsRepo patientsRepo) {
-        this.patientsRepo = patientsRepo;
+    public void addEmp(Patient p) {
+        repo.save(p);
     }
 
-    public void deletepatients(Long id) throws Exception {
-        Optional<Patient> wantToDelete = patientsRepo.findById(id);
-        if (wantToDelete.isPresent())
-            patientsRepo.delete(wantToDelete.get());
-        else
-            throw new Exception("Can't find the patient" + wantToDelete);
+    public List<Patient> getAllPatients() {
+        return repo.findAll();
     }
+
+    public Patient getPatientById(Long id) {
+        Optional<Patient> p = repo.findById(id);
+        if (p.isPresent()) {
+            return p.get();
+        }
+        return null;
+    }
+
+    public void deleteEMp(Long id) {
+        repo.deleteById(id);
+    }
+
+
 }
-
