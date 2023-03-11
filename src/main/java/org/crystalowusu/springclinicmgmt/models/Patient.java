@@ -21,9 +21,9 @@ import java.util.Set;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Patient {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @NonNull @Column (name = "Id", unique = true)
-    private Long Id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @NonNull @Column (unique = true)
+    private Long id; //Id
     @Column  (name = "fullName", length = 100)
     private String fullName;@NonNull
     @Column(name="gender", length = 7)
@@ -59,11 +59,11 @@ public class Patient {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Patient patient)) return false;
-        return Objects.equals(Id, patient.Id) && fullName.equals(patient.fullName) && gender.equals(patient.gender) && email.equals(patient.email) && birthDate.equals(patient.birthDate) && address.equals(patient.address) && phone.equals(patient.phone) && appointmentDate.equals(patient.appointmentDate) && Objects.equals(doctors, patient.doctors) && visitInfo.equals(patient.visitInfo);
+        return Objects.equals(id, patient.id) && fullName.equals(patient.fullName) && gender.equals(patient.gender) && email.equals(patient.email) && birthDate.equals(patient.birthDate) && address.equals(patient.address) && phone.equals(patient.phone) && appointmentDate.equals(patient.appointmentDate) && Objects.equals(doctors, patient.doctors) && visitInfo.equals(patient.visitInfo);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(Id, fullName, gender, email, birthDate, address, phone, appointmentDate, doctors, visitInfo);
+        return Objects.hash(id, fullName, gender, email, birthDate, address, phone, appointmentDate, doctors, visitInfo);
     }
 }

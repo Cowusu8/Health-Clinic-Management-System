@@ -10,14 +10,19 @@ public class MainController {
         return "index";
     }
 
-    @GetMapping("/index/success")
-    public String successpage(){
-    return "index";
+    @GetMapping("/adminportal")
+    public String adminportal(){
+        return "admin_portal";
     }
 
-    @GetMapping("/login")
-    public String loginPage(){
-        return "/login";
+    @GetMapping("/docportal")
+    public String docportal(){
+        return "doc_portal";
+    }
+
+    @GetMapping("/doctors")
+    public String doc(){
+        return "doc";
     }
 
     @GetMapping("/403")
@@ -25,23 +30,15 @@ public class MainController {
         return "403";
     }
 
-    @GetMapping("/admin")
-    public String secondPage(){
-        return "login";
-    }
-
     @GetMapping("/admindash")
     public String admindashPage(){
-        return "admindash";
+        return "admin_dash";
+    }
+    @GetMapping("/docdash")
+    public String docdashPage(){
+        return "doc_dash";
     }
 
-    @GetMapping("/appointment")
-    public String appointPage(){
-        return "appointment";
-    }
 
-    @GetMapping("/doc-portal")
-    public String docportal(){
-        return "doctorsportal";
-    }
+
 }

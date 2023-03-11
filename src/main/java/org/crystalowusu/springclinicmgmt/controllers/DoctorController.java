@@ -23,22 +23,14 @@ public class DoctorController {
     @Autowired
     private DoctorsRepo dRepo;
 
-    @GetMapping("/doctors") //http://localhost:8080/docs
-    public String showdoc(){
-        log.warn("test");
-        return "doc";
-    }
+
     @GetMapping("/doctor-portal") //http://localhost:8080/docportal
     public String showdoctorsportal(){
         log.warn("test");
         return "doctorsportal";
     }
 
-    @GetMapping("/doc-dash") //http://localhost:8080/docdash
-    public String showdocdash(){
-        log.warn("test");
-        return "docdash";
-    }
+
 
     @GetMapping("/adddoc") //http://localhost:8080/docs
     public String showemdoc(){
