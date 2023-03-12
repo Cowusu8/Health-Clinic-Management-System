@@ -1,9 +1,7 @@
 package org.crystalowusu.springclinicmgmt.security;
 
-
-//import org.crystalowusu.springclinicmgmt.dto.CombineUsers;
+import org.crystalowusu.springclinicmgmt.models.Admin;
 import org.crystalowusu.springclinicmgmt.models.AuthGroup;
-import org.crystalowusu.springclinicmgmt.models.Doctor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -12,31 +10,29 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class ClinicUserPrincipal implements UserDetails {
-    private Doctor doctor;
-    //private CombineUsers combineUsers;
-    private List<AuthGroup> authGroup;
+public class MyAdminPrincipal implements UserDetails {
+    Admin admin;
+    List<AuthGroup> authGroup;
 
-    public ClinicUserPrincipal(Doctor Doctor, List<AuthGroup> authGroup) {
 
-        this.doctor = doctor;
-        this.authGroup=authGroup;
+    public MyAdminPrincipal(Admin admin, List<AuthGroup> authGroup) {
+        this.admin = admin;
+        this.authGroup = authGroup;
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return authGroup.stream().map(auth -> new SimpleGrantedAuthority(auth.getRole())).collect(Collectors.toList());
-
+        return authGroup.stream().map( auth -> new SimpleGrantedAuthority(auth.getRole())).collect(Collectors.toList());
     }
 
     @Override
     public String getPassword() {
-        return doctor.getPassword();
+        return admin.getPassword();
     }
 
     @Override
     public String getUsername() {
-        return doctor.getEmail();
+        return admin.getEmail();
     }
 
     @Override

@@ -25,7 +25,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 public class SpringSecurityConfig {
 
     @Autowired
-    ClinicUserDetailsService clinicUserDetailsService;
+    MyAdminDetailsService myAdminDetailsService;
 
 
     @Bean
@@ -37,7 +37,7 @@ public class SpringSecurityConfig {
     public DaoAuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
         provider.setPasswordEncoder(passwordEncoder());
-        provider.setUserDetailsService(clinicUserDetailsService);
+        provider.setUserDetailsService(myAdminDetailsService);
         return provider;
     }
 
@@ -51,18 +51,18 @@ public class SpringSecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeHttpRequests((requests) -> requests
-                        .requestMatchers("/vendor/**","/css/**","/js/**","/static/**","/img/**","/index","/json/**","/doctorpics").permitAll()
+                        .requestMatchers("/", "/error/**", "/styles/**", "/assets/**", "/vendor/**","/css/**","/js/**","/static/**","/img/**","/index","/json/**","/doctorpics", "/login/**").permitAll()
                         .requestMatchers("/admindash/**").hasRole("ADMIN")
                         .requestMatchers("/doc-dash/**").hasRole("DOCTOR")
                         .anyRequest().authenticated()
                 )
                 .formLogin((form) -> form
-                        .loginPage("/docportal")
-                        .usernameParameter("username")
+                        .loginPage("/login")
+                        .usernameParameter("email")
                         .passwordParameter("password")
-                        .loginProcessingUrl("/docportal/processing")
-                        .defaultSuccessUrl("/docdash/success")
-                        .failureUrl("/docportal?error=true")
+                        .loginProcessingUrl("/login/processing")
+                        .defaultSuccessUrl("/admindash")
+                        .failureUrl("/login?error=true")
                         .permitAll()
                 )
                 .logout((logout) -> logout.logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/")

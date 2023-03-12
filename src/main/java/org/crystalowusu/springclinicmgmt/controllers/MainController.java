@@ -6,14 +6,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller //Annotation
 public class MainController { //Class
-@GetMapping("/index") //Index Page path
+    @GetMapping("/index") //Index Page path
     public String homePage(){
         return "index";
     }
 
-    @GetMapping("/adminportal") //Admin Portal Path
+    @GetMapping("/login") //Admin Portal Path
     public String adminPortal(){
-        return "admin_portal";
+        return "login";
     }
 
     @GetMapping("/docportal") //Doctor's Portal Path
@@ -26,10 +26,10 @@ public class MainController { //Class
         return "doc";
     }
 
-    @GetMapping("/403") //Error 403 Page
-    public String security(){
-        return "403";
-    }
+//    @GetMapping("/403") //Error 403 Page
+//    public String security(){
+//        return "403";
+//    }
 
     @GetMapping("/admindash") //Admin Dashboard Page
     public String adminDashPage(){

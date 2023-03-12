@@ -86,10 +86,10 @@
         </div>
 
         <div class="col-4">
-            <form method="POST" th:action="@{/adminportal/processing}">
+            <form method="POST" th:action="@{/login/processing}">
                 <div class="mb-3 mt-3">
-                    <label class="form-label" for="username">Email:</label>
-                    <input class="form-control" id="username" name="username" placeholder="Enter username" type="username">
+                    <label class="form-label" for="email">Email:</label>
+                    <input class="form-control" id="email" name="email" placeholder="Enter email" type="email">
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="password">Password:</label>
@@ -101,6 +101,11 @@
                     </label>
                 </div>-->
                 <button class="btn btn-primary" type="submit">Submit</button>
+                <div
+                        class="alert alert-danger" role="alert"
+                        th:if="${param.error}"
+                >Wrong User or Password</div>
+        </div>
             </form>
 
         </div>

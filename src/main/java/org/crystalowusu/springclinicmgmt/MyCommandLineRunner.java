@@ -1,11 +1,14 @@
 package org.crystalowusu.springclinicmgmt;
 
 import lombok.extern.slf4j.Slf4j;
+import org.crystalowusu.springclinicmgmt.dao.AdminRepoI;
 import org.crystalowusu.springclinicmgmt.dao.AuthGroupRepoI;
 import org.crystalowusu.springclinicmgmt.dao.DoctorsRepo;
 import org.crystalowusu.springclinicmgmt.dao.PatientsRepo;
+import org.crystalowusu.springclinicmgmt.models.Admin;
 import org.crystalowusu.springclinicmgmt.models.AuthGroup;
 import org.crystalowusu.springclinicmgmt.models.Doctor;
+import org.crystalowusu.springclinicmgmt.services.AdminService;
 import org.crystalowusu.springclinicmgmt.services.DoctorService;
 import org.crystalowusu.springclinicmgmt.services.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,14 +18,26 @@ import org.springframework.stereotype.Component;
 @Component @Slf4j
 public class MyCommandLineRunner implements CommandLineRunner {
     PatientsRepo patientsRepo;
+    AdminRepoI adminRepoI;
+    AdminService adminService;
     AuthGroupRepoI authGroupRepoI;
     DoctorsRepo doctorsRepo;
     DoctorService doctorService;
     PatientService patientService;
 
     @Autowired
-    public MyCommandLineRunner(PatientsRepo patientsRepo, AuthGroupRepoI authGroupRepoI, DoctorsRepo doctorsRepo, DoctorService doctorService,  PatientService patientService) {
+    public MyCommandLineRunner(
+            PatientsRepo patientsRepo,
+            AdminRepoI adminRepoI,
+            AdminService adminService,
+            AuthGroupRepoI authGroupRepoI,
+            DoctorsRepo doctorsRepo,
+            DoctorService doctorService,
+            PatientService patientService
+    ) {
         this.patientsRepo = patientsRepo;
+        this.adminRepoI = adminRepoI;
+        this.adminService = adminService;
         this.authGroupRepoI = authGroupRepoI;
         this.doctorsRepo = doctorsRepo;
         this.doctorService = doctorService;
@@ -31,10 +46,11 @@ public class MyCommandLineRunner implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+        adminRepoI.saveAndFlush(
+                new Admin("crystal@mail.com", "password")
+        );
 
-
-
-        AuthGroup authGroup1 = new AuthGroup ("crystal1","ROLE_ADMIN");
+        AuthGroup authGroup1 = new AuthGroup ("crystal@mail.com","ROLE_ADMIN");
         AuthGroup authGroup2 = new AuthGroup ("crystal2","ROLE_ADMIN");
         AuthGroup authGroup3 = new AuthGroup ("crystal3","ROLE_ADMIN");
         AuthGroup authGroup4 = new AuthGroup ("crystal4","ROLE_ADMIN");
@@ -45,10 +61,10 @@ public class MyCommandLineRunner implements CommandLineRunner {
 
 
 
-        Doctor Owens1 = new Doctor("Cindy Owens", "03-24-1977","Female", "983-223-1927", "123 street", "cindyowen@gmail.com", "password");
-        Doctor Owens2 = new Doctor("Brittany Owens","08-13-1987","male", "508-235-1997", "2673 street", "crystalowen@gmail.com", "password");
-        doctorsRepo.save(Owens1);
-        doctorsRepo.save(Owens2);
+//        Doctor Owens1 = new Doctor("Cindy Owens", "03-24-1977","Female", "983-223-1927", "123 street", "cindyowen@gmail.com", "password");
+//        Doctor Owens2 = new Doctor("Brittany Owens","08-13-1987","male", "508-235-1997", "2673 street", "crystalowen@gmail.com", "password");
+//        doctorsRepo.save(Owens1);
+//        doctorsRepo.save(Owens2);
 
 
         AuthGroup authGroup5 = new AuthGroup ("smithdoe","ROLE_DOCTOR");
