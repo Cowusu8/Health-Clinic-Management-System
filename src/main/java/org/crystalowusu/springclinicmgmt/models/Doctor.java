@@ -7,6 +7,7 @@ import lombok.*;
 import lombok.Data;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 //import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import java.util.*;
 
@@ -17,7 +18,7 @@ import java.util.*;
 @Slf4j
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
+//@AllArgsConstructor
 @RequiredArgsConstructor
 @Entity
 @Table(name="Doctors_Table")
@@ -42,10 +43,21 @@ public class Doctor { // Class
     private String password;
 
 
-//    public String setPassword(String password)  {
-//        return   this.password = new BCryptPasswordEncoder(4).encode(password);
-//    }
+    public String setPassword(String password)  {
+        return   this.password = new BCryptPasswordEncoder(4).encode(password);
+    }
 
+
+    public Doctor(@NonNull String fullName, @NonNull String birthDate, @NonNull String gender, @NonNull String phone, @NonNull String address, @NonNull String email, @NonNull String password) {
+        this.fullName = fullName;
+        this.birthDate = birthDate;
+        this.gender = gender;
+        this.phone = phone;
+        this.address = address;
+        this.email = email;
+        this.password = setPassword(password);
+        this.patients = patients;
+    }
 
     @ToString.Exclude
     @ManyToMany(fetch = FetchType.EAGER,mappedBy = "doctors", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH,CascadeType.REMOVE})

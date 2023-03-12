@@ -86,10 +86,10 @@
         </div>
 
         <div class="col-4">
-            <form th:action="@{/login/processing}">
+            <form method="POST" th:action="@{/adminportal/processing}">
                 <div class="mb-3 mt-3">
                     <label class="form-label" for="username">Email:</label>
-                    <input class="form-control" id="username" name="username" placeholder="Enter username" type="text">
+                    <input class="form-control" id="username" name="username" placeholder="Enter username" type="username">
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="password">Password:</label>
