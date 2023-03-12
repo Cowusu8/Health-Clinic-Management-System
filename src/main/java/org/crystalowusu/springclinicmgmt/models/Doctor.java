@@ -16,17 +16,16 @@ import java.util.*;
 @Setter
 @ToString
 @Slf4j
-@Data
 @NoArgsConstructor
-//@AllArgsConstructor
+@AllArgsConstructor
 @RequiredArgsConstructor
 @Entity
 @Table(name="Doctors_Table")
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Doctor { // Class
 
-    @Id @GeneratedValue(strategy = GenerationType.AUTO) @NonNull @Column (name = "Id",unique = true)
-    private long Id;
+    @Id @GeneratedValue(strategy = GenerationType.AUTO) @NonNull @Column (unique = true)
+    private long id;
     @NonNull @Column(name = "fullName",length = 100)
     private String fullName;
     @NonNull @Column(name = "birthDate",length = 10)
@@ -42,22 +41,16 @@ public class Doctor { // Class
     @NonNull @Setter(AccessLevel.NONE)
     private String password;
 
-
-//    public String setPassword(String password)  {
-//        return this.password = new BCryptPasswordEncoder(4).encode(password);
+//    public Doctor(@NonNull String fullName, @NonNull String birthDate, @NonNull String gender, @NonNull String phone, @NonNull String address, @NonNull String email) {
+//        this.fullName = fullName;
+//        this.birthDate = birthDate;
+//        this.gender = gender;
+//        this.phone = phone;
+//        this.address = address;
+//        this.email = email;
+//        //this.password = setPassword(password);
+////        //this.patients = patients;
 //    }
-
-
-    public Doctor(@NonNull String fullName, @NonNull String birthDate, @NonNull String gender, @NonNull String phone, @NonNull String address, @NonNull String email) {
-        this.fullName = fullName;
-        this.birthDate = birthDate;
-        this.gender = gender;
-        this.phone = phone;
-        this.address = address;
-        this.email = email;
-        //this.password = setPassword(password);
-//        //this.patients = patients;
-    }
 
     @ToString.Exclude
     @ManyToMany(fetch = FetchType.EAGER,mappedBy = "doctors", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH,CascadeType.REMOVE})
@@ -67,12 +60,12 @@ public class Doctor { // Class
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Doctor doctor)) return false;
-        return Id == doctor.Id && fullName.equals(doctor.fullName) && birthDate.equals(doctor.birthDate) && gender.equals(doctor.gender) && phone.equals(doctor.phone) && address.equals(doctor.address) && email.equals(doctor.email) && password.equals(doctor.password) && Objects.equals(patients, doctor.patients);
+        return id == doctor.id && fullName.equals(doctor.fullName) && birthDate.equals(doctor.birthDate) && gender.equals(doctor.gender) && phone.equals(doctor.phone) && address.equals(doctor.address) && email.equals(doctor.email) && password.equals(doctor.password) && Objects.equals(patients, doctor.patients);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(Id, fullName, birthDate, gender, phone, address, email, password, patients);
+        return Objects.hash(id, fullName, birthDate, gender, phone, address, email, password, patients);
     }
 
 

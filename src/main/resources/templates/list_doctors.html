@@ -46,7 +46,7 @@
         </thead>
         <tbody>
         <tr th:each="doctor: ${doctors}">
-            <td th:text="${doctor.Id}"></td>
+            <td th:text="${doctor.id}"></td>
             <td th:text="${doctor.fullName}"></td>
             <td th:text="${doctor.gender}"></td>
             <td th:text="${doctor.birthDate}"></td>
@@ -55,9 +55,9 @@
             <td th:text="${doctor.password}"></td>
             <td th:text="${doctor.address}"></td>
             <td>
-                <a class="btn btn-info" th:href="@{/showUpdateDoctor(doctorId=${doctor.Id})}">Update</a>
+                <a class="btn btn-info" th:href="@{/showUpdateDoctor(doctorId=${doctor.id})}">Update</a>
 
-                <a class="btn btn-danger ml-2" th:href="@{/deleteDoctor(doctorId=${doctor.id})}">Delete</a>
+                <a class="btn btn-danger ml-2" th:href="@{/deleteDoctor/${doctor.id)}">Delete</a>
             </td>
         </tr>
         </tbody>

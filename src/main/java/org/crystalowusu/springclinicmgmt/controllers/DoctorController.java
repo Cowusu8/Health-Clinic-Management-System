@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 // Annotations
 @Controller  @Slf4j
@@ -23,7 +24,7 @@ public class DoctorController { //Class
     // Read operation
     @GetMapping("/doctors")
     public String showDoctorList(Model model) {
-        model.addAttribute("doctors", dRepo.findAll());
+         model.addAttribute("doctors", dRepo.findAll());
         return "list_doctors";
     }
 
@@ -43,26 +44,32 @@ public class DoctorController { //Class
         return "redirect:/doctors";
     }
 
-    @PostMapping("/saveDoctors/{id}")
-    public String updateDoctor(@PathVariable("id") long id, @Valid Doctor doctor,
-                                BindingResult result, Model model) {
-        if (result.hasErrors()) {
-            doctor.setId(id);
-            return "add_doctor_form";
-        }dRepo.save(doctor);
-        return "redirect:/doctors";
-    }
-    @GetMapping("/showUpdateDoctor/{id}")
-    public String showUpdateDocForm(@PathVariable("id") long id, Model model) {
-        Doctor doctor = dRepo.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Invalid doctor Id:" + id));
+//    @PostMapping("/saveDoctors/{id}")
+//    public String updateDoctor(@PathVariable("id") long id, @Valid Doctor doctor,
+//                                BindingResult result, Model model) {
+//        if (result.hasErrors()) {
+//            doctor.setId(id);
+//            return "add_doctor_form";
+//        }dRepo.save(doctor);
+//        return "redirect:/doctors";
+//    }
 
-        model.addAttribute("doctor", doctor);
-        return "add_doctors_form";
+    public String deleteDoctors(@RequestParam Long id) {
+        dRepo.deleteById(id);
+        return "redirect:/patients";
     }
+
+    @GetMapping("/showUpdateDoctor")
+    public ModelAndView showUpdateForm(@RequestParam Long doctorId) {
+        ModelAndView mav = new ModelAndView("add-patient-form");
+        Doctor doctor = dRepo.findById(doctorId).get();
+        mav.addObject("doctors", doctor);
+        return mav;
+    }
+
 
     // Update operation
-    @PutMapping("/doctor/{id}")
+//    @PutMapping("/doctor/{id}")
 
 //    public Doctor
 //    updateDoctor(@RequestBody Doctor doctor,
@@ -74,15 +81,13 @@ public class DoctorController { //Class
 
 
     // Delete Operation
-    @DeleteMapping("/deleteDoctor/{id}")
-
-    public String deleteDoctorById(@PathVariable("id")
-                                       Long Id)
-    {
-        dRepo.deleteDoctorById(
-                Id);
-        return "Deleted Successfully";
-    }
+//    @DeleteMapping("/deleteDoctor/{id}")
+//    public String deleteDoctorById(@PathVariable("id") Long id)
+//    {
+//        dRepo.deleteDoctorById(id);
+//
+//        return "Deleted Successfully";
+//    }
 
 
 }
