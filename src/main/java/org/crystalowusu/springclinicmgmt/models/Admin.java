@@ -1,13 +1,14 @@
+// Required package modules
 package org.crystalowusu.springclinicmgmt.models;
 
-
+// Importing required classes
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
-
 import java.util.Objects;
 
+//Lombok and Data JPA Annotations
 @Data
 @Entity
 @NoArgsConstructor
@@ -19,7 +20,7 @@ import java.util.Objects;
 @RequiredArgsConstructor
 @Table(name="Admin")
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Admin {
+public class Admin { // Class
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

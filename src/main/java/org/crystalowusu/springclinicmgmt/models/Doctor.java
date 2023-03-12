@@ -1,5 +1,7 @@
+// Required package modules
 package org.crystalowusu.springclinicmgmt.models;
 
+// Importing required classes
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.Data;
@@ -8,7 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 //import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import java.util.*;
 
-
+//Lombok and Data JPA Annotations
 @Getter
 @Setter
 @ToString
@@ -20,12 +22,11 @@ import java.util.*;
 @Entity
 @Table(name="Doctors_Table")
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Doctor {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "Id")
-    private Long Id;
-    @NonNull @Column(name = "name",length = 100)
+public class Doctor { // Class
+
+    @Id @GeneratedValue(strategy = GenerationType.AUTO) @NonNull @Column (name = "Id",unique = true)
+    private long Id;
+    @NonNull @Column(name = "fullName",length = 100)
     private String fullName;
     @NonNull @Column(name = "birthDate",length = 10)
     private String birthDate;
@@ -50,27 +51,18 @@ public class Doctor {
     @ManyToMany(fetch = FetchType.EAGER,mappedBy = "doctors", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH,CascadeType.REMOVE})
     Set<Patient> patients = new LinkedHashSet<>();
 
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Doctor doctor)) return false;
-        return Id.equals(doctor.Id) && fullName.equals(doctor.fullName) && email.equals(doctor.email) && birthDate.equals(doctor.birthDate) && gender.equals(doctor.gender) && address.equals(doctor.address) && phone.equals(doctor.phone) && patients.equals(doctor.patients)&& password.equals(doctor.password);
+        return Id == doctor.Id && fullName.equals(doctor.fullName) && birthDate.equals(doctor.birthDate) && gender.equals(doctor.gender) && phone.equals(doctor.phone) && address.equals(doctor.address) && email.equals(doctor.email) && password.equals(doctor.password) && Objects.equals(patients, doctor.patients);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(Id, fullName, email, birthDate, gender, address, phone, patients,password);
+        return Objects.hash(Id, fullName, birthDate, gender, phone, address, email, password, patients);
     }
 
-    /*public List<String> controllerGetPatients() {
-        List<String> patient= new ArrayList<>();
-        for (Patient p:patients){
-            patient.add(p.getFullName());
 
-
-        }
-        return patient;
-    }*/
 
 }

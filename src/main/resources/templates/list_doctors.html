@@ -23,7 +23,7 @@
 
     <hr/>
     <div class="d-grid gap-2  justify-content-md-end">
-        <a class="btn btn-primary" th:href="@{/add-doctor-form}">Add Employee</a>
+        <a class="btn btn-primary" th:href="@{/addDoctorsForm}">Add Doctor</a>
         <a class="btn btn-primary" th:href="@{/admindash}">Back to Dashboard</a>
     </div>
     <br/>
@@ -37,6 +37,7 @@
             <th>Birth Date</th>
             <th>Email</th>
             <th>Phone</th>
+            <th>Password</th>
             <th>Address</th>
             <th>Actions</th>
 
@@ -44,18 +45,19 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="patient: ${doctor}">
-            <td text="${doctor.Id}"></td>
-            <td text="${doctor.fullName}"></td>
-            <td text="${doctor.gender}"></td>
-            <td text="${doctor.birthDate}"></td>
-            <td text="${doctor.email}"></td>
-            <td text="${doctor.phone}"></td>
-            <td text="${doctor.address}"></td>
+        <tr th:each="doctor: ${doctors}">
+            <td th:text="${doctor.Id}"></td>
+            <td th:text="${doctor.fullName}"></td>
+            <td th:text="${doctor.gender}"></td>
+            <td th:text="${doctor.birthDate}"></td>
+            <td th:text="${doctor.phone}"></td>
+            <td th:text="${doctor.email}"></td>
+            <td th:text="${doctor.password}"></td>
+            <td th:text="${doctor.address}"></td>
             <td>
-                <a class="btn btn-info" href="@{/showUpdateDocForm(doctorId=${doctor.Id})}">Update</a>
+                <a class="btn btn-info" th:href="@{/showUpdateDoctor(doctorId=${doctor.Id})}">Update</a>
 
-                <a class="btn btn-danger ml-2" href="@{/deleteDoctor(doctorId=${doctor.id})}">Delete</a>
+                <a class="btn btn-danger ml-2" th:href="@{/deleteDoctor(doctorId=${doctor.id})}">Delete</a>
             </td>
         </tr>
         </tbody>

@@ -16,32 +16,32 @@
     <h1>Register Doctor</h1>
     <hr/>
 
-    <form method="POST" th:action="@{/save-doctors}" th:object="${doctor}">
+    <form method="POST" th:action="@{/add-doctor}" th:object="${doctor}">
 
-        <input class="form-control col-3 mb-4" placeholder="Enter Visit Date" field="*{fullName}" type="text"/>
+        <input class="form-control col-3 mb-4" placeholder="Enter Visit Date" th:field="*{fullName}" type="text"/>
 
-        <input class="form-control col-3 mb-4" placeholder="Enter Diagnosis" field="*{birthDate}" type="text"/>
+        <input class="form-control col-3 mb-4" placeholder="Enter Diagnosis" th:field="*{birthDate}" type="text"/>
 
         <label class="form-control col-3 mb-2">Gender?
-            <input field="*{gender}" type="checkbox" value="Male"/>Male
-            <input field="*{gender}" type="checkbox" value="Female"/>Female
+            <input th:field="*{gender}" type="checkbox" value="Male"/>Male
+            <input th:field="*{gender}" type="checkbox" value="Female"/>Female
         </label>
 
-        <input class="form-control col-3 mb-4" placeholder="Enter Address" field="*{address}" type="text"/>
+        <input class="form-control col-3 mb-4" placeholder="Enter Address" th:field="*{address}" type="text"/>
 
-        <input class="form-control col-3 mb-4" placeholder="Enter Phone Number" field="*{phone}" type="text"/>
+        <input class="form-control col-3 mb-4" placeholder="Enter Phone Number" th:field="*{phone}" type="text"/>
 
-        <input class="form-control col-3 mb-4" placeholder="Enter Username" field="*{username}" type="text"/>
+        <input class="form-control col-3 mb-4" placeholder="Enter Email" th:field="*{email}" type="text"/>
 
-        <input class="form-control col-3 mb-4" placeholder="Enter Password" field="*{password}" type="text"/>
+        <input class="form-control col-3 mb-4" placeholder="Enter Password" th:field="*{password}" type="text"/>
 
 
         <button class="btn btn-primary col-2" type="submit">Save</button>
-        <input field="*{Id}" type="hidden"/>
+        <input th:field="*{Id}" type="hidden"/>
 
     </form>
     <hr/>
-    <a th:href="@{/add-doctor}">List of Doctors</a>
+    <a th:href="@{/doctors}">List of Doctors</a>
 </div>
 
 </body>

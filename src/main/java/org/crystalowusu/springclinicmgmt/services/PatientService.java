@@ -1,39 +1,49 @@
+//Required package modules
 package org.crystalowusu.springclinicmgmt.services;
 
+// Importing required classes
 import org.crystalowusu.springclinicmgmt.dao.PatientsRepo;
 import org.crystalowusu.springclinicmgmt.models.Patient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+
 
 @Service
-public class PatientService {
+public class PatientService { // Class
+
     @Autowired
-    private PatientsRepo repo;
+    private PatientsRepo pRepo;
 
-    public void savePatient(Patient p) {
-//        p.setId(12234);
-        repo.save(p);
+    // Save operation
+    public Patient savePatient(Patient patient)
+    {
+        return pRepo.save(patient);
     }
 
-    public List<Patient> getAllPatients() {
-        return repo.findAll();
+    // Read operation
+    public List<Patient> fetchPatientList()
+    {
+        return (List<Patient>)
+                pRepo.findAll();
     }
 
-    public Patient getPatientById(Long id) {
-        Optional<Patient> p = repo.findById(id);
-        if (p.isPresent()) {
-            return p.get();
-        }
-        return null;
+    // Update operation
+    public Patient
+    updateDoctor(Patient patient,
+                 Long Id)
+    {
+
+        Patient pat
+                = pRepo.findById(Id)
+                .get();
+        return pRepo.save(pat);
     }
 
-    public void deleteEMp(Long id) {
-        repo.deleteById(id);
+    // Delete operation
+    public void deletePatientById(Long Id)
+    {
+        pRepo.deleteById(Id);
     }
-
 
 }

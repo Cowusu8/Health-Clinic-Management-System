@@ -24,7 +24,7 @@
     <hr/>
     <div class="d-grid gap-2  justify-content-md-end">
         <a class="btn btn-primary" th:href="@{/addPatientsForm}">Add Patient</a>
-        <a class="btn btn-primary" th:href="@{/recepdash}">Back to Dashboard</a>
+        <a class="btn btn-primary" th:href="@{/docdash}">Back to Dashboard</a>
     </div>
     <br/>
     <table class="table table-bordered table-striped" id="patientsTable">
@@ -53,9 +53,9 @@
             <td th:text="${patient.phone}"></td>
             <td th:text="${patient.address}"></td>
             <td>
-                <a class="btn btn-info" th:href="@{/showUpdatePatient(patientId=${patient.Id})}">Update</a>
+                <a class="btn btn-info" th:href="@{/savePatients(patientId=${patient.Id})}">Update</a>
 
-                <a class="btn btn-danger ml-2" th:href="@{/deletePatient(patientId=${patient.id})}">Delete</a>
+                <a class="btn btn-danger ml-2" th:href="@{/deletePatient/{id}(patientId=${patient.id})}">Delete</a>
             </td>
         </tr>
         </tbody>

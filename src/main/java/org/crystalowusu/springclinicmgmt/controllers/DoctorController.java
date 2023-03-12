@@ -1,135 +1,88 @@
+//Required package modules
 package org.crystalowusu.springclinicmgmt.controllers;
 
+// Importing required classes
+import jakarta.validation.Valid;
 import org.crystalowusu.springclinicmgmt.dao.DoctorsRepo;
-import org.crystalowusu.springclinicmgmt.dao.PatientsRepo;
 import org.crystalowusu.springclinicmgmt.models.Doctor;
 import lombok.extern.slf4j.Slf4j;
-import org.crystalowusu.springclinicmgmt.models.Patient;
+import org.crystalowusu.springclinicmgmt.services.DoctorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
+// Annotations
 @Controller  @Slf4j
-public class DoctorController {
-//    @Autowired
-//    private PatientsRepo patientsRepo;
+public class DoctorController { //Class
 
     @Autowired
     private DoctorsRepo dRepo;
 
-
-    @GetMapping("/doctor-portal") //http://localhost:8080/docportal
-    public String showdoctorsportal(){
-        log.warn("test");
-        return "doctorsportal";
+    // Read operation
+    @GetMapping("/doctors")
+    public String showDoctorList(Model model) {
+        model.addAttribute("doctors", dRepo.findAll());
+        return "list_doctors";
     }
 
-
-
-    @GetMapping("/adddoc") //http://localhost:8080/docs
-    public String showemdoc(){
-        log.warn("test");
-        return "add-doctor-form";
+    @GetMapping("/addDoctorsForm")
+    public String showDocSignUpForm(Doctor doctor) {
+        return "add_doctor_form";
     }
 
+    // Save operation
+    @PostMapping("/add-doctor")
+    public String addDoctor(@Valid Doctor doctor, BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            return "add_doctor_form";
+        }
 
-    @GetMapping({"/add-doctors", "/add-doctor"})
-    public ModelAndView showDoctors() {
-        ModelAndView mav = new ModelAndView("listdoctors");
-        List<Doctor> doctors = dRepo.findAll();
-        mav.addObject("doctors", doctors);
-        return mav;
-    }
-
-    @GetMapping("/add-doctor-form")
-    public ModelAndView addDoctorsForm() {
-        ModelAndView mav = new ModelAndView("add-doctor-form");
-        Doctor newDoctor = new Doctor();
-        mav.addObject("doctors", newDoctor);
-        return mav;
-    }
-
-    @PostMapping("/save-doctors")
-    public String saveDoctor(@ModelAttribute Doctor doctor) {
         dRepo.save(doctor);
-        return "redirect:/add-doctor";
-    }
-
-    @GetMapping("/update-doc-form")
-    public ModelAndView showUpdatedocForm(@RequestParam Long doctorId) {
-        ModelAndView mav = new ModelAndView("add-doctor-form");
-        Doctor doctor = dRepo.findById(doctorId).get();
-        mav.addObject("doctor", doctor);
-        return mav;
-    }
-//
-//
-//    @GetMapping({"/add-patients", "/add-patient"})
-//    public ModelAndView showPatients() {
-//        ModelAndView mav = new ModelAndView("listpatients");
-//        List<Patient> patients = patientsRepo.findAll();
-//        mav.addObject("patients", patients);
-//        return mav;
-//    }
-//
-//    @GetMapping("/add-patient-form")
-//    public ModelAndView addPatientForm() {
-//        ModelAndView mav = new ModelAndView("add-patient-form");
-//        Patient newPatient = new Patient();
-//        mav.addObject("patients", newPatient);
-//        return mav;
-//    }
-//
-//    @PostMapping("/save-patient")
-//    public String savePatient(@ModelAttribute Patient patient) {
-//        patientsRepo.save(patient);
-//        return "redirect:/add-patient";
-//    }
-//
-//  /*  @PostMapping("/save-newpatient")
-//    public String savenewPatient(@ModelAttribute Patient patient) {
-//        patientsRepo.save(patient);
-//        return "redirect:/add-patient";
-//    }*/
-//    //"/update-patient-form"
-//    @GetMapping("/update-patient-form")
-//    public ModelAndView showUpdateForm(@RequestParam Long patientId) {
-//        ModelAndView mav = new ModelAndView("add-patient-form");
-//        Patient patient = patientsRepo.findById(patientId).get();
-//        mav.addObject("patient", patient);
-//        return mav;
-//    }
-
-
-
-//    @GetMapping("/delete-patient")
-//    public String deletePatient(@RequestParam Long patientId) {
-//        dRepo.deleteById(patientId);
-//        return "redirect:/listpatients";
-//    }
-
-
-
-
-
-    @GetMapping("/delete-doctor")
-    public String deleteDoctor(@RequestParam Long doctorId) {
-        dRepo.deleteById(doctorId);
         return "redirect:/doctors";
     }
 
+    @PostMapping("/saveDoctors/{id}")
+    public String updateDoctor(@PathVariable("id") long id, @Valid Doctor doctor,
+                                BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            doctor.setId(id);
+            return "add_doctor_form";
+        }dRepo.save(doctor);
+        return "redirect:/doctors";
+    }
+    @GetMapping("/showUpdateDoctor/{id}")
+    public String showUpdateDocForm(@PathVariable("id") long id, Model model) {
+        Doctor doctor = dRepo.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid doctor Id:" + id));
+
+        model.addAttribute("doctor", doctor);
+        return "add_doctors_form";
+    }
+
+    // Update operation
+    @PutMapping("/doctor/{id}")
+
+//    public Doctor
+//    updateDoctor(@RequestBody Doctor doctor,
+//                     @PathVariable("id") Long Id)
+//    {
+//        return DoctorService.updateDoctor(
+//                doctor, Id);
+//    }
 
 
+    // Delete Operation
+    @DeleteMapping("/deleteDoctor/{id}")
 
-
-
-
+    public String deleteDoctorById(@PathVariable("id")
+                                       Long Id)
+    {
+        dRepo.deleteDoctorById(
+                Id);
+        return "Deleted Successfully";
+    }
 
 
 }

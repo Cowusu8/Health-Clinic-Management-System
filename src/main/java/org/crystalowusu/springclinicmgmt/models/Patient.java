@@ -1,14 +1,16 @@
+//Required package modules
 package org.crystalowusu.springclinicmgmt.models;
+
+// Importing required classes
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
-
 import java.util.LinkedHashSet;
 import java.util.Objects;
 import java.util.Set;
 
-
+//Lombok and Data JPA Annotations
 @Data
 @Slf4j
 @AllArgsConstructor
@@ -19,7 +21,7 @@ import java.util.Set;
 @Entity
 @Table(name="Patients_Table")
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Patient {
+public class Patient {  // Class
 
     @Id @GeneratedValue(strategy = GenerationType.AUTO) @NonNull @Column (unique = true)
     private long id;
@@ -27,7 +29,7 @@ public class Patient {
     private String fullName;@NonNull
     @Column(name="gender", length = 7)
     private String gender;@NonNull
-    @Column(name = "email",length = 100, unique = true)
+    @Column(name = "email",length = 100, unique = true) //@Email @Pattern()
     private String email;@NonNull
     @Column(name = "birthdate", length = 10)
     private String birthDate;@NonNull
