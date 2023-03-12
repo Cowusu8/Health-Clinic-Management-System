@@ -27,7 +27,7 @@ public class Admin { // Class
     int id;
 
     @NonNull
-    String Email;
+    String email;
 
     @NonNull
     String password;
@@ -36,11 +36,11 @@ public class Admin { // Class
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Admin admin)) return false;
-        return id == admin.id && Email.equals(admin.Email) && password.equals(admin.password);
+        return id == admin.id && email.equals(admin.email) && password.equals(admin.password);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, Email, password);
+        return Objects.hash(id, email, password);
     }
 }

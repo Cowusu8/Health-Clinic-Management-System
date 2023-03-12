@@ -44,7 +44,7 @@ public class Doctor { // Class
 
 
     public String setPassword(String password)  {
-        return   this.password = new BCryptPasswordEncoder(4).encode(password);
+        return this.password = new BCryptPasswordEncoder(4).encode(password);
     }
 
 
@@ -56,7 +56,7 @@ public class Doctor { // Class
         this.address = address;
         this.email = email;
         this.password = setPassword(password);
-        this.patients = patients;
+//        this.patients = patients;
     }
 
     @ToString.Exclude
