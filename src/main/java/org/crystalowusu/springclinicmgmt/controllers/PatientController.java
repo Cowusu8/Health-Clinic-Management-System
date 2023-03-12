@@ -38,7 +38,7 @@ public class PatientController {
     @PostMapping("/savePatients")
     public String savePatient(@ModelAttribute Patient patient) {
         pRepo.save(patient);
-        return "redirect:/patient";
+        return "redirect:/patients";
     }
 
     @GetMapping("/showUpdatePatient")

@@ -21,9 +21,8 @@ import java.util.Set;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Patient {
 
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Id @NonNull @Column (unique = true)
-    private Long id; //Id
+    @Id @GeneratedValue(strategy = GenerationType.AUTO) @NonNull @Column (unique = true)
+    private long id;
     @Column  (name = "fullName", length = 100)
     private String fullName;@NonNull
     @Column(name="gender", length = 7)
