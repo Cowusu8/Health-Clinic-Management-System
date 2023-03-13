@@ -18,4 +18,5 @@ public interface PatientsRepo extends JpaRepository<Patient, Long> {
     @Query
     Optional<Patient> findByGender(String gender);
 
+   Optional<Patient> findById(long id);
 }

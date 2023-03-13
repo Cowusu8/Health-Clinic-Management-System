@@ -3,6 +3,8 @@ package org.crystalowusu.springclinicmgmt.models;
 
 // Importing required classes
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.*;
 import lombok.Data;
 import lombok.experimental.FieldDefaults;
@@ -26,17 +28,17 @@ public class Doctor { // Class
 
     @Id @GeneratedValue(strategy = GenerationType.AUTO) @NonNull @Column (unique = true)
     private long id;
-    @NonNull @Column(name = "fullName",length = 100)
+    @NonNull @Column(name = "fullName",length = 100) @NotBlank @Size(message = "Name is mandatory", min = 12)
     private String fullName;
-    @NonNull @Column(name = "birthDate",length = 10)
+    @NonNull @Column(name = "birthDate",length = 10) @NotBlank(message = "Birthdate is mandatory")
     private String birthDate;
-    @NonNull @Column(name="gender", length = 7)
+    @NonNull @Column(name="gender", length = 7) @NotBlank(message = "Gender is mandatory")
     private String gender;
-    @NonNull @Column(name = "phone", length = 12)
+    @NonNull @Column(name = "phone", length = 12) @NotBlank(message = "Phone is mandatory")
     private String phone;
-    @NonNull @Column(name="address", length = 100)
+    @NonNull @Column(name="address", length = 100) @NotBlank(message = "Address is mandatory")
     private String address;
-    @NonNull @Column(name = "email", length = 100)
+    @NonNull @Column(name = "email", length = 100) @NotBlank(message = "Email is mandatory")
     private String email;
     @NonNull @Setter(AccessLevel.NONE)
     private String password;

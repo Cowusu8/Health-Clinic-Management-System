@@ -36,6 +36,10 @@
 
 
         <button class="btn btn-primary col-2" type="submit">Save</button>
+        <div
+                class="alert alert-danger" role="alert"
+                th:if="${param.error}"
+        >Something Missing</div>
         <input th:field="*{id}" type="hidden"/>
 
     </form>

@@ -53,7 +53,7 @@
             <td th:text="${patient.phone}"></td>
             <td th:text="${patient.address}"></td>
             <td>
-                <a class="btn btn-info" th:href="@{/savePatients(patientId=${patient.Id})}">Update</a>
+                <a class="btn btn-info" th:href="@{/updatePatient(patientId=${patient.Id})}">Update</a>
 
                 <a class="btn btn-danger ml-2" th:href="@{/deletePatient/{id}(patientId=${patient.id})}">Delete</a>
             </td>

@@ -14,80 +14,58 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
+
 // Annotations
 @Controller  @Slf4j
 public class DoctorController { //Class
 
-    @Autowired
-    private DoctorsRepo dRepo;
+        @Autowired
+        private DoctorsRepo dRepo;
 
-    // Read operation
-    @GetMapping("/doctors")
-    public String showDoctorList(Model model) {
-         model.addAttribute("doctors", dRepo.findAll());
-        return "list_doctors";
-    }
-
-    @GetMapping("/addDoctorsForm")
-    public String showDocSignUpForm(Doctor doctor) {
-        return "add_doctor_form";
-    }
-
-    // Save operation
-    @PostMapping("/add-doctor")
-    public String addDoctor(@Valid Doctor doctor, BindingResult result, Model model) {
-        if (result.hasErrors()) {
-            return "add_doctor_form";
+        @GetMapping("/doctors")
+        public ModelAndView showPatients() {
+            ModelAndView mav = new ModelAndView("listdoctors");
+            List<Doctor> doctor = dRepo.findAll();
+            mav.addObject("doctors", doctor);
+            return mav;
         }
 
-        dRepo.save(doctor);
-        return "redirect:/doctors";
-    }
+        @GetMapping("/addDoctorsForm")
+        public ModelAndView addPatientForm() {
+            ModelAndView mav = new ModelAndView("add-patient-form");
+            Doctor doctor = new Doctor();
+            mav.addObject("doctor", doctor);
+            return mav;
+        }
 
-//    @PostMapping("/saveDoctors/{id}")
-//    public String updateDoctor(@PathVariable("id") long id, @Valid Doctor doctor,
-//                                BindingResult result, Model model) {
-//        if (result.hasErrors()) {
-//            doctor.setId(id);
-//            return "add_doctor_form";
-//        }dRepo.save(doctor);
-//        return "redirect:/doctors";
-//    }
+        @PostMapping("/saveDoctors")
+        public String savePatient(@ModelAttribute Doctor doctor) {
+            System.out.println("login..."+doctor);
+            dRepo.save(doctor);
+            return "redirect:/doctors";
+        }
 
-    public String deleteDoctors(@RequestParam Long id) {
-        dRepo.deleteById(id);
-        return "redirect:/patients";
-    }
+        @GetMapping("/showUpdateDoctor")
+        public ModelAndView showUpdateForm(@RequestParam Long id) {
+            ModelAndView mav = new ModelAndView("add-doctor-form");
+            Doctor doctor = dRepo.findById(id).get();
+            mav.addObject("doctor", doctor);
+            return mav;
+        }
 
-    @GetMapping("/showUpdateDoctor")
-    public ModelAndView showUpdateForm(@RequestParam Long doctorId) {
-        ModelAndView mav = new ModelAndView("add-patient-form");
-        Doctor doctor = dRepo.findById(doctorId).get();
-        mav.addObject("doctors", doctor);
-        return mav;
-    }
+        @GetMapping("/deleteDoctor")
+        public String deletePatients(@RequestParam Long id) {
+            dRepo.deleteById(id);
+            return "redirect:/doctor";
+        }
 
 
-    // Update operation
-//    @PutMapping("/doctor/{id}")
-
-//    public Doctor
-//    updateDoctor(@RequestBody Doctor doctor,
-//                     @PathVariable("id") Long Id)
-//    {
-//        return DoctorService.updateDoctor(
-//                doctor, Id);
+//    @GetMapping("patient")
+//    public String showPatientportal() {
+//        log.warn("test");
+//        return "listpatients";
 //    }
 
 
-    // Delete Operation
-//    @DeleteMapping("/deleteDoctor/{id}")
-//    public String deleteDoctorById(@PathVariable("id") Long id)
-//    {
-//        dRepo.deleteDoctorById(id);
-//
-//        return "Deleted Successfully";
-//    }
-
-
-}
+    }

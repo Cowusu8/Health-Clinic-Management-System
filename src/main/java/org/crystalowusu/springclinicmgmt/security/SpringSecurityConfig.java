@@ -51,9 +51,9 @@ public class SpringSecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeHttpRequests((requests) -> requests
-                        .requestMatchers("/", "/error/**", "/styles/**", "/assets/**", "/vendor/**","/css/**","/js/**","/static/**","/img/**","/index","/json/**","/doctorpics", "/login/**","/deleteDoctor").permitAll()
-                        .requestMatchers("/admindash/**").hasRole("ADMIN")
-                        .requestMatchers("/doc-dash/**").hasRole("DOCTOR")
+                        .requestMatchers("/", "/styles/**", "/assets/**", "/vendor/**","/css/**","/js/**","/static/**","/img/**","/index").permitAll()
+                        .requestMatchers("/admindash/**","/login/**","/docportal/**").hasRole("ADMIN")
+                        .requestMatchers("/doc-dash/**","/login/**").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 )
                 .formLogin((form) -> form
@@ -61,8 +61,8 @@ public class SpringSecurityConfig {
                         .usernameParameter("email")
                         .passwordParameter("password")
                         .loginProcessingUrl("/login/processing")
-                        .defaultSuccessUrl("/admindash")
-                        .failureUrl("/login?error=true")
+                        .defaultSuccessUrl("/")
+                        .failureUrl("/login?error=false")
                         .permitAll()
                 )
                 .logout((logout) -> logout.logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/")

@@ -12,7 +12,7 @@ public class MainController { //Class
     }
 
     @GetMapping("/login") //Admin Portal Path
-    public String adminPortal(){
+    public String loginPortal(){
         return "login";
     }
 

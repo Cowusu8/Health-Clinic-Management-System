@@ -18,9 +18,11 @@
 
     <form method="POST" th:action="@{/add-doctor}" th:object="${doctor}">
 
-        <input class="form-control col-3 mb-4" placeholder="Enter Visit Date" th:field="*{fullName}" type="text"/>
+        <input class="form-control col-3 mb-4" placeholder="Enter Full Name" th:field="*{fullName}" type="text"/>
+        <div class="alert alert-warning" th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}"></div>
 
-        <input class="form-control col-3 mb-4" placeholder="Enter Diagnosis" th:field="*{birthDate}" type="text"/>
+        <input class="form-control col-3 mb-4" placeholder="Enter Birth Date" th:field="*{birthDate}" type="text"/>
+        <div class="alert alert-warning" th:if="${#fields.hasErrors('Birth Date')}" th:errors="*{birthDate}"></div>
 
         <label class="form-control col-3 mb-2">Gender?
             <input th:field="*{gender}" type="checkbox" value="Male"/>Male
@@ -32,6 +34,7 @@
         <input class="form-control col-3 mb-4" placeholder="Enter Phone Number" th:field="*{phone}" type="text"/>
 
         <input class="form-control col-3 mb-4" placeholder="Enter Email" th:field="*{email}" type="text"/>
+        <div class="alert alert-warning" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
 
         <input class="form-control col-3 mb-4" placeholder="Enter Password" th:field="*{password}" type="text"/>
 
