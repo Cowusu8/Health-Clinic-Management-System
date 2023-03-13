@@ -23,7 +23,7 @@
 
     <hr/>
     <div class="d-grid gap-2  justify-content-md-end">
-        <a class="btn btn-primary" th:href="@{/addDoctorsForm}">Add Doctor</a>
+        <a class="btn btn-primary" th:href="@{/addDoctorForm}">Add Doctor</a>
         <a class="btn btn-primary" th:href="@{/admindash}">Back to Dashboard</a>
     </div>
     <br/>
@@ -55,9 +55,9 @@
             <td th:text="${doctor.password}"></td>
             <td th:text="${doctor.address}"></td>
             <td>
-                <a class="btn btn-info" th:href="@{/showUpdateDoctor(doctorId=${doctor.id})}">Update</a>
+                <a class="btn btn-info" th:href="@{/showUpdateDocForm(id=${patient.Id})}">Update</a>
 
-                <a class="btn btn-danger ml-2" th:href="@{/deleteDoctor/${doctor.id)}">Delete</a>
+                <a class="btn btn-danger ml-2" th:href="@{/deleteDoctor(id=${patient.Id})}">Delete</a>
             </td>
         </tr>
         </tbody>
@@ -71,7 +71,7 @@
 
 <script>
 			$(document).ready(function() {
-				$("#patientsTable").DataTable({
+				$("#doctorsTable").DataTable({
 						'aoColumnDefs': [{
         				'bSortable': false,
         				'aTargets': [-1] /* 1st one, start by the right */

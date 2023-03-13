@@ -16,7 +16,7 @@
     <h1>Register Doctor</h1>
     <hr/>
 
-    <form method="POST" th:action="@{/add-doctor}" th:object="${doctor}">
+    <form method="POST" th:action="@{/addDoctorForm}" th:object="${doctor}">
 
         <input class="form-control col-3 mb-4" placeholder="Enter Full Name" th:field="*{fullName}" type="text"/>
         <div class="alert alert-warning" th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}"></div>
@@ -40,6 +40,10 @@
 
 
         <button class="btn btn-primary col-2" type="submit">Save</button>
+        <div
+                class="alert alert-danger" role="alert"
+                th:if="${param.error}"
+        >Something Missing</div>
         <input th:field="*{Id}" type="hidden"/>
 
     </form>
