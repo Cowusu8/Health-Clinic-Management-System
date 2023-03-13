@@ -22,6 +22,7 @@ public class ClinicAdviceController { //Class
         ModelAndView modelAndView = new ModelAndView("error");
         modelAndView.addObject("error", e.getMessage());
         log.debug("Exception e.getMessage(): " + e.getMessage());
+        e.printStackTrace();
         return modelAndView;
 
     }

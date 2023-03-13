@@ -67,7 +67,7 @@ public class MyCommandLineRunner implements CommandLineRunner {
 //        doctorsRepo.save(Owens2);
 
 
-        AuthGroup authGroup5 = new AuthGroup ("smithdoe","ROLE_DOCTOR");
+        AuthGroup authGroup5 = new AuthGroup ("crystal2@mail.com","ROLE_DOCTOR");
         AuthGroup authGroup6 = new AuthGroup ("smith1","ROLE_DOCTOR");
         AuthGroup authGroup7 = new AuthGroup ("smith2","ROLE_DOCTOR");
         AuthGroup authGroup8 = new AuthGroup ("smith3","ROLE_DOCTOR");

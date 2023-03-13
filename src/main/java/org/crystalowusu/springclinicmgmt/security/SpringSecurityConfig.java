@@ -47,34 +47,51 @@ public class SpringSecurityConfig {
     }
 
 
+//    @Bean
+//    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+//        http.csrf().disable()
+//                .authorizeHttpRequests((requests) -> requests
+//                        .requestMatchers("/", "/styles/**", "/assets/**", "/vendor/**","/css/**","/js/**","/static/**","/img/**","/index","/login/**").permitAll()
+//                        .requestMatchers("/admindash/**","/docportal/**","/doc-dash/**").hasRole("ADMIN")
+//                        .anyRequest().authenticated()
+//                )
+//                .formLogin((form) -> form
+//                        .loginPage("/login")
+//                        .usernameParameter("email")
+//                        .passwordParameter("password")
+//                        .loginProcessingUrl("/login/processing")
+//                        .defaultSuccessUrl("/admindash")
+//                        .failureUrl("/login?error=false")
+//                        .permitAll()
+//                )
+//                .logout((logout) -> logout.logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/")
+//                        .invalidateHttpSession(true)
+//                        .deleteCookies("JSESSIONID")
+//                        .clearAuthentication(true)
+//                        .permitAll()).exceptionHandling().accessDeniedPage("/403");
+//
+//
+//
+//        return http.build();
+//    }
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.csrf().disable()
-                .authorizeHttpRequests((requests) -> requests
-                        .requestMatchers("/", "/styles/**", "/assets/**", "/vendor/**","/css/**","/js/**","/static/**","/img/**","/index").permitAll()
-                        .requestMatchers("/admindash/**","/login/**","/docportal/**").hasRole("ADMIN")
-                        .requestMatchers("/doc-dash/**","/login/**").hasRole("ADMIN")
-                        .anyRequest().authenticated()
-                )
-                .formLogin((form) -> form
-                        .loginPage("/login")
-                        .usernameParameter("email")
-                        .passwordParameter("password")
-                        .loginProcessingUrl("/login/processing")
-                        .defaultSuccessUrl("/")
-                        .failureUrl("/login?error=false")
-                        .permitAll()
-                )
-                .logout((logout) -> logout.logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/")
-                        .invalidateHttpSession(true)
-                        .deleteCookies("JSESSIONID")
-                        .clearAuthentication(true)
-                        .permitAll()).exceptionHandling().accessDeniedPage("/403");
-
-
-
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        http.csrf().disable().authorizeRequests()
+                .requestMatchers("/resources/**","/error","/", "/styles/**", "/assets/**", "/vendor/**","/css/**","/js/**","/static/**","/img/**","/index","/login/**").permitAll()
+                .requestMatchers("/admindash/**","/docportal/**","/doc-dash/**").hasRole("ADMIN")
+                .anyRequest().authenticated()
+                .and()
+                .formLogin().loginPage("/login").usernameParameter("email").passwordParameter("password")
+                .loginProcessingUrl("/login/processing").defaultSuccessUrl("/")
+                .failureUrl("/login?error=true").permitAll()
+                .and()
+                .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/")
+                .invalidateHttpSession(true)
+                .deleteCookies("JSESSIONID").and()
+                .exceptionHandling().accessDeniedPage("/403");
         return http.build();
     }
+
 
 
 

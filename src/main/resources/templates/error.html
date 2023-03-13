@@ -31,247 +31,29 @@
 </head>
 
 <body>
+<table class="table table-dark">
+    <thead>
+    <tr>
+        <th scope="col">Date</th>
+        <th scope="col">Path</th>
+        <th scope="col">Error</th>
+        <th scope="col">Message</th>
+        <th scope="col">Exception</th>
+        <th scope="col">Trace</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <th scope="row" th:text="${timestamp}"></th>
+        <td th:text="${path}"></td>
+        <td th:text="${error}"></td>
+        <td th:text="${message}"></td>
+        <td th:text="${exception}"></td>
+        <td th:text="${trace}"></td>
+    </tr>
 
-
-<!-- ======= Header ======= -->
-<header id="header" class="header fixed-top d-flex align-items-center">
-
-    <div class="d-flex align-items-center justify-content-between">
-        <a class="logo d-flex align-items-center">
-
-            <span class="d-none d-lg-block" style="font-size: 40px; color: green; text-align: center">Admin</span>
-        </a>
-    </div><!-- End Logo -->
-
-
-
-</header><!-- End Header -->
-
-<!-- ======= Sidebar ======= -->
-<div class="container-fluid">
-    <aside id="sidebar" class="sidebar">
-
-        <ul class="sidebar-nav" id="sidebar-nav">
-
-            <li class="nav-item">
-                <a class="nav-link" style="font-size: 17px">
-                    <i class="bi bi-grid"></i>
-                    <span>Dashboard</span>
-                </a>
-            </li><!-- End Dashboard Nav -->
-
-            <li class="nav-item">
-                <a class="nav-link collapsed" th:href="@{/addDoctorsForm}">
-                    <i class="bi bi-card-list"></i>
-                    <span>Register Employee</span>
-                </a>
-            </li><!-- End Register Page Nav -->
-
-            <li class="nav-item">
-                <a class="nav-link collapsed" data-bs-target="#components-nav" href="/doctors">
-                    <i class="bi bi-menu-button-wide"></i><span>View Doctors</span></i>
-                </a>
-                <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-                </ul>
-            </li><!-- End Prescriptions Nav -->
-
-            <li class="nav-item">
-                <a class="nav-link collapsed" data-bs-target="#components-nav" href="/patients">
-                    <i class="bi bi-dash-circle"></i>
-                    <span>View Patients</span>
-                </a>
-            </li><!-- End Error 404 Page Nav -->
-
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="/index">
-                    <i class="bi bi-box-arrow-in-right"></i>
-                    <span>Log Out</span>
-                </a>
-            </li><!-- End Login Page Nav -->
-
-
-
-            <!--<li class="nav-item">
-              <a class="nav-link collapsed" href="#">
-                <i class="bi bi-file-earmark"></i>
-                <span>Blank</span>
-              </a>
-            </li> End Blank Page Nav -->
-
-        </ul>
-
-    </aside><!-- End Sidebar-->
-
-
-    <main id="main" class="main">
-
-        <div class="pagetitle">
-            <h1>Dashboard</h1>
-            <nav>
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                    <li class="breadcrumb-item active">Dashboard</li>
-                </ol>
-            </nav>
-        </div><!-- End Page Title -->
-
-        <section class="section dashboard">
-            <div class="row">
-
-                <!-- Left side columns -->
-                <div class="col-lg-12">
-                    <div class="row">
-
-                        <section class="section">
-                            <div class="row align-items-top">
-                                <div class="col-lg-6">
-
-                                    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-
-                                    <div class="card" style="width: 15rem; display: inline-block">
-                                        <img class="card-img-top" src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180" alt="Card image cap">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Normal card</h5>
-                                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="card" style="width: 15rem; display: inline-block">
-                                        <img class="card-img-top" src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180" alt="Card image cap">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Alternative</h5>
-                                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                            <a href="#" class="stretched-link"></a>
-                                        </div>
-                                    </div>
-
-                                    <!-- Card with header and footer -->
-                                    <div class="card">
-                                        <div class="card-header">Header</div>
-                                        <div class="card-body">
-                                            <h5 class="card-title">Card with header and footer</h5>
-                                            Ut in ea error laudantium quas omnis officia. Sit sed praesentium voluptas. Corrupti inventore consequatur nisi necessitatibus modi consequuntur soluta id. Enim autem est esse natus assumenda. Non sunt dignissimos officiis expedita. Consequatur sint repellendus voluptas.
-                                            Quidem sit est nulla ullam. Suscipit debitis ullam iusto dolorem animi dolorem numquam. Enim fuga ipsum dolor nulla quia ut.
-                                            Rerum dolor voluptatem et deleniti libero totam numquam nobis distinctio. Sit sint aut. Consequatur rerum in.
-                                        </div>
-                                        <div class="card-footer">
-                                            Footer
-                                        </div>
-                                    </div><!-- End Card with header and footer -->
-
-                                    <!-- Card with an image on left -->
-                                    <div class="card mb-3">
-                                        <div class="row g-0">
-                                            <div class="col-md-4">
-                                                <img src="assets/img/card.jpg" class="img-fluid rounded-start" alt="...">
-                                            </div>
-                                            <div class="col-md-8">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Card with an image on left</h5>
-                                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div><!-- End Card with an image on left -->
-
-                                </div>
-
-                                <div class="col-lg-3">
-
-                                    <!-- Card with an image on top -->
-                                    <div class="card">
-                                        <img src="assets/img/card.jpg" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Card with an image on top</h5>
-                                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                        </div>
-                                    </div><!-- End Card with an image on top -->
-
-                                    <!-- Card with an image on bottom -->
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Card with an image on bottom</h5>
-                                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                        </div>
-                                        <img src="assets/img/card.jpg" class="card-img-bottom" alt="...">
-                                    </div><!-- End Card with an image on bottom -->
-
-                                </div>
-
-                                <div class="col-lg-3">
-
-                                    <!-- Card with an image overlay -->
-                                    <div class="card">
-                                        <img src="assets/img/card.jpg" class="card-img-top" alt="...">
-                                        <div class="card-img-overlay">
-                                            <h5 class="card-title">Card with an image overlay</h5>
-                                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                        </div>
-                                    </div><!-- End Card with an image overlay -->
-
-                                    <!-- Card with titles, buttons, and links -->
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Card with titles, buttons, and links</h5>
-                                            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                            <p class="card-text"><a href="#" class="btn btn-primary">Button</a></p>
-                                            <a href="#" class="card-link">Card link</a>
-                                            <a href="#" class="card-link">Another link</a>
-                                        </div>
-                                    </div><!-- End Card with titles, buttons, and links -->
-
-
-
-                                </div>
-                            </div><!-- End Right side columns -->
-
-                        </section>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-    </main><!-- End #main -->
-
-    <!-- ======= Footer ======= -->
-    <footer id="footer" class="footer">
-        <div class="copyright">
-            &copy; Copyright <strong><span>SpringsMedicalCenter</span></strong>. All Rights Reserved
-        </div>
-
-    </footer><!-- End Footer -->
-
-    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-    <!-- Vendor JS Files -->
-    <script th:src="@{vendor/apexcharts/apexcharts.min.js}"></script>
-    <script th:src="@{vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
-    <script th:src="@{vendor/chart.js/chart.umd.js}"></script>
-    <script th:src="@{vendor/echarts/echarts.min.js}"></script>
-    <script th:src="@{vendor/quill/quill.min.js}"></script>
-    <script th:src="@{vendor/simple-datatables/simple-datatables.js}"></script>
-    <script th:src="@{vendor/tinymce/tinymce.min.js}"></script>
-    <script th:src="@{vendor/php-email-form/validate.js}"></script>
-
-    <!-- Template Main JS File -->
-    <script th:src="@{js/main2.js}"></script>
-
-    <script
-            crossorigin="anonymous"
-            integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-            th:src="@{https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js}"
-    ></script>
-
-    <script
-            crossorigin="anonymous"
-            integrity="sha512-wS6VWtjvRcylhyoArkahZUkzZFeKB7ch/MHukprGSh1XIidNvHG1rxPhyFnL73M0FC1YXPIXLRDAoOyRJNni/g=="
-            referrerpolicy="no-referrer"
-            th:src="@{https://cdnjs.cloudflare.com/ajax/libs/axios/1.3.3/axios.min.js}"
-    ></script>
-
-</div>
+    </tbody>
+</table>
 </body>
 
 </html>
