@@ -20,4 +20,6 @@ public interface PatientsRepo extends JpaRepository<Patient, Long> {
 
    Optional<Patient> findById(long id);
 
+    @Override
+    List<Patient> findAll(Sort sort);
 }

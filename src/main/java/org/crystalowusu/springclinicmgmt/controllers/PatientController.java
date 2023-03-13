@@ -10,7 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-// Annotation
+// Annotations
 @Controller
 @Slf4j
 public class PatientController { // Class
@@ -48,7 +48,7 @@ public class PatientController { // Class
     }
 
     @GetMapping("/deletePatient")
-    public String deleteEmployee(@RequestParam long id) {
+    public String deletePatient(@RequestParam long id) {
         pRepo.deleteById(id);
         return "redirect:/patients";
     }

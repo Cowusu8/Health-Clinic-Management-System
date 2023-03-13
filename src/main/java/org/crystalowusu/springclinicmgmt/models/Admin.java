@@ -2,8 +2,12 @@
 package org.crystalowusu.springclinicmgmt.models;
 
 // Importing required classes
+
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -16,11 +20,12 @@ import java.util.Objects;
 @Setter
 @Getter
 @ToString
-@Table(name="Admin")
+@Table(name = "Admin")
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Admin {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
 
     String email;
@@ -28,7 +33,9 @@ public class Admin {
     @Setter(AccessLevel.NONE)
     String password;
 
-    public Admin() {}
+    public Admin() {
+    }
+
     public Admin(String email, String password) {
         this.email = email;
         this.password = setPassword(password);

@@ -28,20 +28,18 @@ public class Doctor { // Class
 
     @Id @GeneratedValue(strategy = GenerationType.AUTO) @NonNull @Column (unique = true)
     private long id;
-    @NonNull @Column(name = "fullName",length = 100) @NotBlank @Size(message = "Name is mandatory", min = 12)
+    @NonNull @Column(name = "fullName",length = 100)
     private String fullName;
-    @NonNull @Column(name = "birthDate",length = 10) @NotBlank(message = "Birthdate is mandatory")
+    @NonNull @Column(name = "birthDate",length = 10)
     private String birthDate;
-    @NonNull @Column(name="gender", length = 7) @NotBlank(message = "Gender is mandatory")
+    @NonNull @Column(name="gender", length = 7)
     private String gender;
-    @NonNull @Column(name = "phone", length = 12) @NotBlank(message = "Phone is mandatory")
+    @NonNull @Column(name = "phone", length = 12)
     private String phone;
-    @NonNull @Column(name="address", length = 100) @NotBlank(message = "Address is mandatory")
+    @NonNull @Column(name="address", length = 100)
     private String address;
-    @NonNull @Column(name = "email", length = 100) @NotBlank(message = "Email is mandatory")
+    @NonNull @Column(name = "email", length = 100)
     private String email;
-    @NonNull @Setter(AccessLevel.NONE)
-    private String password;
 
 //    public Doctor(@NonNull String fullName, @NonNull String birthDate, @NonNull String gender, @NonNull String phone, @NonNull String address, @NonNull String email) {
 //        this.fullName = fullName;
@@ -62,12 +60,12 @@ public class Doctor { // Class
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Doctor doctor)) return false;
-        return id == doctor.id && fullName.equals(doctor.fullName) && birthDate.equals(doctor.birthDate) && gender.equals(doctor.gender) && phone.equals(doctor.phone) && address.equals(doctor.address) && email.equals(doctor.email) && password.equals(doctor.password) && Objects.equals(patients, doctor.patients);
+        return id == doctor.id && fullName.equals(doctor.fullName) && birthDate.equals(doctor.birthDate) && gender.equals(doctor.gender) && phone.equals(doctor.phone) && address.equals(doctor.address) && email.equals(doctor.email) && Objects.equals(patients, doctor.patients);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, fullName, birthDate, gender, phone, address, email, password, patients);
+        return Objects.hash(id, fullName, birthDate, gender, phone, address, email, patients);
     }
 
 

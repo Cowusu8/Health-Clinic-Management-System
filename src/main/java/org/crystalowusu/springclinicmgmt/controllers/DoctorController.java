@@ -16,8 +16,8 @@ import java.util.List;
 @Controller  @Slf4j
 public class DoctorController { //Class
 
-        @Autowired
-        private DoctorsRepo dRepo;
+    @Autowired
+    private DoctorsRepo dRepo;
 
     @GetMapping({"/doctors",})
     public ModelAndView getAllDoctors() {

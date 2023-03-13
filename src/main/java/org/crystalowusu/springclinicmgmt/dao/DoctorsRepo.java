@@ -15,6 +15,10 @@ public interface DoctorsRepo extends JpaRepository<Doctor, Long> {
     @Query
     Optional<Doctor> findByEmail(String email);
 
+    Optional<Doctor> findById(long id);
+
 
     long deleteDoctorById(long id);
+
+
 }

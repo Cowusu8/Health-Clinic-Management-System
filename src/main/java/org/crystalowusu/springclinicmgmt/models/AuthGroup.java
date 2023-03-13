@@ -2,6 +2,7 @@
 package org.crystalowusu.springclinicmgmt.models;
 
 // Importing required classes
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -9,8 +10,6 @@ import jakarta.persistence.Id;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
-
-import java.util.Objects;
 
 //Lombok and Data JPA Annotations
 @Entity
