@@ -20,11 +20,11 @@ public class PatientServiceTest{
    private Patient patient;
    
    @Mock
-    private PatientsRepo pRepo;
+   private PatientsRepo pRepo;
    
    
    @InjectMocks
-    private PatientService patientService;
+   private PatientService patientService;
 
     @BeforeEach
     void setUp() {

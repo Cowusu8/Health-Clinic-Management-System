@@ -2,6 +2,8 @@ package org.crystalowusu.springclinicmgmt.dao;
 
 import org.crystalowusu.springclinicmgmt.models.Admin;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -21,6 +23,20 @@ import static org.junit.jupiter.api.Assertions.*;
     @Autowired
     private AdminRepoI adminRepoI;
 
+    @ParameterizedTest
+    @ValueSource(strings = { "testa@mail.com", "testb@mail.com" })
+    void findByEmailAll(String email) {
+        //Given
+        Admin admin = new Admin(email, "password");
+        entityManager.persist(admin);
+        entityManager.flush();
+
+        //When
+        Optional<Admin> found = adminRepoI.findByEmailAllIgnoreCase(admin.getEmail());
+
+        //Then
+        assertThat(found.get().getEmail()).isEqualTo(admin.getEmail());
+    }
 
     @Test
     void findByEmailAllIgnoreCase() {

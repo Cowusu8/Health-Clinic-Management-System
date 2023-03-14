@@ -4,6 +4,7 @@ package org.crystalowusu.springclinicmgmt.models;
 // Importing required classes
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
@@ -28,6 +29,7 @@ public class Admin {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
 
+    @Column(length = 30) @Email
     String email;
 
     @Setter(AccessLevel.NONE)
