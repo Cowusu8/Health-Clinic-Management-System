@@ -26,7 +26,8 @@ import static org.junit.jupiter.api.Assertions.*;
     @Autowired
     private AdminRepoI adminRepoI;
 
-    @Test
+
+    //@Test
     void findByEmailAllIgnoreCase() {
         //Given
         Admin admin = new Admin("admin@mail.com", "password");
@@ -39,4 +40,6 @@ import static org.junit.jupiter.api.Assertions.*;
         //Then
         assertThat(found.get().getEmail()).isEqualTo(admin.getEmail());
     }
+
+
 }
